@@ -21,7 +21,7 @@
     @media(max-width:720px){.topbar{padding:9px 12px;display:block}.brand{display:block;margin:0 5px 8px}.nav{padding-bottom:2px}.nav a{font-size:13px}.hero{grid-template-columns:1fr;gap:8px}.hero-copy{padding:10px 0}.hero-photo img{height:225px}.hero h1{font-size:39px}.cards{grid-template-columns:1fr}.trip-card{min-height:0}main{padding:20px 15px 42px}.section-head{align-items:start;flex-direction:column}.timeline-stop{grid-template-columns:1fr;gap:7px}.time{text-align:left;width:max-content;min-width:100px}.photo-strip img{height:105px}.guide-grid{grid-template-columns:1fr}.blog-intro{font-size:18px;padding:14px}.blog-section{margin:24px 0 32px}.blog-section p{font-size:17px}.blog-section img{max-height:460px}.daily-entry{padding:16px}.daily-entry p{font-size:17px}.daily-entry img{max-height:460px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     /* 日曆入口優先呈現今日安排，避免手機上先滑過封面與介紹。 */
-    .home-view-today .hero,.home-view-today .notice{display:none}
+    .home-view-today .hero,.home-view-today .notice{display:none}.trip-card-expanded{max-width:900px}.today-expanded{margin-top:18px}.today-expanded>h3{font-size:23px;margin:0 0 10px}.today-expanded .timeline{margin:0 0 18px}.today-expanded .guide-grid{margin:12px 0}.today-expanded .guide-card h3,.today-expanded .panel h3{font-size:21px;margin:0 0 7px}.today-expanded .checklist{padding-left:20px;list-style:disc}
   </style>
 </head>
 <body>
@@ -261,17 +261,33 @@
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
     const tripUrl = id => location.origin + location.pathname + "?t=" + encodeURIComponent(id);
     function footer(){return '<footer class="footnote">固定一個家庭總站，每趟旅程有自己的行事曆短網址。公開連結不用邀請即可開啟；頁面不放完整姓名、住址或聯絡資料。<br>勾選與備註尚未連接同步功能，請以這個頁面顯示的行程資訊為準。</footer>'}
-    function card(t){
+    function card(t,view){
       const statusClass=t.state==="done"?"done":t.state==="waiting"?"waiting":"planned";
       const excerpt=t.summary.length>104?t.summary.slice(0,104)+"…":t.summary;
-      return '<article class="trip-card"><div class="card-top"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h3>'+escapeHtml(t.title)+'</h3><p class="small">'+escapeHtml(t.area)+'</p><p>'+escapeHtml(excerpt)+'</p><div class="card-actions"><a class="button" href="?t='+encodeURIComponent(t.id)+'">打開這趟行程 ↗</a><button class="button alt" type="button" data-copy="'+escapeHtml(t.id)+'">複製行事曆網址</button></div><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span></article>';
+      const expanded=view==="today";
+      const stops=expanded?(t.stops||[]).map(row=>{
+        const time=Array.isArray(row)?row[0]:row.time;
+        const title=Array.isArray(row)?row[1]:row.title;
+        const desc=Array.isArray(row)?row[2]:row.desc;
+        const hours=Array.isArray(row)||!row.hours?"":'<div class="stop-facts"><p>◷ '+escapeHtml(row.hours)+'</p></div>';
+        const restroom=Array.isArray(row)||!row.restroom?"":'<p class="location-note"><b>如廁安排：</b>'+escapeHtml(row.restroom)+'</p>';
+        const photos=Array.isArray(row)||!row.photos?"":'<div class="stop-photos">'+row.photos.map(p=>'<img src="'+escapeHtml(p[0])+'" alt="'+escapeHtml(p[1])+'" loading="lazy"></div>').join("");
+        const links=Array.isArray(row)||!row.links?"":'<div class="stop-links">'+row.links.map(l=>'<a class="button alt" href="'+escapeHtml(l.href)+'" target="_blank" rel="noopener">'+escapeHtml(l.label)+' ↗</a>').join("")+'</div>';
+        return '<article class="timeline-stop"><div class="time">'+escapeHtml(time)+'</div><div><h3>'+escapeHtml(title)+'</h3><p>'+escapeHtml(desc)+'</p>'+hours+restroom+photos+links+'</div></article>';
+      }).join(""):"";
+      const details=expanded?(t.details||[]).map(d=>'<section class="panel guide-card"><h3>'+escapeHtml(d.title)+'</h3><p>'+escapeHtml(d.intro)+'</p><ul>'+d.bullets.map(x=>'<li>'+escapeHtml(x)+'</li>').join("")+'</ul></section>').join(""):"";
+      const checklist=expanded&&t.checklist?'<section class="panel checklist-card"><h3>出門前，勾一下</h3><ul class="checklist">'+t.checklist.map(x=>'<li>'+escapeHtml(x)+'</li>').join("")+'</ul></section>':"";
+      const sources=expanded&&t.sources?'<section class="panel"><h3>店家與官方資訊</h3><ul class="source-list">'+t.sources.map(s=>'<li><a href="'+escapeHtml(s[1])+'" target="_blank" rel="noopener">'+escapeHtml(s[0])+' ↗</a></li>').join("")+'</ul><p class="small">資訊查核：'+escapeHtml(t.checkedOn||"")+'</p></section>':"";
+      const action=expanded?"":'<div class="card-actions"><a class="button" href="?t='+encodeURIComponent(t.id)+'">打開這趟行程 ↗</a><button class="button alt" type="button" data-copy="'+escapeHtml(t.id)+'">複製行事曆網址</button></div><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span>';
+      const itinerary=expanded?'<section class="today-expanded" aria-label="今日完整行程"><h3>今日安排</h3><div class="timeline">'+stops+'</div>'+details+checklist+sources+'</section>':"";
+      return '<article class="trip-card '+(expanded?"trip-card-expanded":"")+'"><div class="card-top"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h3>'+escapeHtml(t.title)+'</h3><p class="small">'+escapeHtml(t.area)+'</p><p>'+escapeHtml(expanded?"":excerpt)+'</p>'+action+itinerary+'</article>';
     }
     function renderHome(view){
       app.className="home-view-"+view;
       const filtered=trips.filter(t=>view==="all" || (view==="today" && t.start<=dayNow && t.end>=dayNow) || (view==="upcoming" && t.start>dayNow) || (view==="past" && t.end<dayNow));
       const labels={today:["今天的行程","今天要走的路，打開就看得到。"],upcoming:["接下來的行程","已規劃、還沒出發的家庭旅行。"],past:["走過的日子","已完成的旅程，和日期已過但還沒回填的規劃。"],all:["全部旅程","今天、以後與已經走過的日子，都在這裡。"]};
       const label=labels[view]||labels.today;
-      const cards=filtered.length?filtered.map(card).join(""):'<div class="empty"><p><b>這個分類目前沒有行程</b></p><p class="small">切換「全部」或其他日期看看。</p></div>';
+      const cards=filtered.length?filtered.map(t=>card(t,view)).join(""):'<div class="empty"><p><b>這個分類目前沒有行程</b></p><p class="small">切換「全部」或其他日期看看。</p></div>';
       app.innerHTML='<section class="hero"><div class="hero-copy"><div class="eyebrow">FAMILY TRAVEL JOURNAL · 桃園出發</div><h1>把一起走過的路，<br>和下一趟放在同一處。</h1><p>今天、未來和已完成的家庭行程，都用同一個網址整理。每趟旅程另有自己的短連結，方便放進家族行事曆。</p><div class="stat-row"><span class="stat">'+trips.filter(t=>t.state==="done").length+' 趟已完成</span><span class="stat">'+trips.filter(t=>t.state!=="done").length+' 筆行程待走／回填</span></div></div><figure class="hero-photo"><img src="https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d4-kyoto.jpg" alt="京阪之旅留下的京都街景照片" onerror="this.style.display=\'none\'"><figcaption>京阪之旅的風景，也收在這本手帳裡。</figcaption></figure></section><div class="notice"><p><b>給家人的固定入口</b></p><p>分享總站就能看全部行程；放入行事曆時，請複製該趟專屬網址。頁面公開，不需要另外邀請。</p></div><section><div class="section-head"><div><h2>'+label[0]+'</h2><p>'+label[1]+'</p></div><p>今天 · '+escapeHtml(dayNow.replaceAll("-","/"))+'</p></div><div class="cards">'+cards+'</div></section>'+footer();
       document.querySelectorAll(".nav a").forEach(a=>a.classList.toggle("active",a.dataset.view===view));
     }
