@@ -15,8 +15,10 @@
     .topbar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:var(--line);padding:10px max(18px,calc((100vw - 1040px)/2));display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-size:18px;font-weight:bold;white-space:nowrap;text-decoration:none}.nav{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}.nav a{flex:none;border:2px solid var(--ink);border-radius:999px;padding:5px 13px;text-decoration:none;background:var(--white);font-size:14px}.nav a.active{background:var(--yellow)}
     main{width:min(1040px,100%);margin:auto;padding:28px 20px 56px}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:25px;align-items:center;margin-bottom:22px}.hero-copy{padding:22px 0}.eyebrow{font-size:13px;letter-spacing:.08em;font-weight:bold}.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.16;margin:12px 0}.hero p{font-size:18px;max-width:38rem;margin:10px 0}.hero-photo{margin:0;border:var(--line);border-radius:32px;background:var(--yellow);padding:10px;transform:rotate(1deg)}.hero-photo img{width:100%;height:290px;object-fit:cover;border-radius:19px;border:2px solid var(--ink);background:var(--blue)}.hero-photo figcaption{text-align:center;font-size:14px;padding:7px 0 1px}.stat-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.stat{border:2px solid var(--ink);border-radius:15px;background:var(--green);padding:7px 12px;font-size:14px}.stat:nth-child(2){background:var(--pink)}
     .notice{border:var(--line);border-radius:var(--round);background:#fff2e9;padding:14px 18px;margin:20px 0 26px}.notice p{margin:3px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:25px 0 14px}.section-head h2{font-size:28px;margin:0}.section-head p{margin:0;color:var(--muted);font-size:14px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.trip-card,.detail-card,.timeline-stop,.panel{border:var(--line);border-radius:var(--round);background:var(--white);padding:18px;box-shadow:4px 4px 0 var(--ink)}.trip-card{display:flex;flex-direction:column;min-height:230px}.trip-card:nth-child(4n+1){background:#fff4ef}.trip-card:nth-child(4n+2){background:#f0f8fb}.trip-card:nth-child(4n+3){background:#f3f8ec}.trip-card:nth-child(4n){background:#fff9e9}.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.date-chip,.status{display:inline-block;border:2px solid var(--ink);border-radius:999px;padding:3px 10px;font-size:13px;background:var(--blue);white-space:nowrap}.status.done{background:var(--green)}.status.planned{background:var(--yellow)}.status.waiting{background:var(--pink)}.trip-card h3{font-size:24px;line-height:1.25;margin:13px 0 6px}.trip-card p{margin:5px 0 14px}.card-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto}.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;border:2px solid var(--ink);border-radius:13px;background:var(--blue);padding:6px 12px;text-decoration:none;font-weight:bold}.button.alt{background:var(--white)}.button:hover,.nav a:hover{transform:translateY(-1px)}.small{font-size:13px;color:var(--muted)}.empty{grid-column:1/-1;border:2px dashed var(--ink);border-radius:22px;padding:22px;background:#fffaf0;text-align:center}.empty p{margin:4px}
-    .detail-hero{border:var(--line);border-radius:32px;padding:22px;background:var(--yellow);margin:8px 0 22px}.detail-hero h1{font-size:clamp(32px,5vw,48px);line-height:1.15;margin:8px 0}.detail-hero p{margin:8px 0}.detail-meta{display:flex;gap:8px;flex-wrap:wrap}.summary-box{border:var(--line);border-radius:22px;background:var(--white);padding:16px 18px;margin:15px 0}.summary-box p{margin:5px 0}.timeline{display:grid;gap:13px;margin:15px 0 22px}.timeline-stop{display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start;box-shadow:none}.time{font-weight:bold;border:2px solid var(--ink);background:var(--blue);border-radius:12px;text-align:center;padding:5px}.timeline-stop h3{font-size:20px;margin:0 0 3px}.timeline-stop p{margin:2px 0}.location-note{border-left:5px solid var(--green);padding-left:11px;margin-top:8px;font-size:14px}.calendar-box{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:var(--line);border-radius:20px;background:#eef6f8;padding:12px 15px;margin:16px 0}.calendar-box code{font-size:13px;overflow-wrap:anywhere}.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.photo-strip img{width:100%;height:150px;object-fit:cover;border:2px solid var(--ink);border-radius:16px;background:var(--blue)}.back-link{display:inline-block;margin:4px 0 12px;font-weight:bold}.footnote{border-top:2px dashed var(--ink);margin-top:34px;padding-top:14px;color:var(--muted);font-size:13px}.toast{min-height:24px;font-size:13px;color:#3b6841}
-    @media(max-width:720px){.topbar{padding:9px 12px;display:block}.brand{display:block;margin:0 5px 8px}.nav{padding-bottom:2px}.nav a{font-size:13px}.hero{grid-template-columns:1fr;gap:8px}.hero-copy{padding:10px 0}.hero-photo img{height:225px}.hero h1{font-size:39px}.cards{grid-template-columns:1fr}.trip-card{min-height:0}main{padding:20px 15px 42px}.section-head{align-items:start;flex-direction:column}.timeline-stop{grid-template-columns:1fr;gap:7px}.time{text-align:left;width:max-content;min-width:100px}.photo-strip img{height:105px}}
+    .detail-hero{border:var(--line);border-radius:32px;padding:22px;background:var(--yellow);margin:8px 0 22px}.detail-hero h1{font-size:clamp(32px,5vw,48px);line-height:1.15;margin:8px 0}.detail-hero p{margin:8px 0}.detail-meta{display:flex;gap:8px;flex-wrap:wrap}.summary-box{border:var(--line);border-radius:22px;background:var(--white);padding:16px 18px;margin:15px 0}.summary-box p{margin:5px 0}.timeline{display:grid;gap:13px;margin:15px 0 22px}.timeline-stop{display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start;box-shadow:none}.time{font-weight:bold;border:2px solid var(--ink);background:var(--blue);border-radius:12px;text-align:center;padding:5px}.timeline-stop h3{font-size:20px;margin:0 0 3px}.timeline-stop p{margin:2px 0}.location-note{border-left:5px solid var(--green);padding-left:11px;margin-top:8px;font-size:14px}.calendar-box{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:var(--line);border-radius:20px;background:#eef6f8;padding:12px 15px;margin:16px 0}.calendar-box code{font-size:13px;overflow-wrap:anywhere}.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.photo-strip img{width:100%;height:150px;object-fit:cover;border:2px solid var(--ink);border-radius:16px;background:var(--blue)}.stop-photos{margin:11px 0}.stop-photos img{display:block;width:min(100%,520px);max-height:480px;object-fit:cover;border:2px solid var(--ink);border-radius:16px;background:var(--blue)}.back-link{display:inline-block;margin:4px 0 12px;font-weight:bold}.footnote{border-top:2px dashed var(--ink);margin-top:34px;padding-top:14px;color:var(--muted);font-size:13px}.toast{min-height:24px;font-size:13px;color:#3b6841}
+    .stop-facts{margin:9px 0 5px;padding:8px 11px;border-radius:12px;background:#fff7df;font-size:14px}.stop-facts p{margin:2px 0}.stop-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.stop-links .button{min-height:36px;font-size:14px}.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}.guide-card h2,.checklist-card h2{font-size:21px;margin:0 0 7px}.guide-card p{margin:5px 0}.guide-card ul,.source-list{margin:8px 0 0;padding-left:21px}.guide-card li,.source-list li{margin:5px 0}.checklist-card{margin:18px 0}.checklist{display:grid;gap:9px;margin:10px 0;padding:0;list-style:none}.checklist label{display:flex;align-items:flex-start;gap:9px}.checklist input{margin-top:6px;accent-color:#6d9654;width:18px;height:18px;flex:none}.source-list a{overflow-wrap:anywhere}
+    .blog-article{max-width:790px;margin:26px auto}.blog-intro{font-size:20px;line-height:1.8;padding:18px 20px;border-left:7px solid var(--pink);background:#fff4ef;border-radius:0 20px 20px 0}.blog-section{margin:30px 0 40px}.blog-section h2{font-size:clamp(23px,4vw,30px);margin:0 0 8px}.blog-section p{font-size:18px;line-height:1.9;margin:7px 0}.blog-section figure{margin:15px 0 0}.blog-section img{width:min(100%,680px);max-height:570px;object-fit:cover;border:var(--line);border-radius:24px;background:var(--blue)}.blog-section figcaption{font-size:14px;color:var(--muted);margin:7px 4px}.blog-ending{padding:16px 18px;border:2px solid var(--ink);border-radius:20px;background:#fff9e9;font-size:17px}.daily-nav{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:thin}.daily-tab{flex:none;border:2px solid var(--ink);border-radius:999px;padding:7px 13px;background:var(--white);text-decoration:none;font-size:14px}.daily-tab.active{background:var(--yellow);font-weight:bold}.daily-entry{max-width:790px;margin:12px auto 26px;padding:22px;border:var(--line);border-radius:var(--round);background:var(--white)}.daily-entry h2{font-size:clamp(25px,4vw,34px);line-height:1.3;margin:12px 0}.daily-entry p{font-size:18px;line-height:1.9;margin:9px 0}.daily-entry figure{margin:18px 0 8px}.daily-entry img{width:min(100%,680px);max-height:570px;object-fit:cover;border:var(--line);border-radius:24px;background:var(--blue)}.daily-entry figcaption{font-size:14px;color:var(--muted);margin:7px 4px}.photo-missing{margin:16px 0;padding:20px;border:2px dashed var(--ink);border-radius:18px;background:#fff9e9;color:var(--muted)}.day-share{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:2px dashed var(--ink);padding-top:13px;margin-top:20px}.day-share code{overflow-wrap:anywhere;font-size:13px}.daily-source-note{font-size:13px!important;color:var(--muted);margin-top:18px!important}
+    @media(max-width:720px){.topbar{padding:9px 12px;display:block}.brand{display:block;margin:0 5px 8px}.nav{padding-bottom:2px}.nav a{font-size:13px}.hero{grid-template-columns:1fr;gap:8px}.hero-copy{padding:10px 0}.hero-photo img{height:225px}.hero h1{font-size:39px}.cards{grid-template-columns:1fr}.trip-card{min-height:0}main{padding:20px 15px 42px}.section-head{align-items:start;flex-direction:column}.timeline-stop{grid-template-columns:1fr;gap:7px}.time{text-align:left;width:max-content;min-width:100px}.photo-strip img{height:105px}.guide-grid{grid-template-columns:1fr}.blog-intro{font-size:18px;padding:14px}.blog-section{margin:24px 0 32px}.blog-section p{font-size:17px}.blog-section img{max-height:460px}.daily-entry{padding:16px}.daily-entry p{font-size:17px}.daily-entry img{max-height:460px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
   </style>
 </head>
@@ -37,41 +39,91 @@
       {
         id: "K8mQ2r", start: "2026-04-28", end: "2026-05-05", state: "done", label: "已完成",
         title: "尼克一家的京阪之旅", area: "大阪・京都・環球影城",
-        photos: [["https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d4-kyoto.jpg","京都街景"],["https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d2-aquarium.jpg","海遊館"],["https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d3-usj.jpg","環球影城"]],
-        summary: "2026/04/28–05/05 的八日家庭旅行，已走完。大阪、京都、海遊館、環球影城與臨空城都收進這本手帳。",
-        days: ["桃園出發・抵達大阪", "海遊館與招待晚餐", "勇闖環球影城", "大阪移動到京都", "和服散策與京都午餐", "和牛燒肉與壽喜燒", "京都前往臨空城", "滿載回憶・返抵桃園"],
+        summary: "2026/04/28–05/05 的八日家庭旅行。從桃園飛往關西，走過大阪海遊館與環球影城、京都清水寺與祇園，再到臨空城採買；現在按日期整理成每日網誌。",
+        blogDays: [
+          {date:"2026/04/28",title:"出發日：桃園飛往大阪，夜宿難波",paragraphs:["11:30 預約含嬰兒汽座的 Uber 前往桃園機場；12:30 抵達後辦理報到、簡單用餐。15:15 班機起飛，19:00 抵達關西機場。","20:05 搭南海電鐵 Rapi:t 前往難波，20:45 轉乘計程車到住宿處。安頓後外帶串燒當宵夜，也買好隔天早餐。"],photo:["photos/2026-04-28-family-on-plane.jpeg","一家人在飛機座位上的合照","出發前，在飛機座位上留下合照"]},
+          {date:"2026/04/29",title:"海遊館看鯨鯊，下午回難波午睡",paragraphs:["飯店早餐後和 Jack 叔叔會合。11:00 到天保山市場街吃風月大阪燒，12:30 進海遊館看鯨鯊。","14:30 回難波飯店午睡，18:00 到天王寺吃燒肉。"],photo:["https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d2-aquarium.jpg","海遊館的海洋生物展區","海遊館"]},
+          {date:"2026/04/30",title:"環球影城親子日",paragraphs:["10:00 入園後先租嬰兒推車，前往環球奇境幼兒區。12:00 在史努比餐廳吃兒童餐，14:00 讓理悠在推車上睡午覺。","18:00 回難波找地方吃晚餐、休息。"],photo:["https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d3-usj.jpg","環球影城的遊園景色","環球影城"]},
+          {date:"2026/05/01",title:"黑門市場早午餐，從大阪移動到京都",paragraphs:["10:00 到黑門市場吃早午餐，行程紀錄列了生魚片、干貝和和牛串。11:30 退房前往京都；大件行李原安排宅急便寄送，再搭車轉乘。","15:00 逛錦市場與河原町，18:30 吃拉麵，之後散步回祇園住宿。"],photo:["https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d4-kyoto.jpg","京都街景","轉到京都的第一天"]},
+          {date:"2026/05/02",title:"穿和服走清水寺與二年坂、三年坂",paragraphs:["10:30 到 MOCOMOCO 清水寺本店租和服，11:30 前往清水寺拍全家福，再慢慢走二年坂、三年坂。","13:00 在空蟬亭用餐，15:00 回飯店午睡，17:30 在祇園附近吃串燒。"],photo:["photos/2026-05-02-liyou-kimono-karasemitei.jpeg","理悠穿和服坐在空蟬亭門口","穿著和服，在空蟬亭門口留影"]},
+          {date:"2026/05/03",title:"祇園白川散步，留一段京都慢步調",paragraphs:["10:00 到祇園白川散步拍照，14:30 回飯店休息午睡。","晚餐紀錄列了 Kyo Kurozakura 個室燒肉與 Moritaya 祇園店兩個候選，沒有記下最後選擇；夜晚則在京都巷弄散步，留下理悠和家人一起走路的照片。"],photo:["photos/2026-05-03-family-gion-night.jpeg","理悠和家人在京都夜間巷弄散步","祇園散步後，夜晚一家人在京都巷弄留下合照"]},
+          {date:"2026/05/04",title:"臨空城採買，回別墅自己煮晚餐",paragraphs:["11:00 前往臨空城 Outlet，午餐在美食街解決，也讓理悠在推車上睡午覺。","晚上到超市買和牛、草莓等食材，回 Stella Rinku 別墅自己煮晚餐；逛街時也一起看了童裝。"],photo:["photos/2026-05-04-family-rinku-outlet.jpeg","爸爸和理悠在臨空城童裝店自拍","在臨空城逛童裝，留下父女自拍"]},
+          {date:"2026/05/05",title:"清冰箱後，從關西機場回桃園",paragraphs:["09:30 把前一晚剩下的食材當早餐。10:00 搭計程車前往關西機場，車程約 6 分鐘。","12:20 班機起飛，14:15 抵達桃園，結束八天旅程；起飛前先在候機區休息。"],photo:["photos/2026-05-05-family-kix-airport.jpeg","理悠在關西機場候機座位上","回程前，在關西機場候機區稍作休息"]}
+        ],
+        stops: [
+          {time:"4/28",title:"第 1 天・抵達大阪、安頓補給",desc:"11:30 預約含嬰兒汽座的 Uber 前往桃園機場；12:30 抵達、辦理報到並簡單用餐；15:15 起飛；19:00 抵達關西機場；20:05 搭南海電鐵 Rapi:t 前往難波；20:45 轉乘計程車到飯店；21:30 外帶串燒宵夜，順便買隔天早餐。"},
+          {time:"4/29",title:"第 2 天・海遊館與天王寺燒肉",desc:"飯店早餐後與 Jack 叔叔會合；11:00 在天保山市場街吃風月大阪燒；12:30 逛海遊館看大鯨鯊；14:30 回難波飯店午睡；18:00 到天王寺享用預訂的燒肉晚餐。"},
+          {time:"4/30",title:"第 3 天・環球影城親子日",desc:"10:00 入園，先租嬰兒推車並前往環球奇境幼兒區；12:00 在史努比餐廳吃造型兒童餐；14:00 讓理悠在推車上睡午覺；18:00 回難波找居酒屋用餐、休息。"},
+          {time:"5/01",title:"第 4 天・黑門市場、移動到京都",desc:"10:00 到黑門市場吃早午餐，安排生魚片、干貝與和牛串；11:30 退房前往京都，原計畫把大件行李宅急便寄往京都，搭計程車轉火車並讓理悠車上午睡；15:00 在錦市場吃小吃、逛河原町；18:30 吃拉麵後散步回祇園飯店。"},
+          {time:"5/02",title:"第 5 天・和服散策與清水寺",desc:"10:30 到 MOCOMOCO 清水寺本店租和服；11:30 搭車上清水寺，拍全家福並慢慢走二年坂、三年坂；13:00 在空蟬亭 Karasemitei 午餐；15:00 回飯店午睡；17:30 在祇園附近吃串燒。"},
+          {time:"5/03",title:"第 6 天・祇園白川與燒肉晚餐",desc:"10:00 到祇園白川散步拍照；14:30 回飯店休息午睡；18:00 原行程列出 Kyo Kurozakura 個室燒肉或 Moritaya 祇園店二選一，原始紀錄未註明最後選了哪一家。"},
+          {time:"5/04",title:"第 7 天・臨空城採買與別墅晚餐",desc:"11:00 前往臨空城 Outlet；午餐在美食街解決，讓理悠在推車上睡午覺；晚上到超市買和牛、草莓等食材，回 Stella Rinku 別墅自己煮晚餐。"},
+          {time:"5/05",title:"第 8 天・清冰箱、返抵桃園",desc:"09:30 把前晚剩下的食材當早餐；10:00 搭計程車前往關西機場，車程約 6 分鐘；12:20 起飛；14:15 抵達桃園，結束八日旅程。"}
+        ],
+        details: [
+          {title:"住宿與交通",intro:"依原始京阪行程網站整理的住宿與移動安排。",bullets:["4/28–4/30：コンチネンタル難波東；4/29 海遊館、4/30 環球影城後都回難波休息。","5/01–5/03：&zen Kyoto Gion；大阪移動京都時原計畫宅急便寄大件行李，並搭計程車轉火車。","5/04：Stella Rinku 別墅；5/05 搭計程車約 6 分鐘到關西機場。","去程原計畫由桃園飛關西，落地後搭南海 Rapi:t 到難波；回程 12:20 起飛、14:15 抵達桃園。"]},
+          {title:"親子節奏與回顧備註",intro:"保留原行程中為理悠安排的休息節奏。",bullets:["4/29 回難波飯店午睡；4/30 推車午睡；5/02、5/03 回京都飯店午睡；5/04 推車午睡。","本頁依原始行程網站保存的規劃逐日整理。已知的候選餐廳仍標為候選；實際臨場調整尚未補記。"]}
+        ],
+        notes: ["逐日內容依原始京阪行程網站整理；原行程沒有記錄的實際變動不自行補寫。"],
         archiveUrl: "https://nickwang0317.github.io/osaka-chill-trip/"
       },
       {
         id: "A9z2Kc", start: "2026-10-04", end: "2026-10-04", state: "done", label: "已完成",
-        title: "湖畔人家的午後", area: "湖畔人家・慢慢喝下午茶",
-        summary: "午餐買炸雞回家吃，再讓孩子在車上睡午覺，醒來後到湖畔人家喝下午茶，之後直接回家。老婆說下次還想再來。",
+        title: "湖畔人家的午後", area: "桃園・湖畔人家・下午茶",
+        summary: "買炸雞回家吃完才出門，讓理悠在車上睡午覺；她在湖畔人家醒來後喝下午茶。離開時理悠想穿尿布大便，於是直接回家。老婆說下次還想再來。",
+        photos: [["photos/2026-10-04-family-by-water.jpeg","湖畔人家庭園旁的一家人"],["photos/2026-10-04-lake-house-sign.jpeg","湖畔人家的入口招牌"],["photos/2026-10-04-garden-walk.jpeg","孩子在庭園石板步道散步"]],
         stops: [
-          ["中午", "在家吃炸雞", "午餐改成外帶炸雞回家吃，吃完再出門。"],
-          ["路程", "車上午睡", "把移動時間留給午睡，抵達後不再趕景點。"],
-          ["下午茶", "湖畔人家", "坐下休息、享用下午茶；這個地方列入下次想再訪清單。"],
-          ["返家", "提早回家", "依孩子當下狀況調整，離開後直接回家。"]
+          {time:"出門前",title:"炸雞在家吃",desc:"買炸雞回家吃完午餐，之後才出發。"},
+          {time:"車程",title:"理悠在車上睡午覺",desc:"把移動時間留給午睡；實際睡眠時間沒有記錄。"},
+          {time:"午後",title:"湖畔人家下午茶",desc:"理悠在湖畔人家醒來，大家坐下來休息、喝下午茶。老婆說以後還想再來。"},
+          {time:"離開後",title:"直接回家",desc:"離開湖畔人家後，理悠說想大便、想穿尿布大便，於是沒有再加行程，直接返家。"}
+        ],
+        details:[
+          {title:"這趟的實際經過",intro:"按家人回報整理；未提供的時刻與停留長度不另外推估。",bullets:["午餐先買炸雞帶回家吃完，再出門。","車程中安排理悠午睡；她在湖畔人家醒來。","離開後因理悠想穿尿布大便而返家。"]},
+          {title:"下次再訪",intro:"這是家人想回來的地方。",bullets:["老婆說湖畔人家以後還想再來。","下次出發前可預留回家如廁或更換尿布的彈性。"]}
         ]
       },
       {
-        id: "R6v2Nc", start: "2026-10-09", end: "2026-10-09", state: "waiting", label: "成行狀態待補",
-        title: "國慶連假・家庭日", area: "桃園禾馨附近・三餐全外食",
-        summary: "原規劃在桃園禾馨時段前後安排三餐外食；禾馨時間當時尚未確定。行程日期已過，是否成行尚未記錄。",
-        stops: [["早上", "早餐與出門", "三餐全外食的原規劃；實際內容待補。"], ["白天", "桃園禾馨時段", "依當天時間安排，原先無法確定確切時段。"], ["晚上", "晚餐後返家", "保留彈性；是否實際成行待補記。"]]
-      },
-      {
-        id: "B3w8Hd", start: "2026-10-10", end: "2026-10-10", state: "planned", label: "今日規劃・待回填",
-        title: "富邦美術館親子日", area: "大江・富邦美術館・台北 101",
-        summary: "先吃午餐，再把約 90 分鐘車程留作午睡；今天只留一個主景點，之後在台北 101 吃下午茶與晚餐，目標 20:30 到家。這是行程規劃，實際是否成行尚待回填。",
+        id: "B3w8Hd", start: "2026-10-10", end: "2026-10-10", state: "done", label: "已完成",
+        title: "錯過遊行後，在車上看完 101 煙火", area: "富邦美術館・ATT・台北 101",
+        summary: "巧合珍滷味車上午餐、富邦美術館、ATT 點心、錯過寶可夢遊行後聽街頭藝人，最後從車上看 101 國慶煙火。",
+        blog: {
+          intro: "原本計畫去大江，後來臨時改了行程。這一天從車上的午餐開始，經過美術館和一段街頭歌聲，最後在車流中看見 101 煙火。",
+          sections: [
+            {title:"午餐，先在車上吃", text:"原本安排去大江，後來改買巧合珍滷味。全家在車上吃完，再出發前往富邦美術館。這段沒有照片記錄。"},
+            {title:"到富邦美術館走走", text:"吃完午餐後前往富邦美術館看展，也在戶外雕塑旁留下今天的合照。", photo:["photos/2026-10-10-fubon-museum-sculpture.jpeg","孩子在富邦美術館戶外雕塑旁","富邦美術館戶外雕塑旁的合照"]},
+            {title:"在 ATT 吃點心", text:"下午到 ATT 吃點心，理悠拿著漢堡慢慢吃，補充一點精神再繼續走。", photo:["photos/2026-10-10-att-snack.jpeg","理悠在 ATT 吃點心","ATT 的點心時間"]},
+            {title:"遊行沒趕上，坐下來聽歌", text:"後來沒趕上寶可夢遊行，我們就坐下來聽街頭藝人唱歌。行程停了一會兒，留下這段午後的街頭風景。", photo:["photos/2026-10-10-street-musician.jpeg","一家人在街頭表演旁休息","坐下來聽街頭藝人唱歌"]},
+            {title:"在車上看 101 國慶煙火", text:"晚上從車裡看台北 101 國慶煙火。煙火在 101 上空綻放，車流也留在畫面裡，成了這一天的最後一站。", photo:["photos/2026-10-10-101-fireworks-car.jpeg","從車內看台北 101 國慶煙火","車窗前的台北 101 國慶煙火"]}
+          ]
+        },
         stops: [
-          ["11:15–12:15", "午餐｜大江涓豆腐", "先吃飽再上路；停好車先如廁。"],
-          ["午餐後", "往台北・車上午睡約 90 分鐘", "午睡從孩子睡著起算，車程可配合午睡；下車後先確認洗手間。"],
-          ["14:00–15:30", "必去｜富邦美術館", "今天唯一主景點，慢慢看展。下車先如廁，每 45–60 分鐘留意一次。"],
-          ["15:45", "下午茶｜台北 101", "停車後先上廁所，坐下吃點心，保留晚餐胃口。"],
-          ["17:15", "晚餐｜台北 101", "吃完直接回桃園，不再加景點。"],
-          ["約 18:30", "返家", "目標 20:30 前到家；依即時導航調整離開時間。"]
+          {time:"午餐・實際經過", title:"巧合珍滷味・車上吃", desc:"今天沒有去大江，改買巧合珍滷味，全家在車上吃完後出發前往富邦美術館；實際用餐時間未特別記錄。", restroom:"抵達美術館停車後，先確認最近可用的洗手間；理悠需要時立即安排。"},
+          {time:"入館前", title:"停妥先如廁，再入館", desc:"富邦美術館地址：台北市信義區松高路 79 號。停妥車後先找可立即使用的洗手間；一位大人帶理悠，另一位處理停車或拿票。", hours:"富邦美術館 11:00–18:00｜17:30 最後入場／售票截止。", restroom:"進館前先去一次；若停車場廁所動線不清楚，可致電館方 02-6623-6771。", links:[{label:"美術館導航",href:"https://google.com/maps/search/?api=1&query=%E5%AF%8C%E9%82%A6%E7%BE%8E%E8%A1%93%E9%A4%A8"},{label:"官方購票",href:"https://fubonartmuseum.org/FB0202_"}]},
+          {time:"到館後・實際經過", title:"富邦美術館・今天唯一主景點", desc:"已前往富邦美術館看展。挑一至兩個展廳慢慢看；實際停留與離館時間待回填。大包包需寄放，展廳內不飲食。", hours:"館方今日開放至 18:00｜17:30 最後入場／售票截止。", restroom:"入館先確認洗手間；每 45–60 分鐘提醒一次，需要就立即去。離館前再上一次。", links:[{label:"開放時間與停車",href:"https://fubonartmuseum.org/Visit"},{label:"當期展覽",href:"https://fubonartmuseum.org/"}], photos:[["photos/2026-10-10-fubon-museum-sculpture.jpeg","孩子在富邦美術館戶外紅橘色大型雕塑旁"]]},
+          {time:"下午茶・現在", title:"ATT 吃點心", desc:"現在在 ATT 吃點心；實際抵達時間未特別記錄。", restroom:"離開前先確認最近可用的洗手間；理悠需要時立即安排。", photos:[["photos/2026-10-10-att-snack.jpeg","孩子在 ATT 吃點心"]]},
+          {time:"午睡・取消", title:"今天不安排午睡", desc:"家人確認理悠今天不用睡午覺，略過原訂的 90 分鐘車上午睡；點心後按晚餐與返家安排繼續。", restroom:"離開 ATT 前先確認最近可用洗手間；理悠需要時立即安排。"},
+          {time:"下午・實際經過", title:"沒趕上寶可夢遊行，改聽街頭藝人", desc:"寶可夢遊行沒趕上，改坐下來聽街頭藝人唱歌。實際演出者與時間未記錄。", restroom:"離開前先確認附近可用洗手間；理悠需要時立即安排。", photos:[["photos/2026-10-10-street-musician.jpeg","理悠在街頭表演區旁停下休息"]]},
+          {time:"遊行後・彈性", title:"休息與晚餐・依現場調整", desc:"聽完街頭藝人表演後，依理悠精神和時間決定是否前往台北 101 用晚餐；不再加新景點。", hours:"台北 101 購物中心週六營業至 22:00；店家最後點餐時間不同。", restroom:"散場後先確認現場可用洗手間；離開前再安排一次。", links:[{label:"台北 101 餐廳與美食街",href:"https://taipei-101.com.tw/tw/food/foodsearch"}]},
+          {time:"原訂 17:15–18:30", title:"晚餐・原訂台北 101", desc:"選購物中心內有座位、能快速上餐的餐廳或 B1 美食街。用餐後直接回桃園，不再加景點。", hours:"購物中心 22:00 結束營業；各餐廳最後點餐時間不同，延誤時以店家公告為準。", restroom:"入座前先去，離開前再去；出發回家前把握最後一次。", links:[{label:"餐廳與美食街",href:"https://taipei-101.com.tw/tw/food/foodsearch"}]},
+          {time:"返家途中", title:"原訂 20:30 到家", desc:"行程原以 20:30 為返家目標；實際到家時間待補。", restroom:"上車前先去；途中需要時找安全停靠點。"},
+          {time:"晚上・最後一站", title:"車上看台北 101 國慶煙火", desc:"今天在車上看台北 101 國慶煙火，為 10/10 行程收尾。實際觀賞位置與返家時間待補。"}
         ],
-        notes: ["富邦美術館：11:00–18:00，17:30 最後入場／售票截止；延誤時先確認是否仍能入館。", "停車後立即找洗手間；車程不受一小時限制，但每次下車都先安排如廁。", "停車優先看嘟嘟房富邦信義 A25；回家時間以當日導航為準。"]
+        details: [
+          {title:"廁所與停車手帳", intro:"理悠需要時就立即找廁所，不等提醒。車程不受一小時限制；每次下車都先確認可用洗手間。", bullets:["富邦美術館官方列出的 A25 停車場：24 小時、629 格、限高 2.1 公尺。停妥後先確認最近洗手間。","台北 101 有餐飲與停車服務，週六營業至 22:00；各店最後點餐時間不同。","若美術館停車場廁所動線不清楚，可致電 02-6623-6771。"]},
+          {title:"如果行程延誤", intro:"今天不安排午睡，依理悠精神與現場時間調整後續行程。", bullets:["美術館 18:00 結束營業，17:30 停止售票與入場；若預計趕不上，先致電館方確認。","回家目標 20:30：以 20:30 減去導航車程，再預留 15 分鐘緩衝，算出最晚離開時間。","今天不安排午睡；若時間延誤，不加新景點，縮短休息或晚餐後直接返家。"]}
+        ],
+        checklist:["美術館門票／預約與年齡證明","水壺、濕紙巾與面紙","備用衣褲與小袋子","安全座椅與推車","先查導航、停車與廁所動線"],
+        sources:[
+          ["富邦美術館：營業時間、交通與停車","https://fubonartmuseum.org/Visit"],
+          ["富邦美術館：官方購票","https://fubonartmuseum.org/FB0202_"],
+          ["富邦美術館：當期展覽","https://fubonartmuseum.org/"],
+          ["台北 101：購物中心營業時間","https://taipei-101.com.tw/mall.aspx"],
+          ["台北 101：餐廳與美食街","https://taipei-101.com.tw/tw/food/foodsearch"],
+          ["涓豆腐：門市資訊","https://tofuglobal.com/tw/AllStore.html"]
+        ],
+        checkedOn:"2026/10/10",
+        notes: ["臨時異動、候位與最後點餐以各店公告為準。"]
       }
     ];
     const app = document.getElementById("app");
@@ -80,7 +132,7 @@
     const dateText = (s,e) => s === e ? s.replaceAll("-",".") : s.replaceAll("-",".") + " – " + e.slice(5).replaceAll("-",".");
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
     const tripUrl = id => location.origin + location.pathname + "?t=" + encodeURIComponent(id);
-    function footer(){return '<footer class="footnote">固定一個家庭總站，每趟旅程有自己的行事曆短網址。公開連結不用邀請即可開啟；頁面不放家人姓名、住址或聯絡資料。<br>勾選與備註尚未連接同步功能，請以這個頁面顯示的行程資訊為準。</footer>'}
+    function footer(){return '<footer class="footnote">固定一個家庭總站，每趟旅程有自己的行事曆短網址。公開連結不用邀請即可開啟；頁面不放完整姓名、住址或聯絡資料。<br>勾選與備註尚未連接同步功能，請以這個頁面顯示的行程資訊為準。</footer>'}
     function card(t){
       const statusClass=t.state==="done"?"done":t.state==="waiting"?"waiting":"planned";
       const excerpt=t.summary.length>104?t.summary.slice(0,104)+"…":t.summary;
@@ -96,17 +148,24 @@
     }
     function renderTrip(t){
       const statusClass=t.state==="done"?"done":t.state==="waiting"?"waiting":"planned";
-      const timeline=(t.stops||[]).map(row=>'<article class="timeline-stop"><div class="time">'+escapeHtml(row[0])+'</div><div><h3>'+escapeHtml(row[1])+'</h3><p>'+escapeHtml(row[2])+'</p></div></article>').join("");
+      const timeline=(t.stops||[]).map(row=>{const time=Array.isArray(row)?row[0]:row.time;const title=Array.isArray(row)?row[1]:row.title;const desc=Array.isArray(row)?row[2]:row.desc;const facts=Array.isArray(row)||!row.hours?"":'<div class="stop-facts"><p>◷ '+escapeHtml(row.hours)+'</p></div>';const restroom=Array.isArray(row)||!row.restroom?"":'<p class="location-note"><b>如廁安排：</b>'+escapeHtml(row.restroom)+'</p>';const rowPhotos=Array.isArray(row)||!row.photos?"":'<div class="stop-photos">'+row.photos.map(p=>'<img src="'+escapeHtml(p[0])+'" alt="'+escapeHtml(p[1])+'" loading="lazy" onerror="this.style.display=\'none\'">').join("")+'</div>';const links=Array.isArray(row)||!row.links?"":'<div class="stop-links">'+row.links.map(l=>'<a class="button alt" href="'+escapeHtml(l.href)+'" target="_blank" rel="noopener">'+escapeHtml(l.label)+' ↗</a>').join("")+'</div>';return '<article class="timeline-stop"><div class="time">'+escapeHtml(time)+'</div><div><h3>'+escapeHtml(title)+'</h3><p>'+escapeHtml(desc)+'</p>'+facts+restroom+rowPhotos+links+'</div></article>'}).join("");
       const days=(t.days||[]).map((d,i)=>'<article class="timeline-stop"><div class="time">第 '+(i+1)+' 天</div><div><h3>'+escapeHtml(d)+'</h3></div></article>').join("");
       const photos=t.photos?'<div class="photo-strip">'+t.photos.map(p=>'<img src="'+escapeHtml(p[0])+'" alt="'+escapeHtml(p[1])+'" loading="lazy" onerror="this.style.display=\'none\'"></div>').join("")+'</div>':'';
       const notes=(t.notes||[]).map(n=>'<li>'+escapeHtml(n)+'</li>').join("");
       const archive=t.archiveUrl?'<p><a class="button alt" href="'+escapeHtml(t.archiveUrl)+'" target="_blank" rel="noopener">開啟大阪原始八日詳細行程 ↗</a></p>':'';
-      const extra=t.state==="planned"?'<div class="summary-box"><b>營業時間要點</b><p>'+escapeHtml(t.notes[0])+'</p></div>':'';
-      app.innerHTML='<a class="back-link" href="?v=today">← 回到家庭行程總站</a><section class="detail-hero"><div class="detail-meta"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h1>'+escapeHtml(t.title)+'</h1><p><b>'+escapeHtml(t.area)+'</b></p><p>'+escapeHtml(t.summary)+'</p></section>'+photos+'<div class="calendar-box"><div><b>這趟的行事曆網址</b><br><code>'+escapeHtml(tripUrl(t.id))+'</code></div><button class="button" type="button" data-copy="'+escapeHtml(t.id)+'">複製網址</button><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span></div>'+extra+'<section><div class="section-head"><div><h2>旅程內容</h2><p>行程隨當天狀況彈性調整。</p></div></div><div class="timeline">'+(timeline||days)+'</div></section>'+(notes?'<section class="panel"><h2>出發前記得</h2><ul>'+notes+'</ul></section>':'')+archive+footer();
+      const extra=t.state==="planned"&&!t.details?'<div class="summary-box"><b>營業時間要點</b><p>'+escapeHtml(t.notes[0])+'</p></div>':'';
+      const details=(t.details||[]).map(d=>'<section class="panel guide-card"><h2>'+escapeHtml(d.title)+'</h2><p>'+escapeHtml(d.intro)+'</p><ul>'+d.bullets.map(x=>'<li>'+escapeHtml(x)+'</li>').join("")+'</ul></section>').join("");
+      const checklist=t.checklist?'<section class="panel checklist-card"><h2>出門前，勾一下</h2><ul class="checklist">'+t.checklist.map((x,i)=>'<li><label><input class="trip-check" type="checkbox" data-check="'+escapeHtml(t.id)+'-'+i+'"><span>'+escapeHtml(x)+'</span></label></li>').join("")+'</ul><p class="small">勾選只保存在此裝置，不會同步到另一支手機。</p></section>':'';
+      const sources=t.sources?'<section class="panel"><h2>官方資訊</h2><ul class="source-list">'+t.sources.map(s=>'<li><a href="'+escapeHtml(s[1])+'" target="_blank" rel="noopener">'+escapeHtml(s[0])+' ↗</a></li>').join("")+'</ul><p class="small">資訊查核：'+escapeHtml(t.checkedOn||"")+'。臨時異動、候位與最後點餐以各店公告為準。</p></section>':'';
+      const blog=t.blog?'<article class="blog-article"><p class="blog-intro">'+escapeHtml(t.blog.intro)+'</p>'+t.blog.sections.map(s=>'<section class="blog-section"><h2>'+escapeHtml(s.title)+'</h2><p>'+escapeHtml(s.text)+'</p>'+(s.photo?'<figure><img src="'+escapeHtml(s.photo[0])+'" alt="'+escapeHtml(s.photo[1])+'" loading="lazy"><figcaption>'+escapeHtml(s.photo[2])+'</figcaption></figure>':'')+'</section>').join('')+'<p class="blog-ending">今天沒有照原定計畫走，卻用一場車窗外的煙火，替 10/10 留下了結尾。</p></article>':'';
+      const dailyBlog=(()=>{const days=t.blogDays||[];const requested=Number(params.get("day"));const active=Number.isInteger(requested)&&requested>=1&&requested<=days.length?requested-1:0;const d=days[active];if(!d)return "";const tabs=days.map((x,i)=>'<a class="daily-tab '+(i===active?'active':'')+'" href="?t='+encodeURIComponent(t.id)+'&day='+(i+1)+'"'+(i===active?' aria-current="page"':'')+'>第 '+(i+1)+' 天<br>'+escapeHtml(x.date.slice(5))+'</a>').join("");const paragraphs=d.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join("");const photo=d.photo?'<figure><img src="'+escapeHtml(d.photo[0])+'" alt="'+escapeHtml(d.photo[1])+'" loading="lazy"><figcaption>'+escapeHtml(d.photo[2])+'</figcaption></figure>':'<div class="photo-missing">📷 這一天目前還沒有照片，網誌先保留文字。</div>';const dayUrl=location.origin+location.pathname+'?t='+encodeURIComponent(t.id)+'&day='+(active+1);return '<section class="daily-blogs"><nav class="daily-nav" aria-label="京阪每日網誌">'+tabs+'</nav><article class="daily-entry"><span class="date-chip">'+escapeHtml(d.date)+'</span><h2>'+escapeHtml(d.title)+'</h2>'+paragraphs+photo+'<div class="day-share"><div><b>分享這一天</b><br><code>'+escapeHtml(dayUrl)+'</code></div><button class="button" type="button" data-copy-url="'+escapeHtml(dayUrl)+'">複製本日網址</button></div><p class="daily-source-note">依已保存的京阪行程紀錄整理；沒有記下的臨時變動不自行補寫。</p></article></section>'})();
+      const tripContent=t.blogDays?dailyBlog:t.blog?blog:'<section><div class="section-head"><div><h2>旅程內容</h2><p>行程隨當天狀況彈性調整。</p></div></div><div class="timeline">'+(timeline||days)+'</div></section>'+(details?'<div class="guide-grid">'+details+'</div>':'')+checklist+sources+(notes&&!t.sources?'<section class="panel"><h2>出發前記得</h2><ul>'+notes+'</ul></section>':'')+archive;
+      app.innerHTML='<a class="back-link" href="?v=today">← 回到家庭行程總站</a><section class="detail-hero"><div class="detail-meta"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h1>'+escapeHtml(t.title)+'</h1><p><b>'+escapeHtml(t.area)+'</b></p><p>'+escapeHtml(t.summary)+'</p></section>'+photos+'<div class="calendar-box"><div><b>這趟的行事曆網址</b><br><code>'+escapeHtml(tripUrl(t.id))+'</code></div><button class="button" type="button" data-copy="'+escapeHtml(t.id)+'">複製網址</button><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span></div>'+extra+tripContent+footer();
+      document.querySelectorAll(".trip-check").forEach(input=>{const key="family-travel-hub:"+input.dataset.check;try{input.checked=localStorage.getItem(key)==="1";input.addEventListener("change",()=>localStorage.setItem(key,input.checked?"1":"0"))}catch{}});
       document.querySelectorAll(".nav a").forEach(a=>a.classList.remove("active"));
       document.title=t.title+"｜家庭旅行手帳";
     }
-    document.addEventListener("click",async e=>{const b=e.target.closest("[data-copy]");if(!b)return;const id=b.dataset.copy;const toast=document.querySelector('[data-toast="'+id+'"]');try{await navigator.clipboard.writeText(tripUrl(id));if(toast)toast.textContent="已複製，可以貼到家族行事曆。"}catch{if(toast)toast.textContent="複製未成功，請長按上方網址複製。"}});
+    document.addEventListener("click",async e=>{const b=e.target.closest("[data-copy], [data-copy-url]");if(!b)return;const id=b.dataset.copy;const toast=id?document.querySelector('[data-toast="'+id+'"]'):null;const value=b.dataset.copyUrl||tripUrl(id);try{await navigator.clipboard.writeText(value);if(toast)toast.textContent="已複製，可以貼到家族行事曆。";else b.textContent="已複製本日網址"}catch{if(toast)toast.textContent="複製未成功，請長按上方網址複製。";else b.textContent="複製失敗，請長按網址複製"}});
     const trip=trips.find(t=>t.id===params.get("t"));
     if(trip)renderTrip(trip);else renderHome(["today","upcoming","past","all"].includes(params.get("v"))?params.get("v"):"today");
   </script>
