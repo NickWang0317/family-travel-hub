@@ -252,6 +252,22 @@
           "店家網站週日列示營業至 22:00；最後點餐時間及臨時異動以現場公告為準。"
         ]
       },
+      {
+        id: "FQp6V2", start: "2026-11-11", end: "2026-11-16", state: "planned", label: "規劃中",
+        title: "富國島慢慢玩｜6天5夜", area: "越南・富國島",
+        summary: "11/11–11/16，兩大一小。去程 20:20 抵達、回程 11:20 起飛；目前已預訂 11/13–11/16 入住 WorldHotels Long Beach Resort Phu Quoc。11/11–11/13 住宿與每日安排待補；以午睡和飯店體驗為主，不把行程排滿。",
+        stops: [
+          {time:"11/11",title:"抵達富國島・住宿待安排",desc:"去程班機 20:20 抵達。當晚住宿、機場接送和交通方式待確認。"},
+          {time:"11/12",title:"富國島・保留彈性",desc:"11/11–11/13 的兩晚住宿尚未預訂；景點與用餐待安排。"},
+          {time:"11/13–11/16",title:"已預訂｜WorldHotels Long Beach Resort Phu Quoc",desc:"預訂住宿 3 晚。地址：152 Tran Hung Dao Street, Cua Lap Quarter, Duong To, Phu Quoc。"},
+          {time:"11/16",title:"返程・11:20 起飛",desc:"回程班機 11:20 起飛；前往機場時間與交通方式待確認。"}
+        ],
+        details: [
+          {title:"目前已確認",intro:"先把已知的旅程與住宿資訊放在這裡。",bullets:["日期：2026/11/11–11/16，共 6 天 5 夜；兩位大人與一位小孩。","去程：11/11 20:20 抵達富國島。","回程：11/16 11:20 起飛。","已預訂：11/13–11/16，WorldHotels Long Beach Resort Phu Quoc（3 晚）。","地址：152 Tran Hung Dao Street, Cua Lap Quarter, Duong To, Phu Quoc。"]},
+          {title:"待安排",intro:"確認後再逐項補入，不先填入未確認的內容。",bullets:["11/11–11/13 住宿（2 晚）。","機場接送與島上交通。","每日景點、用餐與預留午睡／如廁時間。"]}
+        ],
+        notes:["旅程以午睡與飯店體驗為優先，景點不排太滿。"]
+      },
     ];
     const app = document.getElementById("app");
     const params = new URLSearchParams(location.search);
@@ -278,7 +294,7 @@
       const checklist=expanded&&t.checklist?'<section class="panel checklist-card"><h3>出門前，勾一下</h3><ul class="checklist">'+t.checklist.map(x=>'<li>'+escapeHtml(x)+'</li>').join("")+'</ul></section>':"";
       const sources=expanded&&t.sources?'<section class="panel"><h3>店家與官方資訊</h3><ul class="source-list">'+t.sources.map(s=>'<li><a href="'+escapeHtml(s[1])+'" target="_blank" rel="noopener">'+escapeHtml(s[0])+' ↗</a></li>').join("")+'</ul><p class="small">資訊查核：'+escapeHtml(t.checkedOn||"")+'</p></section>':"";
       const action=expanded?"":'<div class="card-actions"><a class="button" href="?t='+encodeURIComponent(t.id)+'">打開這趟行程 ↗</a><button class="button alt" type="button" data-copy="'+escapeHtml(t.id)+'">複製行事曆網址</button></div><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span>';
-      const itinerary=expanded?'<section class="today-expanded" aria-label="今日完整行程"><h3>今日安排</h3><div class="timeline">'+stops+'</div>'+details+checklist+sources+'</section>':"";
+      const itinerary=expanded?'<section class="today-expanded" aria-label="行程安排"><h3>'+(view==="today"?"今日安排":"目前行程資訊")+'</h3><div class="timeline">'+stops+'</div>'+details+checklist+sources+'</section>':"";
       return '<article class="trip-card '+(expanded?"trip-card-expanded":"")+'"><div class="card-top"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h3>'+escapeHtml(t.title)+'</h3><p class="small">'+escapeHtml(t.area)+'</p><p>'+escapeHtml(expanded?"":excerpt)+'</p>'+action+itinerary+'</article>';
     }
     function renderHome(view){
