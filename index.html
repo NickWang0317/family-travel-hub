@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffcf6">
+  <meta name="description" content="一家人的今日、未來與已完成旅程，放在同一個小小旅行手帳。">
+  <title>我們的家庭旅行手帳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#fffcf6;--ink:#3e3a39;--pink:#f2a497;--yellow:#f6d27a;--blue:#a8d3e6;--green:#b9daa5;--white:#fffefa;--muted:#77716d;--line:3px solid var(--ink);--round:26px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","Noto Sans TC",system-ui,sans-serif;line-height:1.6}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}
+    .topbar{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:var(--line);padding:10px max(18px,calc((100vw - 1040px)/2));display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-size:18px;font-weight:bold;white-space:nowrap;text-decoration:none}.nav{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}.nav a{flex:none;border:2px solid var(--ink);border-radius:999px;padding:5px 13px;text-decoration:none;background:var(--white);font-size:14px}.nav a.active{background:var(--yellow)}
+    main{width:min(1040px,100%);margin:auto;padding:28px 20px 56px}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:25px;align-items:center;margin-bottom:22px}.hero-copy{padding:22px 0}.eyebrow{font-size:13px;letter-spacing:.08em;font-weight:bold}.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.16;margin:12px 0}.hero p{font-size:18px;max-width:38rem;margin:10px 0}.hero-photo{margin:0;border:var(--line);border-radius:32px;background:var(--yellow);padding:10px;transform:rotate(1deg)}.hero-photo img{width:100%;height:290px;object-fit:cover;border-radius:19px;border:2px solid var(--ink);background:var(--blue)}.hero-photo figcaption{text-align:center;font-size:14px;padding:7px 0 1px}.stat-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.stat{border:2px solid var(--ink);border-radius:15px;background:var(--green);padding:7px 12px;font-size:14px}.stat:nth-child(2){background:var(--pink)}
+    .notice{border:var(--line);border-radius:var(--round);background:#fff2e9;padding:14px 18px;margin:20px 0 26px}.notice p{margin:3px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:25px 0 14px}.section-head h2{font-size:28px;margin:0}.section-head p{margin:0;color:var(--muted);font-size:14px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.trip-card,.detail-card,.timeline-stop,.panel{border:var(--line);border-radius:var(--round);background:var(--white);padding:18px;box-shadow:4px 4px 0 var(--ink)}.trip-card{display:flex;flex-direction:column;min-height:230px}.trip-card:nth-child(4n+1){background:#fff4ef}.trip-card:nth-child(4n+2){background:#f0f8fb}.trip-card:nth-child(4n+3){background:#f3f8ec}.trip-card:nth-child(4n){background:#fff9e9}.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.date-chip,.status{display:inline-block;border:2px solid var(--ink);border-radius:999px;padding:3px 10px;font-size:13px;background:var(--blue);white-space:nowrap}.status.done{background:var(--green)}.status.planned{background:var(--yellow)}.status.waiting{background:var(--pink)}.trip-card h3{font-size:24px;line-height:1.25;margin:13px 0 6px}.trip-card p{margin:5px 0 14px}.card-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto}.button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;border:2px solid var(--ink);border-radius:13px;background:var(--blue);padding:6px 12px;text-decoration:none;font-weight:bold}.button.alt{background:var(--white)}.button:hover,.nav a:hover{transform:translateY(-1px)}.small{font-size:13px;color:var(--muted)}.empty{grid-column:1/-1;border:2px dashed var(--ink);border-radius:22px;padding:22px;background:#fffaf0;text-align:center}.empty p{margin:4px}
+    .detail-hero{border:var(--line);border-radius:32px;padding:22px;background:var(--yellow);margin:8px 0 22px}.detail-hero h1{font-size:clamp(32px,5vw,48px);line-height:1.15;margin:8px 0}.detail-hero p{margin:8px 0}.detail-meta{display:flex;gap:8px;flex-wrap:wrap}.summary-box{border:var(--line);border-radius:22px;background:var(--white);padding:16px 18px;margin:15px 0}.summary-box p{margin:5px 0}.timeline{display:grid;gap:13px;margin:15px 0 22px}.timeline-stop{display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start;box-shadow:none}.time{font-weight:bold;border:2px solid var(--ink);background:var(--blue);border-radius:12px;text-align:center;padding:5px}.timeline-stop h3{font-size:20px;margin:0 0 3px}.timeline-stop p{margin:2px 0}.location-note{border-left:5px solid var(--green);padding-left:11px;margin-top:8px;font-size:14px}.calendar-box{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:var(--line);border-radius:20px;background:#eef6f8;padding:12px 15px;margin:16px 0}.calendar-box code{font-size:13px;overflow-wrap:anywhere}.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.photo-strip img{width:100%;height:150px;object-fit:cover;border:2px solid var(--ink);border-radius:16px;background:var(--blue)}.back-link{display:inline-block;margin:4px 0 12px;font-weight:bold}.footnote{border-top:2px dashed var(--ink);margin-top:34px;padding-top:14px;color:var(--muted);font-size:13px}.toast{min-height:24px;font-size:13px;color:#3b6841}
+    @media(max-width:720px){.topbar{padding:9px 12px;display:block}.brand{display:block;margin:0 5px 8px}.nav{padding-bottom:2px}.nav a{font-size:13px}.hero{grid-template-columns:1fr;gap:8px}.hero-copy{padding:10px 0}.hero-photo img{height:225px}.hero h1{font-size:39px}.cards{grid-template-columns:1fr}.trip-card{min-height:0}main{padding:20px 15px 42px}.section-head{align-items:start;flex-direction:column}.timeline-stop{grid-template-columns:1fr;gap:7px}.time{text-align:left;width:max-content;min-width:100px}.photo-strip img{height:105px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="?v=today">🍙 我們的家庭旅行手帳</a>
+    <nav class="nav" aria-label="行程分類">
+      <a href="?v=today" data-view="today">今天</a>
+      <a href="?v=upcoming" data-view="upcoming">接下來</a>
+      <a href="?v=past" data-view="past">走過的日子</a>
+      <a href="?v=all" data-view="all">全部</a>
+    </nav>
+  </header>
+  <main id="app" aria-live="polite"></main>
+  <noscript><main><h1>我們的家庭旅行手帳</h1><p>請開啟 JavaScript 查看今日、未來與已完成旅程。</p></main></noscript>
+  <script>
+    const trips = [
+      {
+        id: "K8mQ2r", start: "2026-04-28", end: "2026-05-05", state: "done", label: "已完成",
+        title: "尼克一家的京阪之旅", area: "大阪・京都・環球影城",
+        photos: [["https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d4-kyoto.jpg","京都街景"],["https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d2-aquarium.jpg","海遊館"],["https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d3-usj.jpg","環球影城"]],
+        summary: "2026/04/28–05/05 的八日家庭旅行，已走完。大阪、京都、海遊館、環球影城與臨空城都收進這本手帳。",
+        days: ["桃園出發・抵達大阪", "海遊館與招待晚餐", "勇闖環球影城", "大阪移動到京都", "和服散策與京都午餐", "和牛燒肉與壽喜燒", "京都前往臨空城", "滿載回憶・返抵桃園"],
+        archiveUrl: "https://nickwang0317.github.io/osaka-chill-trip/"
+      },
+      {
+        id: "A9z2Kc", start: "2026-10-04", end: "2026-10-04", state: "done", label: "已完成",
+        title: "湖畔人家的午後", area: "湖畔人家・慢慢喝下午茶",
+        summary: "午餐買炸雞回家吃，再讓孩子在車上睡午覺，醒來後到湖畔人家喝下午茶，之後直接回家。老婆說下次還想再來。",
+        stops: [
+          ["中午", "在家吃炸雞", "午餐改成外帶炸雞回家吃，吃完再出門。"],
+          ["路程", "車上午睡", "把移動時間留給午睡，抵達後不再趕景點。"],
+          ["下午茶", "湖畔人家", "坐下休息、享用下午茶；這個地方列入下次想再訪清單。"],
+          ["返家", "提早回家", "依孩子當下狀況調整，離開後直接回家。"]
+        ]
+      },
+      {
+        id: "R6v2Nc", start: "2026-10-09", end: "2026-10-09", state: "waiting", label: "成行狀態待補",
+        title: "國慶連假・家庭日", area: "桃園禾馨附近・三餐全外食",
+        summary: "原規劃在桃園禾馨時段前後安排三餐外食；禾馨時間當時尚未確定。行程日期已過，是否成行尚未記錄。",
+        stops: [["早上", "早餐與出門", "三餐全外食的原規劃；實際內容待補。"], ["白天", "桃園禾馨時段", "依當天時間安排，原先無法確定確切時段。"], ["晚上", "晚餐後返家", "保留彈性；是否實際成行待補記。"]]
+      },
+      {
+        id: "B3w8Hd", start: "2026-10-10", end: "2026-10-10", state: "planned", label: "今日規劃・待回填",
+        title: "富邦美術館親子日", area: "大江・富邦美術館・台北 101",
+        summary: "先吃午餐，再把約 90 分鐘車程留作午睡；今天只留一個主景點，之後在台北 101 吃下午茶與晚餐，目標 20:30 到家。這是行程規劃，實際是否成行尚待回填。",
+        stops: [
+          ["11:15–12:15", "午餐｜大江涓豆腐", "先吃飽再上路；停好車先如廁。"],
+          ["午餐後", "往台北・車上午睡約 90 分鐘", "午睡從孩子睡著起算，車程可配合午睡；下車後先確認洗手間。"],
+          ["14:00–15:30", "必去｜富邦美術館", "今天唯一主景點，慢慢看展。下車先如廁，每 45–60 分鐘留意一次。"],
+          ["15:45", "下午茶｜台北 101", "停車後先上廁所，坐下吃點心，保留晚餐胃口。"],
+          ["17:15", "晚餐｜台北 101", "吃完直接回桃園，不再加景點。"],
+          ["約 18:30", "返家", "目標 20:30 前到家；依即時導航調整離開時間。"]
+        ],
+        notes: ["富邦美術館：11:00–18:00，17:30 最後入場／售票截止；延誤時先確認是否仍能入館。", "停車後立即找洗手間；車程不受一小時限制，但每次下車都先安排如廁。", "停車優先看嘟嘟房富邦信義 A25；回家時間以當日導航為準。"]
+      }
+    ];
+    const app = document.getElementById("app");
+    const params = new URLSearchParams(location.search);
+    const dayNow = new Intl.DateTimeFormat("sv-SE", {timeZone:"Asia/Taipei", year:"numeric", month:"2-digit", day:"2-digit"}).format(new Date());
+    const dateText = (s,e) => s === e ? s.replaceAll("-",".") : s.replaceAll("-",".") + " – " + e.slice(5).replaceAll("-",".");
+    const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+    const tripUrl = id => location.origin + location.pathname + "?t=" + encodeURIComponent(id);
+    function footer(){return '<footer class="footnote">固定一個家庭總站，每趟旅程有自己的行事曆短網址。公開連結不用邀請即可開啟；頁面不放家人姓名、住址或聯絡資料。<br>勾選與備註尚未連接同步功能，請以這個頁面顯示的行程資訊為準。</footer>'}
+    function card(t){
+      const statusClass=t.state==="done"?"done":t.state==="waiting"?"waiting":"planned";
+      const excerpt=t.summary.length>104?t.summary.slice(0,104)+"…":t.summary;
+      return '<article class="trip-card"><div class="card-top"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h3>'+escapeHtml(t.title)+'</h3><p class="small">'+escapeHtml(t.area)+'</p><p>'+escapeHtml(excerpt)+'</p><div class="card-actions"><a class="button" href="?t='+encodeURIComponent(t.id)+'">打開這趟行程 ↗</a><button class="button alt" type="button" data-copy="'+escapeHtml(t.id)+'">複製行事曆網址</button></div><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span></article>';
+    }
+    function renderHome(view){
+      const filtered=trips.filter(t=>view==="all" || (view==="today" && t.start<=dayNow && t.end>=dayNow) || (view==="upcoming" && t.start>dayNow) || (view==="past" && t.end<dayNow));
+      const labels={today:["今天的行程","今天要走的路，打開就看得到。"],upcoming:["接下來的行程","已規劃、還沒出發的家庭旅行。"],past:["走過的日子","已完成的旅程，和日期已過但還沒回填的規劃。"],all:["全部旅程","今天、以後與已經走過的日子，都在這裡。"]};
+      const label=labels[view]||labels.today;
+      const cards=filtered.length?filtered.map(card).join(""):'<div class="empty"><p><b>這個分類目前沒有行程</b></p><p class="small">切換「全部」或其他日期看看。</p></div>';
+      app.innerHTML='<section class="hero"><div class="hero-copy"><div class="eyebrow">FAMILY TRAVEL JOURNAL · 桃園出發</div><h1>把一起走過的路，<br>和下一趟放在同一處。</h1><p>今天、未來和已完成的家庭行程，都用同一個網址整理。每趟旅程另有自己的短連結，方便放進家族行事曆。</p><div class="stat-row"><span class="stat">'+trips.filter(t=>t.state==="done").length+' 趟已完成</span><span class="stat">'+trips.filter(t=>t.state!=="done").length+' 筆行程待走／回填</span></div></div><figure class="hero-photo"><img src="https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d4-kyoto.jpg" alt="京阪之旅留下的京都街景照片" onerror="this.style.display=\'none\'"><figcaption>京阪之旅的風景，也收在這本手帳裡。</figcaption></figure></section><div class="notice"><p><b>給家人的固定入口</b></p><p>分享總站就能看全部行程；放入行事曆時，請複製該趟專屬網址。頁面公開，不需要另外邀請。</p></div><section><div class="section-head"><div><h2>'+label[0]+'</h2><p>'+label[1]+'</p></div><p>今天 · '+escapeHtml(dayNow.replaceAll("-","/"))+'</p></div><div class="cards">'+cards+'</div></section>'+footer();
+      document.querySelectorAll(".nav a").forEach(a=>a.classList.toggle("active",a.dataset.view===view));
+    }
+    function renderTrip(t){
+      const statusClass=t.state==="done"?"done":t.state==="waiting"?"waiting":"planned";
+      const timeline=(t.stops||[]).map(row=>'<article class="timeline-stop"><div class="time">'+escapeHtml(row[0])+'</div><div><h3>'+escapeHtml(row[1])+'</h3><p>'+escapeHtml(row[2])+'</p></div></article>').join("");
+      const days=(t.days||[]).map((d,i)=>'<article class="timeline-stop"><div class="time">第 '+(i+1)+' 天</div><div><h3>'+escapeHtml(d)+'</h3></div></article>').join("");
+      const photos=t.photos?'<div class="photo-strip">'+t.photos.map(p=>'<img src="'+escapeHtml(p[0])+'" alt="'+escapeHtml(p[1])+'" loading="lazy" onerror="this.style.display=\'none\'"></div>').join("")+'</div>':'';
+      const notes=(t.notes||[]).map(n=>'<li>'+escapeHtml(n)+'</li>').join("");
+      const archive=t.archiveUrl?'<p><a class="button alt" href="'+escapeHtml(t.archiveUrl)+'" target="_blank" rel="noopener">開啟大阪原始八日詳細行程 ↗</a></p>':'';
+      const extra=t.state==="planned"?'<div class="summary-box"><b>營業時間要點</b><p>'+escapeHtml(t.notes[0])+'</p></div>':'';
+      app.innerHTML='<a class="back-link" href="?v=today">← 回到家庭行程總站</a><section class="detail-hero"><div class="detail-meta"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h1>'+escapeHtml(t.title)+'</h1><p><b>'+escapeHtml(t.area)+'</b></p><p>'+escapeHtml(t.summary)+'</p></section>'+photos+'<div class="calendar-box"><div><b>這趟的行事曆網址</b><br><code>'+escapeHtml(tripUrl(t.id))+'</code></div><button class="button" type="button" data-copy="'+escapeHtml(t.id)+'">複製網址</button><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span></div>'+extra+'<section><div class="section-head"><div><h2>旅程內容</h2><p>行程隨當天狀況彈性調整。</p></div></div><div class="timeline">'+(timeline||days)+'</div></section>'+(notes?'<section class="panel"><h2>出發前記得</h2><ul>'+notes+'</ul></section>':'')+archive+footer();
+      document.querySelectorAll(".nav a").forEach(a=>a.classList.remove("active"));
+      document.title=t.title+"｜家庭旅行手帳";
+    }
+    document.addEventListener("click",async e=>{const b=e.target.closest("[data-copy]");if(!b)return;const id=b.dataset.copy;const toast=document.querySelector('[data-toast="'+id+'"]');try{await navigator.clipboard.writeText(tripUrl(id));if(toast)toast.textContent="已複製，可以貼到家族行事曆。"}catch{if(toast)toast.textContent="複製未成功，請長按上方網址複製。"}});
+    const trip=trips.find(t=>t.id===params.get("t"));
+    if(trip)renderTrip(trip);else renderHome(["today","upcoming","past","all"].includes(params.get("v"))?params.get("v"):"today");
+  </script>
+</body>
+</html>
