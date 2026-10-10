@@ -28,9 +28,9 @@
   <header class="topbar">
     <a class="brand" href="/family-travel-hub/">🍙 我們的家庭旅行手帳</a>
     <nav class="nav" aria-label="行程分類">
-      <a href="/family-travel-hub/?v=today" data-view="today">今天</a>
-      <a href="/family-travel-hub/?v=upcoming" data-view="upcoming">接下來</a>
-      <a href="/family-travel-hub/?v=past" data-view="past">走過的日子</a>
+      <a href="/family-travel-hub/#today" data-view="today">今天</a>
+      <a href="/family-travel-hub/#upcoming" data-view="upcoming">接下來</a>
+      <a href="/family-travel-hub/#past" data-view="past">走過的日子</a>
     </nav>
   </header>
   <main id="app" aria-live="polite"></main>
@@ -255,6 +255,8 @@
     ];
     const app = document.getElementById("app");
     const params = new URLSearchParams(location.search);
+    const validViews=["today","upcoming","past","all"];
+    const viewFromUrl=()=>{const queryView=params.get("v"),hashView=location.hash.slice(1);return validViews.includes(queryView)?queryView:validViews.includes(hashView)?hashView:"all"};
     const dayNow = new Intl.DateTimeFormat("sv-SE", {timeZone:"Asia/Taipei", year:"numeric", month:"2-digit", day:"2-digit"}).format(new Date());
     const dateText = (s,e) => s === e ? s.replaceAll("-",".") : s.replaceAll("-",".") + " – " + e.slice(5).replaceAll("-",".");
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
@@ -309,7 +311,8 @@
     }
     document.addEventListener("click",async e=>{const b=e.target.closest("[data-copy], [data-copy-url]");if(!b)return;const id=b.dataset.copy;const toast=id?document.querySelector('[data-toast="'+id+'"]'):null;const value=b.dataset.copyUrl||tripUrl(id);try{await navigator.clipboard.writeText(value);if(toast)toast.textContent="已複製，可以貼到家族行事曆。";else b.textContent="已複製本日網址"}catch{if(toast)toast.textContent="複製未成功，請長按上方網址複製。";else b.textContent="複製失敗，請長按網址複製"}});
     const trip=trips.find(t=>t.id===params.get("t"));
-    if(trip)renderTrip(trip);else renderHome(["today","upcoming","past","all"].includes(params.get("v"))?params.get("v"):"all");
+    if(trip)renderTrip(trip);else renderHome(viewFromUrl());
+    window.addEventListener("hashchange",()=>{if(!params.has("t"))renderHome(viewFromUrl())});
   </script>
 </body>
 </html>
