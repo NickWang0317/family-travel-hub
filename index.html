@@ -21,17 +21,17 @@
     @media(max-width:720px){.topbar{padding:9px 12px;display:block}.brand{display:block;margin:0 5px 8px}.nav{padding-bottom:2px}.nav a{font-size:13px}.hero{grid-template-columns:1fr;gap:8px}.hero-copy{padding:10px 0}.hero-photo img{height:225px}.hero h1{font-size:39px}.cards{grid-template-columns:1fr}.trip-card{min-height:0}main{padding:20px 15px 42px}.section-head{align-items:start;flex-direction:column}.timeline-stop{grid-template-columns:1fr;gap:7px}.time{text-align:left;width:max-content;min-width:100px}.photo-strip img{height:105px}.guide-grid{grid-template-columns:1fr}.blog-intro{font-size:18px;padding:14px}.blog-section{margin:24px 0 32px}.blog-section p{font-size:17px}.blog-section img{max-height:460px}.daily-entry{padding:16px}.daily-entry p{font-size:17px}.daily-entry img{max-height:460px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     /* 日曆入口優先呈現今日安排，避免手機上先滑過封面與介紹。 */
-    .home-view-today .hero,.home-view-today .notice,.home-view-upcoming .hero,.home-view-upcoming .notice{display:none},.home-view-past .hero,.home-view-past .notice{display:none}.home-view-today .cards{grid-template-columns:1fr}.home-view-today .trip-card-expanded{width:100%;max-width:none}.today-expanded{margin-top:18px}.today-expanded>h3{font-size:23px;margin:0 0 10px}.today-expanded .timeline{margin:0 0 18px}.today-expanded .guide-grid{margin:12px 0}.today-expanded .guide-card h3,.today-expanded .panel h3{font-size:21px;margin:0 0 7px}.today-expanded .checklist{padding-left:20px;list-style:disc}
+    .home-view-today .hero,.home-view-today .notice,.home-view-upcoming .hero,.home-view-upcoming .notice,.home-view-past .hero,.home-view-past .notice{display:none}.home-view-today .cards{grid-template-columns:1fr}.home-view-today .trip-card-expanded{width:100%;max-width:none}.today-expanded{margin-top:18px}.today-expanded>h3{font-size:23px;margin:0 0 10px}.today-expanded .timeline{margin:0 0 18px}.today-expanded .guide-grid{margin:12px 0}.today-expanded .guide-card h3,.today-expanded .panel h3{font-size:21px;margin:0 0 7px}.today-expanded .checklist{padding-left:20px;list-style:disc}
   </style>
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="?v=today">🍙 我們的家庭旅行手帳</a>
     <nav class="nav" aria-label="行程分類">
-      <a href="?v=today" data-view="today">今天</a>
-      <a href="?v=upcoming" data-view="upcoming">接下來</a>
-      <a href="?v=past" data-view="past">走過的日子</a>
-      <a href="?v=all" data-view="all">首頁</a>
+      <a href="?v=today&rev=20261011b" data-view="today">今天</a>
+      <a href="?v=upcoming&rev=20261011b" data-view="upcoming">接下來</a>
+      <a href="?v=past&rev=20261011b" data-view="past">走過的日子</a>
+      <a href="?v=all&rev=20261011b" data-view="all">首頁</a>
     </nav>
   </header>
   <main id="app" aria-live="polite"></main>
@@ -287,7 +287,7 @@
       const filtered=trips.filter(t=>view==="all" || (view==="today" && t.start<=dayNow && t.end>=dayNow) || (view==="upcoming" && t.start>dayNow) || (view==="past" && t.end<dayNow));
       const labels={today:["今天的行程","今天要走的路，打開就看得到。"],upcoming:["接下來的行程","已規劃、還沒出發的家庭旅行。"],past:["走過的日子","已完成的旅程，和日期已過但還沒回填的規劃。"],all:["全部旅程","今天、以後與已經走過的日子，都在這裡。"]};
       const label=labels[view]||labels.today;
-      const cards=filtered.length?filtered.map(t=>card(t,view)).join(""):'<div class="empty"><p><b>這個分類目前沒有行程</b></p><p class="small">切換「全部」或其他日期看看。</p></div>';
+      const cards=filtered.length?filtered.map(t=>card(t,view)).join(""):'<div class="empty"><p><b>這個分類目前沒有行程</b></p><p class="small">點「首頁」或其他日期看看。</p></div>';
       app.innerHTML='<section class="hero"><div class="hero-copy"><div class="eyebrow">FAMILY TRAVEL JOURNAL · 桃園出發</div><h1>把一起走過的路，<br>和下一趟放在同一處。</h1><p>今天、未來和已完成的家庭行程，都用同一個網址整理。每趟旅程另有自己的短連結，方便放進家族行事曆。</p><div class="stat-row"><span class="stat">'+trips.filter(t=>t.state==="done").length+' 趟已完成</span><span class="stat">'+trips.filter(t=>t.state!=="done").length+' 筆行程待走／回填</span></div></div><figure class="hero-photo"><img src="https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d4-kyoto.jpg" alt="京阪之旅留下的京都街景照片" onerror="this.style.display=\'none\'"><figcaption>京阪之旅的風景，也收在這本手帳裡。</figcaption></figure></section><div class="notice"><p><b>給家人的固定入口</b></p><p>分享總站就能看全部行程；放入行事曆時，請複製該趟專屬網址。頁面公開，不需要另外邀請。</p></div><section><div class="section-head"><div><h2>'+label[0]+'</h2><p>'+label[1]+'</p></div><p>今天 · '+escapeHtml(dayNow.replaceAll("-","/"))+'</p></div><div class="cards">'+cards+'</div></section>'+footer();
       document.querySelectorAll(".nav a").forEach(a=>a.classList.toggle("active",a.dataset.view===view));
     }
