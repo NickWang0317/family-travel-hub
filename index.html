@@ -26,12 +26,12 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="?v=all&rev=20261011c">🍙 我們的家庭旅行手帳</a>
+    <a class="brand" href="/family-travel-hub/">🍙 我們的家庭旅行手帳</a>
     <nav class="nav" aria-label="行程分類">
-      <a href="?v=today&rev=20261011b" data-view="today">今天</a>
-      <a href="?v=upcoming&rev=20261011b" data-view="upcoming">接下來</a>
-      <a href="?v=past&rev=20261011b" data-view="past">走過的日子</a>
-      <a href="?v=all&rev=20261011b" data-view="all">首頁</a>
+      <a href="?v=today" data-view="today">今天</a>
+      <a href="?v=upcoming" data-view="upcoming">接下來</a>
+      <a href="?v=past" data-view="past">走過的日子</a>
+      <a href="/family-travel-hub/" data-view="all">首頁</a>
     </nav>
   </header>
   <main id="app" aria-live="polite"></main>
@@ -312,7 +312,7 @@
     }
     document.addEventListener("click",async e=>{const b=e.target.closest("[data-copy], [data-copy-url]");if(!b)return;const id=b.dataset.copy;const toast=id?document.querySelector('[data-toast="'+id+'"]'):null;const value=b.dataset.copyUrl||tripUrl(id);try{await navigator.clipboard.writeText(value);if(toast)toast.textContent="已複製，可以貼到家族行事曆。";else b.textContent="已複製本日網址"}catch{if(toast)toast.textContent="複製未成功，請長按上方網址複製。";else b.textContent="複製失敗，請長按網址複製"}});
     const trip=trips.find(t=>t.id===params.get("t"));
-    if(trip)renderTrip(trip);else renderHome(["today","upcoming","past","all"].includes(params.get("v"))?params.get("v"):"today");
+    if(trip)renderTrip(trip);else renderHome(["today","upcoming","past","all"].includes(params.get("v"))?params.get("v"):"all");
   </script>
 </body>
 </html>
