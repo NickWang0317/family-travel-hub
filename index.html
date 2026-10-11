@@ -222,11 +222,9 @@
           }
         ],
         "checklist": [
-          "安全座椅",
-          "水壺、濕紙巾",
-          "停車折抵發票／憑證",
           "出門前提醒理悠先上廁所"
         ],
+        "checklistIds": [3],
         "sources": [
           [
             "台茂停車資訊與消費折抵",
@@ -287,7 +285,7 @@
         return '<article class="timeline-stop"><div class="time">'+escapeHtml(time)+'</div><div><h3>'+escapeHtml(title)+'</h3><p>'+escapeHtml(desc)+'</p>'+hours+restroom+photos+links+'</div></article>';
       }).join(""):"";
       const details=expanded?(t.details||[]).map(d=>'<section class="panel guide-card"><h3>'+escapeHtml(d.title)+'</h3><p>'+escapeHtml(d.intro)+'</p><ul>'+d.bullets.map(x=>'<li>'+escapeHtml(x)+'</li>').join("")+'</ul></section>').join(""):"";
-      const checklist=expanded&&t.checklist?'<section class="panel checklist-card"><h3>出門前，勾一下</h3><ul class="checklist">'+t.checklist.map((x,i)=>'<li><label><input class="trip-check" type="checkbox" data-check="'+escapeHtml(t.id)+'-'+i+'"><span>'+escapeHtml(x)+'</span></label></li>').join("")+'</ul></section>':"";
+      const checklist=expanded&&t.checklist?'<section class="panel checklist-card"><h3>出門前，勾一下</h3><ul class="checklist">'+t.checklist.map((x,i)=>'<li><label><input class="trip-check" type="checkbox" data-check="'+escapeHtml(t.id)+'-'+(t.checklistIds?.[i]??i)+'"><span>'+escapeHtml(x)+'</span></label></li>').join("")+'</ul></section>':"";
       const sources=expanded&&t.sources?'<section class="panel"><h3>店家與官方資訊</h3><ul class="source-list">'+t.sources.map(s=>'<li><a href="'+escapeHtml(s[1])+'" target="_blank" rel="noopener">'+escapeHtml(s[0])+' ↗</a></li>').join("")+'</ul><p class="small">資訊查核：'+escapeHtml(t.checkedOn||"")+'</p></section>':"";
       const action='<div class="card-actions"><a class="button" href="?t='+encodeURIComponent(t.id)+'">打開這趟行程 ↗</a><button class="button alt" type="button" data-copy="'+escapeHtml(t.id)+'">複製行程網址</button></div><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span>';
       const itinerary=expanded?'<section class="today-expanded" aria-label="行程安排"><h3>'+(view==="today"?"今日安排":"目前行程資訊")+'</h3><div class="timeline">'+stops+'</div>'+details+checklist+sources+'</section>':"";
@@ -313,7 +311,7 @@
       const archive=t.archiveUrl?'<p><a class="button alt" href="'+escapeHtml(t.archiveUrl)+'" target="_blank" rel="noopener">開啟大阪原始八日詳細行程 ↗</a></p>':'';
       const extra=t.state==="planned"&&!t.details?'<div class="summary-box"><b>營業時間要點</b><p>'+escapeHtml(t.notes[0])+'</p></div>':'';
       const details=(t.details||[]).map(d=>'<section class="panel guide-card"><h2>'+escapeHtml(d.title)+'</h2><p>'+escapeHtml(d.intro)+'</p><ul>'+d.bullets.map(x=>'<li>'+escapeHtml(x)+'</li>').join("")+'</ul></section>').join("");
-      const checklist=t.checklist?'<section class="panel checklist-card"><h2>出門前，勾一下</h2><ul class="checklist">'+t.checklist.map((x,i)=>'<li><label><input class="trip-check" type="checkbox" data-check="'+escapeHtml(t.id)+'-'+i+'"><span>'+escapeHtml(x)+'</span></label></li>').join("")+'</ul><p class="small">勾選只保存在此裝置，不會同步到另一支手機。</p></section>':'';
+      const checklist=t.checklist?'<section class="panel checklist-card"><h2>出門前，勾一下</h2><ul class="checklist">'+t.checklist.map((x,i)=>'<li><label><input class="trip-check" type="checkbox" data-check="'+escapeHtml(t.id)+'-'+(t.checklistIds?.[i]??i)+'"><span>'+escapeHtml(x)+'</span></label></li>').join("")+'</ul><p class="small">勾選只保存在此裝置，不會同步到另一支手機。</p></section>':'';
       const sources=t.sources?'<section class="panel"><h2>官方資訊</h2><ul class="source-list">'+t.sources.map(s=>'<li><a href="'+escapeHtml(s[1])+'" target="_blank" rel="noopener">'+escapeHtml(s[0])+' ↗</a></li>').join("")+'</ul><p class="small">資訊查核：'+escapeHtml(t.checkedOn||"")+'。臨時異動、候位與最後點餐以各店公告為準。</p></section>':'';
       const blog=t.blog?'<article class="blog-article"><p class="blog-intro">'+escapeHtml(t.blog.intro)+'</p>'+t.blog.sections.map(s=>'<section class="blog-section"><h2>'+escapeHtml(s.title)+'</h2><p>'+escapeHtml(s.text)+'</p>'+(s.photo?'<figure><img src="'+escapeHtml(s.photo[0])+'" alt="'+escapeHtml(s.photo[1])+'" loading="lazy"><figcaption>'+escapeHtml(s.photo[2])+'</figcaption></figure>':'')+'</section>').join('')+'<p class="blog-ending">今天沒有照原定計畫走，卻用一場車窗外的煙火，替 10/10 留下了結尾。</p></article>':'';
       const dailyBlog=(()=>{const days=t.blogDays||[];const requested=Number(params.get("day"));const active=Number.isInteger(requested)&&requested>=1&&requested<=days.length?requested-1:0;const d=days[active];if(!d)return "";const tabs=days.map((x,i)=>'<a class="daily-tab '+(i===active?'active':'')+'" href="?t='+encodeURIComponent(t.id)+'&day='+(i+1)+'"'+(i===active?' aria-current="page"':'')+'>第 '+(i+1)+' 天<br>'+escapeHtml(x.date.slice(5))+'</a>').join("");const paragraphs=d.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join("");const photo=d.photo?'<figure><img src="'+escapeHtml(d.photo[0])+'" alt="'+escapeHtml(d.photo[1])+'" loading="lazy"><figcaption>'+escapeHtml(d.photo[2])+'</figcaption></figure>':'<div class="photo-missing">📷 這一天目前還沒有照片，網誌先保留文字。</div>';const dayUrl=location.origin+location.pathname+'?t='+encodeURIComponent(t.id)+'&day='+(active+1);return '<section class="daily-blogs"><nav class="daily-nav" aria-label="京阪每日網誌">'+tabs+'</nav><article class="daily-entry"><span class="date-chip">'+escapeHtml(d.date)+'</span><h2>'+escapeHtml(d.title)+'</h2>'+paragraphs+photo+'<div class="day-share"><div><b>分享這一天</b><br><code>'+escapeHtml(dayUrl)+'</code></div><button class="button" type="button" data-copy-url="'+escapeHtml(dayUrl)+'">複製本日網址</button></div><p class="daily-source-note">依已保存的京阪行程紀錄整理；沒有記下的臨時變動不自行補寫。</p></article></section>'})();
