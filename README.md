@@ -29,7 +29,7 @@
 | `travel-prep.js` | 富國島已確認資料、待補提醒、對話清單與行程 |
 | `travel-prep.css` | 準備提醒板的樣式與手機版排版 |
 | `site-updates.js` / `site-version.json` | 開啟頁面的新版檢查與版本值 |
-| `photos/` | 既有旅行照片 |
+| `photos/` | 旅行照片的網頁版；新增照片先縮圖與壓縮 |
 
 ### 更新富國島
 
@@ -44,3 +44,7 @@ GitHub Pages 直接發布 `main` 的靜態檔案。更新時一起提交 HTML、
 ### 每次發布
 
 同步修改 `index.html` 的 `site-revision`、`site-version.json`、資源網址版本參數與 `siteUpdates` 更新紀錄，使用新的唯一版本值。一般旅程的 `conversation` 包含 `updatedOn`、`confirmed` 與 `notes`；每則筆記的 `kind` 使用 `question` 或 `reminder`，問題解決後刪除或設 `resolved: true`。保存已確認資料到行程，而不只修改提醒文字。
+
+### 網誌照片
+
+新增照片先製作 JPEG 網頁版，長邊不超過 1600 px、品質約 75，再上傳 `photos/`；原圖保留在本機。替換同一路徑的照片時更新網址的 `?v=` 版本。今日網誌在輸入通行碼後開始載入照片，並預留圖片尺寸；發布後確認圖片已完整載入。
