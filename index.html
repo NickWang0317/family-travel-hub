@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffcf6">
-  <meta name="site-revision" content="20261011-cafe-3">
+  <meta name="site-revision" content="20261011-cafe-parking-4">
   <meta name="description" content="一家人的今日、未來與已完成旅程，放在同一個小小旅行手帳。">
   <title>我們的家庭旅行手帳</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="travel-prep.css?v=20261011-cafe-3">
+  <link rel="stylesheet" href="travel-prep.css?v=20261011-cafe-parking-4">
   <style>
     :root{--paper:#fffcf6;--ink:#3e3a39;--pink:#f2a497;--yellow:#f6d27a;--blue:#a8d3e6;--green:#b9daa5;--white:#fffefa;--muted:#77716d;--line:3px solid var(--ink);--round:26px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","Noto Sans TC",system-ui,sans-serif;line-height:1.6}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}
@@ -37,7 +37,7 @@
   </header>
   <main id="app"></main>
   <noscript><main><h1>我們的家庭旅行手帳</h1><p>請開啟 JavaScript 查看今日、未來與已完成旅程。</p></main></noscript>
-  <script src="travel-prep.js?v=20261011-cafe-3"></script>
+  <script src="travel-prep.js?v=20261011-cafe-parking-4"></script>
   <script>
     const trips = [
       {
@@ -137,7 +137,7 @@
         "label": "今天",
         "title": "三點壽司郎國際路店，吃完回家睡午覺",
         "area": "桃園・國際路",
-        "summary": "今天 15:00 去壽司郎桃園國際路店，吃完回家讓理悠睡午覺；媽媽想趁午睡時找間咖啡廳看書，店家待確認。",
+        "summary": "今天 15:00 去壽司郎桃園國際路店，吃完回家讓理悠睡午覺；媽媽想在住家附近找間方便停車的咖啡廳看書，店家待確認。",
         "stops": [
           {
             "time": "現在・候位",
@@ -172,13 +172,13 @@
           {
             "time": "吃完後",
             "title": "回家睡午覺・媽媽想找咖啡廳看書",
-            "desc": "吃完回家讓理悠睡午覺。媽媽想趁她午睡時到咖啡廳看書等她醒來；店家依午睡地點再安排。"
+            "desc": "吃完回家讓理悠睡午覺。媽媽想趁她午睡時到住家附近的咖啡廳看書等她醒來；會優先找方便停車的店，區域待確認。"
           }
         ],
         "details": [
           {
             "title": "今天就照這個節奏",
-            "intro": "三點吃飯，吃完回家讓理悠睡午覺；媽媽想找咖啡廳看書等她醒來。",
+            "intro": "三點吃飯，吃完回家讓理悠睡午覺；媽媽想在住家附近找間方便停車的咖啡廳看書等她醒來。",
             "bullets": [
               "15:00 是預計用餐時間。",
               "回家時間隨用餐狀況，不另外設定固定時間。"
@@ -201,10 +201,10 @@
         "conversation": {
           "updatedOn": "2026/10/11",
           "confirmed": "已取壽司郎桃園國際路店候位號碼牌 175；預計 15:00 用餐，吃完回家讓理悠睡午覺。",
-          "idea": "太太想趁理悠午睡時找間咖啡廳看書，等她起床。",
+          "idea": "太太想趁理悠午睡時，在住家附近找間方便停車的咖啡廳看書，等她起床。",
           "notes": [
             {"kind":"reminder","title":"到帶位台完成報到","body":"輸入報到碼 7152；候位畫面目前顯示下一組叫號 167–169。"},
-            {"kind":"question","title":"咖啡廳想找哪一區？","body":"午睡地點確定後，告訴我住家附近的地標或區域，我就找安靜、方便回去的咖啡廳並補上導航。"}
+            {"kind":"question","title":"住家附近哪個區域／地標？","body":"不用提供住家門牌，給我附近的區域或大地標就可以。我會優先找適合看書、停車方便的咖啡廳，再補上導航。"}
           ]
         }
       },
@@ -226,6 +226,7 @@
     const todayForTrip=t=>new Intl.DateTimeFormat("sv-SE",{timeZone:t.timeZone||"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
     const siteUpdates=[
       {date:"2026/10/11",text:"補上壽司郎候位號碼牌與報到方式。"},
+      {date:"2026/10/11",text:"咖啡廳條件補充為住家附近、方便停車；待提供大致區域後選店並補導航。"},
       {date:"2026/10/11",text:"新增理悠午睡時看書的咖啡廳想法，待確認地點後選店。"},
       {date:"2026/10/11",text:"建立長期對話筆記，加入待確認問題、助理提醒與開啟頁面的自動更新。"},
       {date:"2026/10/11",text:"今天改為 15:00 壽司郎桃園國際路店，吃完回家睡午覺；補上導航。"},
@@ -296,7 +297,7 @@
     document.addEventListener("travel-prep:updated",()=>{if(trip)renderTrip(trip);else renderHome(viewFromUrl())});
     window.addEventListener("hashchange",()=>{if(!params.has("t"))renderHome(viewFromUrl())});
   </script>
-  <script src="site-updates.js?v=20261011-cafe-3"></script>
+  <script src="site-updates.js?v=20261011-cafe-parking-4"></script>
 </body>
 </html>
 
