@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffcf6">
-  <meta name="site-revision" content="20261011-sushiro-blog-codes-1">
+  <meta name="site-revision" content="20261011-private-sections-gate-1">
   <meta name="description" content="一家人的今日、未來與已完成旅程，放在同一個小小旅行手帳。">
   <title>我們的家庭旅行手帳</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="travel-prep.css?v=20261011-sushiro-blog-codes-1">
+  <link rel="stylesheet" href="travel-prep.css?v=20261011-private-sections-gate-1">
   <style>
     :root{--paper:#fffcf6;--ink:#3e3a39;--pink:#f2a497;--yellow:#f6d27a;--blue:#a8d3e6;--green:#b9daa5;--white:#fffefa;--muted:#77716d;--line:3px solid var(--ink);--round:26px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","Noto Sans TC",system-ui,sans-serif;line-height:1.6}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}
@@ -20,8 +20,8 @@
     .detail-hero{border:var(--line);border-radius:32px;padding:22px;background:var(--yellow);margin:8px 0 22px}.detail-hero h1{font-size:clamp(32px,5vw,48px);line-height:1.15;margin:8px 0}.detail-hero p{margin:8px 0}.detail-meta{display:flex;gap:8px;flex-wrap:wrap}.summary-box{border:var(--line);border-radius:22px;background:var(--white);padding:16px 18px;margin:15px 0}.summary-box p{margin:5px 0}.timeline{display:grid;gap:13px;margin:15px 0 22px}.timeline-stop{display:grid;grid-template-columns:100px 1fr;gap:12px;align-items:start;box-shadow:none}.time{font-weight:bold;border:2px solid var(--ink);background:var(--blue);border-radius:12px;text-align:center;padding:5px}.timeline-stop h3{font-size:20px;margin:0 0 3px}.timeline-stop p{margin:2px 0}.location-note{border-left:5px solid var(--green);padding-left:11px;margin-top:8px;font-size:14px}.calendar-box{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border:var(--line);border-radius:20px;background:#eef6f8;padding:12px 15px;margin:16px 0}.calendar-box code{font-size:13px;overflow-wrap:anywhere}.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.photo-strip img{width:100%;height:150px;object-fit:cover;border:2px solid var(--ink);border-radius:16px;background:var(--blue)}.stop-photos{margin:11px 0}.stop-photos img{display:block;width:min(100%,520px);max-height:480px;object-fit:cover;border:2px solid var(--ink);border-radius:16px;background:var(--blue)}.back-link{display:inline-block;margin:4px 0 12px;font-weight:bold}.footnote{border-top:2px dashed var(--ink);margin-top:34px;padding-top:14px;color:var(--muted);font-size:13px}.toast{min-height:24px;font-size:13px;color:#3b6841}
     .stop-facts{margin:9px 0 5px;padding:8px 11px;border-radius:12px;background:#fff7df;font-size:14px}.stop-facts p{margin:2px 0}.stop-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.stop-links .button{min-height:36px;font-size:14px}.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}.guide-card h2,.checklist-card h2{font-size:21px;margin:0 0 7px}.guide-card p{margin:5px 0}.guide-card ul,.source-list{margin:8px 0 0;padding-left:21px}.guide-card li,.source-list li{margin:5px 0}.checklist-card{margin:18px 0}.checklist{display:grid;gap:9px;margin:10px 0;padding:0;list-style:none}.checklist label{display:flex;align-items:flex-start;gap:9px}.checklist input{margin-top:6px;accent-color:#6d9654;width:18px;height:18px;flex:none}.source-list a{overflow-wrap:anywhere}
     .blog-article{max-width:790px;margin:26px auto}.blog-intro{font-size:20px;line-height:1.8;padding:18px 20px;border-left:7px solid var(--pink);background:#fff4ef;border-radius:0 20px 20px 0}.blog-section{margin:30px 0 40px}.blog-section h2{font-size:clamp(23px,4vw,30px);margin:0 0 8px}.blog-section p{font-size:18px;line-height:1.9;margin:7px 0}.blog-section figure{margin:15px 0 0}.blog-section img{width:min(100%,680px);max-height:570px;object-fit:cover;border:var(--line);border-radius:24px;background:var(--blue)}.blog-section figcaption{font-size:14px;color:var(--muted);margin:7px 4px}.blog-ending{padding:16px 18px;border:2px solid var(--ink);border-radius:20px;background:#fff9e9;font-size:17px}.daily-nav{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:thin}.daily-tab{flex:none;border:2px solid var(--ink);border-radius:999px;padding:7px 13px;background:var(--white);text-decoration:none;font-size:14px}.daily-tab.active{background:var(--yellow);font-weight:bold}.daily-entry{max-width:790px;margin:12px auto 26px;padding:22px;border:var(--line);border-radius:var(--round);background:var(--white)}.daily-entry h2{font-size:clamp(25px,4vw,34px);line-height:1.3;margin:12px 0}.daily-entry p{font-size:18px;line-height:1.9;margin:9px 0}.daily-entry figure{margin:18px 0 8px}.daily-entry img{width:min(100%,680px);max-height:570px;object-fit:cover;border:var(--line);border-radius:24px;background:var(--blue)}.daily-entry figcaption{font-size:14px;color:var(--muted);margin:7px 4px}.photo-missing{margin:16px 0;padding:20px;border:2px dashed var(--ink);border-radius:18px;background:#fff9e9;color:var(--muted)}.day-share{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:2px dashed var(--ink);padding-top:13px;margin-top:20px}.day-share code{overflow-wrap:anywhere;font-size:13px}.daily-source-note{font-size:13px!important;color:var(--muted);margin-top:18px!important}
-    .blog-lock{max-width:790px;margin:24px auto;padding:22px;border:var(--line);border-radius:var(--round);background:#fff4ef;box-shadow:4px 4px 0 var(--ink)}.blog-lock-kicker{font-size:13px;letter-spacing:.08em;font-weight:bold;color:var(--muted)}.blog-lock h2{font-size:25px;margin:5px 0}.blog-lock p{margin:6px 0}.blog-lock label{display:block;font-weight:bold;margin-top:13px}.blog-lock-controls{display:flex;align-items:stretch;gap:9px;margin-top:6px}.blog-lock input{flex:1;min-width:0;border:2px solid var(--ink);border-radius:13px;padding:9px 12px;font:inherit;background:var(--white)}.blog-lock button{border:2px solid var(--ink);border-radius:13px;background:var(--yellow);padding:8px 15px;font:inherit;font-weight:bold}.blog-lock-status{min-height:24px;color:#9b3737!important}
-    @media(max-width:720px){.topbar{padding:9px 12px;display:block}.brand{display:block;margin:0 5px 8px}.nav{padding-bottom:2px}.nav a{font-size:13px}.hero{grid-template-columns:1fr;gap:8px}.hero-copy{padding:10px 0}.hero-photo img{height:225px}.hero h1{font-size:39px}.cards{grid-template-columns:1fr}.trip-card{min-height:0}main{padding:20px 15px 42px}.section-head{align-items:start;flex-direction:column}.timeline-stop{grid-template-columns:1fr;gap:7px}.time{text-align:left;width:max-content;min-width:100px}.photo-strip img{height:105px}.guide-grid{grid-template-columns:1fr}.blog-intro{font-size:18px;padding:14px}.blog-section{margin:24px 0 32px}.blog-section p{font-size:17px}.blog-section img{max-height:460px}.daily-entry{padding:16px}.daily-entry p{font-size:17px}.daily-entry img{max-height:460px}.blog-lock{padding:17px}.blog-lock-controls{flex-direction:column}}
+    .access-lock{max-width:790px;margin:24px auto;padding:22px;border:var(--line);border-radius:var(--round);background:#fff4ef;box-shadow:4px 4px 0 var(--ink)}.access-lock-kicker{font-size:13px;letter-spacing:.08em;font-weight:bold;color:var(--muted)}.access-lock h2{font-size:25px;margin:5px 0}.access-lock p{margin:6px 0}.access-lock label{display:block;font-weight:bold;margin-top:13px}.access-lock-controls{display:flex;align-items:stretch;gap:9px;margin-top:6px}.access-lock input{flex:1;min-width:0;border:2px solid var(--ink);border-radius:13px;padding:9px 12px;font:inherit;background:var(--white)}.access-lock button{border:2px solid var(--ink);border-radius:13px;background:var(--yellow);padding:8px 15px;font:inherit;font-weight:bold}.access-lock-status{min-height:24px;color:#9b3737!important}
+    @media(max-width:720px){.topbar{padding:9px 12px;display:block}.brand{display:block;margin:0 5px 8px}.nav{padding-bottom:2px}.nav a{font-size:13px}.hero{grid-template-columns:1fr;gap:8px}.hero-copy{padding:10px 0}.hero-photo img{height:225px}.hero h1{font-size:39px}.cards{grid-template-columns:1fr}.trip-card{min-height:0}main{padding:20px 15px 42px}.section-head{align-items:start;flex-direction:column}.timeline-stop{grid-template-columns:1fr;gap:7px}.time{text-align:left;width:max-content;min-width:100px}.photo-strip img{height:105px}.guide-grid{grid-template-columns:1fr}.blog-intro{font-size:18px;padding:14px}.blog-section{margin:24px 0 32px}.blog-section p{font-size:17px}.blog-section img{max-height:460px}.daily-entry{padding:16px}.daily-entry p{font-size:17px}.daily-entry img{max-height:460px}.access-lock{padding:17px}.access-lock-controls{flex-direction:column}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     /* 日曆入口優先呈現今日安排，避免手機上先滑過封面與介紹。 */
     .home-view-today .cards{grid-template-columns:1fr}.home-view-today .trip-card-expanded{width:100%;max-width:none}.today-expanded{margin-top:18px}.today-expanded>h3{font-size:23px;margin:0 0 10px}.today-expanded .timeline{margin:0 0 18px}.today-expanded .guide-grid{margin:12px 0}.today-expanded .guide-card h3,.today-expanded .panel h3{font-size:21px;margin:0 0 7px}.today-expanded .checklist{padding-left:20px;list-style:disc}
@@ -39,7 +39,7 @@
   </header>
   <main id="app"></main>
   <noscript><main><h1>我們的家庭旅行手帳</h1><p>請開啟 JavaScript 查看今日、未來與已完成旅程。</p></main></noscript>
-  <script src="travel-prep.js?v=20261011-sushiro-blog-codes-1"></script>
+  <script src="travel-prep.js?v=20261011-private-sections-gate-1"></script>
   <script>
     const todayBlogEntries = [
       {date:"2026/10/11",title:"一家人在壽司郎用餐",paragraphs:["今天一家人在壽司郎用餐，理悠和媽媽笑著碰拳，把一起吃飯的時光留在照片裡。"],photos:[["photos/2026-10-11-sushiro-meal.jpg","理悠和媽媽在壽司郎座位上碰拳","一家人在壽司郎用餐時，理悠和媽媽開心地碰拳。"]]},
@@ -256,9 +256,9 @@
     ];
     const app = document.getElementById("app");
     const params = new URLSearchParams(location.search);
-    const BLOG_ACCESS_CODES = new Set(["0317", "0902", "0416"]);
-    const BLOG_UNLOCK_KEY = "family-travel-hub:blog-unlocked";
-    let pendingBlogContent = "";
+    const ACCESS_CODES = new Set(["0317", "0902", "0416"]);
+    const ACCESS_UNLOCK_KEY = "family-travel-hub:protected-sections-unlocked";
+    let pendingProtectedContent = "";
     const validViews=["today","today-blog","upcoming","past","all"];
     const viewFromUrl=()=>{const queryView=params.get("v"),hashView=location.hash.slice(1);return validViews.includes(queryView)?queryView:validViews.includes(hashView)?hashView:"all"};
     const dayNow = new Intl.DateTimeFormat("sv-SE", {timeZone:"Asia/Taipei", year:"numeric", month:"2-digit", day:"2-digit"}).format(new Date());
@@ -266,6 +266,7 @@
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
     const todayForTrip=t=>new Intl.DateTimeFormat("sv-SE",{timeZone:t.timeZone||"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
     const siteUpdates=[
+      {date:"2026/10/11",text:"總覽、接下來、走過的日子與非今日旅程頁新增家人通行碼提示。"},
       {date:"2026/10/11",text:"今日網誌新增全家在壽司郎用餐的照片與紀錄；三組家人通行碼任一組即可瀏覽網誌。"},
       {date:"2026/10/11",text:"新增今日網誌分頁，與今日行程分開；記下壽司郎候位時的家庭照片。"},
       {date:"2026/10/11",text:"網誌新增簡易通行碼提示；首頁、行程資訊與相簿照片維持公開。"},
@@ -284,12 +285,12 @@
       const notes=(c.notes||[]).filter(n=>!n.resolved);
       return '<section class="conversation-board" aria-label="我們的對話筆記"><header><h2>我們的對話筆記</h2><span>整理至 '+escapeHtml(c.updatedOn)+'</span></header><p class="conversation-confirmed"><span>已記下</span>'+escapeHtml(c.confirmed)+'</p>'+(c.idea?'<p class="conversation-idea"><span>新想法</span>'+escapeHtml(c.idea)+'</p>':'')+'<div class="conversation-notes">'+notes.map(n=>'<article class="conversation-note '+(n.kind==="question"?'is-question':'')+'"><span class="conversation-label">'+(n.kind==="question"?'想跟你確認':'想提醒你')+'</span><h3>'+escapeHtml(n.title)+'</h3><p>'+escapeHtml(n.body)+'</p></article>').join('')+'</div><p class="conversation-reply">回覆我就好，我會整理到這裡。</p></section>';
     }
-    function footer(){return '<footer class="footnote">固定一個家庭總站，每趟旅程有自己的分享網址。首頁、行程資訊與相簿照片公開；網誌需輸入家人通行碼。<br>旅程資訊由我們在對話中一起整理更新；出門清單的勾選只保存在此裝置。<br><details class="site-history"><summary>最近更新</summary><ul>'+siteUpdates.map(x=>'<li><time>'+escapeHtml(x.date)+'</time>'+escapeHtml(x.text)+'</li>').join('')+'</ul></details><span id="site-update-status" role="status">開著網站時，每分鐘檢查一次新版；發布完成後自動載入。</span></footer>'}
-    function protectBlog(content,isBlog){
-      if(!isBlog)return content;
-      try{if(sessionStorage.getItem(BLOG_UNLOCK_KEY)==="1")return content}catch{}
-      pendingBlogContent=content;
-      return '<section class="blog-lock" aria-labelledby="blog-lock-title"><span class="blog-lock-kicker">家庭網誌</span><h2 id="blog-lock-title">這趟旅程的網誌有通行碼</h2><p>輸入三組家人通行碼其中一組，即可在此瀏覽每日紀錄。</p><form data-blog-unlock><label for="blog-access-code">網誌通行碼</label><div class="blog-lock-controls"><input id="blog-access-code" name="blog-access-code" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" autocapitalize="characters" aria-describedby="blog-lock-status" required><button type="submit">開啟網誌</button></div><p class="blog-lock-status" id="blog-lock-status" role="status" aria-live="polite"></p></form></section>';
+    function footer(){return '<footer class="footnote">固定一個家庭總站，每趟旅程有自己的分享網址。今日行程公開；今日網誌、總覽、接下來、走過的日子與未來／過去旅程頁需輸入家人通行碼。<br>旅程資訊由我們在對話中一起整理更新；出門清單的勾選只保存在此裝置。<br><details class="site-history"><summary>最近更新</summary><ul>'+siteUpdates.map(x=>'<li><time>'+escapeHtml(x.date)+'</time>'+escapeHtml(x.text)+'</li>').join('')+'</ul></details><span id="site-update-status" role="status">開著網站時，每分鐘檢查一次新版；發布完成後自動載入。</span></footer>'}
+    function protectContent(content,title){
+      if(!title)return content;
+      try{if(sessionStorage.getItem(ACCESS_UNLOCK_KEY)==="1")return content}catch{}
+      pendingProtectedContent=content;
+      return '<section class="access-lock" aria-labelledby="access-lock-title"><span class="access-lock-kicker">家人限定</span><h2 id="access-lock-title">'+escapeHtml(title)+'</h2><p>輸入三組家人通行碼其中一組，即可瀏覽此區內容。</p><form data-access-unlock><label for="access-code">家人通行碼</label><div class="access-lock-controls"><input id="access-code" name="access-code" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" autocapitalize="characters" aria-describedby="access-lock-status" required><button type="submit">開啟內容</button></div><p class="access-lock-status" id="access-lock-status" role="status" aria-live="polite"></p></form></section>';
     }
     function restoreChecks(){document.querySelectorAll(".trip-check").forEach(input=>{const key="family-travel-hub:"+input.dataset.check;try{input.checked=localStorage.getItem(key)==="1"}catch{} input.addEventListener("change",()=>{try{localStorage.setItem(key,input.checked?"1":"0")}catch{input.closest("section").querySelector("h3,h2").textContent="此瀏覽器無法保存勾選，離開前請自行記錄。"}})});}
     function card(t,view){
@@ -316,7 +317,7 @@
       app.className="home-view-today-blog";
       const posts=todayBlogEntries.map(entry=>'<article class="daily-entry"><span class="date-chip">'+escapeHtml(entry.date)+'</span><h2>'+escapeHtml(entry.title)+'</h2>'+entry.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join("")+entry.photos.map(p=>'<figure><img src="'+escapeHtml(p[0])+'" alt="'+escapeHtml(p[1])+'" loading="lazy"><figcaption>'+escapeHtml(p[2])+'</figcaption></figure>').join("")+'</article>').join("")||'<div class="empty"><p><b>目前還沒有網誌紀錄</b></p><p class="small">有照片或今天的小片段時，我會幫你整理到這裡。</p></div>';
       const content='<section class="today-blog-content"><div class="section-head"><div><h2>今日網誌</h2><p>把照片和家庭片段，獨立收在今日行程之外。</p></div></div>'+posts+'</section>';
-      app.innerHTML=protectBlog(content,true)+footer();
+      app.innerHTML=protectContent(content,"今日網誌需要家人通行碼")+footer();
       document.title="今日網誌｜家庭旅行手帳";
       document.querySelectorAll(".nav a").forEach(a=>a.classList.toggle("active",a.dataset.view==="today-blog"));
     }
@@ -327,7 +328,9 @@
       const labels={today:["今天的行程","今天要走的路，打開就看得到。"],upcoming:["接下來的行程","已規劃、還沒出發的家庭旅行。"],past:["走過的日子","已完成的旅程，和日期已過但還沒回填的規劃。"],all:["全部旅程","今天、以後與已經走過的日子，都在這裡。"]};
       const label=labels[view]||labels.today;
       const cards=filtered.length?filtered.map(t=>card(t,view)).join(""):'<div class="empty"><p><b>這個分類目前沒有行程</b></p><p class="small">點左上角手帳標誌或其他日期看看。</p></div>';
-      app.innerHTML=(view==="all"?'<section class="hero"><div class="hero-copy"><div class="eyebrow">FAMILY TRAVEL JOURNAL · 桃園出發</div><h1>把一起走過的路，<br>和下一趟放在同一處。</h1><p>今天、未來和已完成的家庭行程，都用同一個網址整理。每趟旅程另有自己的短連結，方便放進家族行事曆。</p><div class="stat-row"><span class="stat">'+trips.filter(t=>t.state==="done").length+' 趟已完成</span><span class="stat">'+trips.filter(t=>t.state!=="done").length+' 筆行程待走／回填</span></div></div><figure class="hero-photo"><img src="https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d4-kyoto.jpg" alt="京阪之旅留下的京都街景照片" onerror="this.style.display=\'none\'"><figcaption>京阪之旅的風景，也收在這本手帳裡。</figcaption></figure></section><div class="notice"><p><b>給家人的固定入口</b></p><p>分享總站就能看全部行程；放入行事曆時，請複製該趟專屬網址。頁面公開，不需要另外邀請。</p></div>':"")+(view==="upcoming"&&filtered.some(t=>t.id===TravelPrep.tripId)?TravelPrep.board():view==="all"?TravelPrep.summary():"")+'<section><div class="section-head"><div><h2>'+label[0]+'</h2><p>'+label[1]+'</p></div><p>今天 · '+escapeHtml(dayNow.replaceAll("-","/"))+'</p></div><div class="cards">'+cards+'</div></section>'+(view==="today"?TravelPrep.summary():"")+footer();
+      const homeContent=(view==="all"?'<section class="hero"><div class="hero-copy"><div class="eyebrow">FAMILY TRAVEL JOURNAL · 桃園出發</div><h1>把一起走過的路，<br>和下一趟放在同一處。</h1><p>今天、未來和已完成的家庭行程，都用同一個網址整理。每趟旅程另有自己的短連結，方便放進家族行事曆。</p><div class="stat-row"><span class="stat">'+trips.filter(t=>t.state==="done").length+' 趟已完成</span><span class="stat">'+trips.filter(t=>t.state!=="done").length+' 筆行程待走／回填</span></div></div><figure class="hero-photo"><img src="https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d4-kyoto.jpg" alt="京阪之旅留下的京都街景照片" onerror="this.style.display=\'none\'"><figcaption>京阪之旅的風景，也收在這本手帳裡。</figcaption></figure></section><div class="notice"><p><b>給家人的固定入口</b></p><p>總覽與各趟旅程需要通行碼；只想查看今天的安排，請點「今日行程」。</p></div>':"")+(view==="upcoming"&&filtered.some(t=>t.id===TravelPrep.tripId)?TravelPrep.board():view==="all"?TravelPrep.summary():"")+'<section><div class="section-head"><div><h2>'+label[0]+'</h2><p>'+label[1]+'</p></div><p>今天 · '+escapeHtml(dayNow.replaceAll("-","/"))+'</p></div><div class="cards">'+cards+'</div></section>'+(view==="today"?TravelPrep.summary():"");
+      const protectedTitle=({all:"家庭旅程總覽需要家人通行碼",upcoming:"接下來的行程需要家人通行碼",past:"走過的日子需要家人通行碼"})[view]||"";
+      app.innerHTML=protectContent(homeContent,protectedTitle)+footer();
       restoreChecks();
       document.title="我們的家庭旅行手帳";
       document.querySelectorAll(".nav a").forEach(a=>a.classList.toggle("active",a.dataset.view===view));
@@ -346,21 +349,25 @@
       const blog=t.blog?'<article class="blog-article"><p class="blog-intro">'+escapeHtml(t.blog.intro)+'</p>'+t.blog.sections.map(s=>'<section class="blog-section"><h2>'+escapeHtml(s.title)+'</h2><p>'+escapeHtml(s.text)+'</p>'+(s.photo?'<figure><img src="'+escapeHtml(s.photo[0])+'" alt="'+escapeHtml(s.photo[1])+'" loading="lazy"><figcaption>'+escapeHtml(s.photo[2])+'</figcaption></figure>':'')+'</section>').join('')+'<p class="blog-ending">今天沒有照原定計畫走，卻用一場車窗外的煙火，替 10/10 留下了結尾。</p></article>':'';
       const dailyBlog=(()=>{const days=t.blogDays||[];const requested=Number(params.get("day"));const active=Number.isInteger(requested)&&requested>=1&&requested<=days.length?requested-1:0;const d=days[active];if(!d)return "";const tabs=days.map((x,i)=>'<a class="daily-tab '+(i===active?'active':'')+'" href="?t='+encodeURIComponent(t.id)+'&day='+(i+1)+'"'+(i===active?' aria-current="page"':'')+'>第 '+(i+1)+' 天<br>'+escapeHtml(x.date.slice(5))+'</a>').join("");const paragraphs=d.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join("");const photo=d.photo?'<figure><img src="'+escapeHtml(d.photo[0])+'" alt="'+escapeHtml(d.photo[1])+'" loading="lazy"><figcaption>'+escapeHtml(d.photo[2])+'</figcaption></figure>':'<div class="photo-missing">📷 這一天目前還沒有照片，網誌先保留文字。</div>';const dayUrl=location.origin+location.pathname+'?t='+encodeURIComponent(t.id)+'&day='+(active+1);return '<section class="daily-blogs"><nav class="daily-nav" aria-label="京阪每日網誌">'+tabs+'</nav><article class="daily-entry"><span class="date-chip">'+escapeHtml(d.date)+'</span><h2>'+escapeHtml(d.title)+'</h2>'+paragraphs+photo+'<div class="day-share"><div><b>分享這一天</b><br><code>'+escapeHtml(dayUrl)+'</code></div><button class="button" type="button" data-copy-url="'+escapeHtml(dayUrl)+'">複製本日網址</button></div><p class="daily-source-note">依已保存的京阪行程紀錄整理；沒有記下的臨時變動不自行補寫。</p></article></section>'})();
       const tripContent=t.blogDays?dailyBlog:t.blog?blog:'<section><div class="section-head"><div><h2>旅程內容</h2><p>行程隨當天狀況彈性調整。</p></div></div><div class="timeline">'+timeline+'</div></section>'+(details?'<div class="guide-grid">'+details+'</div>':'')+checklist+sources+(notes&&!t.sources?'<section class="panel"><h2>出發前記得</h2><ul>'+notes+'</ul></section>':'')+archive;
-      app.innerHTML='<a class="back-link" href="/family-travel-hub/">← 回到首頁</a><section class="detail-hero"><div class="detail-meta"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h1>'+escapeHtml(t.title)+'</h1><p><b>'+escapeHtml(t.area)+'</b></p><p>'+escapeHtml(t.summary)+'</p></section>'+photos+'<div class="calendar-box"><div><b>這趟的分享網址</b><br><code>'+escapeHtml(tripUrl(t.id))+'</code></div><button class="button" type="button" data-copy="'+escapeHtml(t.id)+'">複製網址</button><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span></div>'+extra+conversation(t)+(t.id===TravelPrep.tripId?TravelPrep.board():"")+protectBlog(tripContent,Boolean(t.blog||t.blogDays?.length))+footer();
-      restoreChecks();
       const activeView=t.start<=todayForTrip(t)&&t.end>=todayForTrip(t)?"today":t.start>todayForTrip(t)?"upcoming":"past";
+      const protectEntireTrip=activeView==="upcoming"||activeView==="past";
+      const blogContent=protectContent(tripContent,!protectEntireTrip&&Boolean(t.blog||t.blogDays?.length)?"旅程網誌需要家人通行碼":"");
+      const tripPage='<a class="back-link" href="/family-travel-hub/">← 回到首頁</a><section class="detail-hero"><div class="detail-meta"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h1>'+escapeHtml(t.title)+'</h1><p><b>'+escapeHtml(t.area)+'</b></p><p>'+escapeHtml(t.summary)+'</p></section>'+photos+'<div class="calendar-box"><div><b>這趟的分享網址</b><br><code>'+escapeHtml(tripUrl(t.id))+'</code></div><button class="button" type="button" data-copy="'+escapeHtml(t.id)+'">複製網址</button><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span></div>'+extra+conversation(t)+(t.id===TravelPrep.tripId?TravelPrep.board():"")+blogContent;
+      app.innerHTML=protectEntireTrip?protectContent(tripPage,activeView==="upcoming"?"這趟未來行程需要家人通行碼":"走過的日子需要家人通行碼")+footer():tripPage+footer();
+      restoreChecks();
       document.querySelectorAll(".nav a").forEach(a=>a.classList.toggle("active",a.dataset.view===activeView));
       document.title=t.title+"｜家庭旅行手帳";
     }
     document.addEventListener("submit",e=>{
-      const form=e.target.closest("[data-blog-unlock]");if(!form)return;
+      const form=e.target.closest("[data-access-unlock]");if(!form)return;
       e.preventDefault();
-      const entered=form.elements["blog-access-code"].value.trim();
-      if(!BLOG_ACCESS_CODES.has(entered)){form.querySelector("[data-blog-status],#blog-lock-status").textContent="通行碼不正確，請再確認後輸入。";return}
-      try{sessionStorage.setItem(BLOG_UNLOCK_KEY,"1")}catch{}
-      const locked=document.querySelector(".blog-lock");
-      if(locked)locked.outerHTML=pendingBlogContent;
-      pendingBlogContent="";
+      const entered=form.elements["access-code"].value.trim();
+      if(!ACCESS_CODES.has(entered)){form.querySelector("[data-blog-status],#access-lock-status").textContent="通行碼不正確，請再確認後輸入。";return}
+      try{sessionStorage.setItem(ACCESS_UNLOCK_KEY,"1")}catch{}
+      const locked=document.querySelector(".access-lock");
+      if(locked)locked.outerHTML=pendingProtectedContent;
+      pendingProtectedContent="";
+      restoreChecks();
     });
     document.addEventListener("click",async e=>{const b=e.target.closest("[data-copy], [data-copy-url]");if(!b)return;const id=b.dataset.copy;const toast=id?document.querySelector('[data-toast="'+id+'"]'):null;const value=b.dataset.copyUrl||tripUrl(id);try{await navigator.clipboard.writeText(value);if(toast)toast.textContent="已複製，可以貼到家族對話或行事曆。";else b.textContent="已複製本日網址"}catch{if(toast)toast.textContent="複製未成功，請開啟這趟行程，長按顯示的網址複製。";else b.textContent="複製失敗，請長按網址複製"}});
     const trip=trips.find(t=>t.id===params.get("t"));
@@ -368,7 +375,7 @@
     document.addEventListener("travel-prep:updated",()=>{if(trip)renderTrip(trip);else renderHome(viewFromUrl())});
     window.addEventListener("hashchange",()=>{if(!params.has("t"))renderHome(viewFromUrl())});
   </script>
-  <script src="site-updates.js?v=20261011-sushiro-blog-codes-1"></script>
+  <script src="site-updates.js?v=20261011-private-sections-gate-1"></script>
 </body>
 </html>
 
