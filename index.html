@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffcf6">
-  <meta name="site-revision" content="20261011-reading-cafe-5">
+  <meta name="site-revision" content="20261011-sushiro-arrival-6">
   <meta name="description" content="一家人的今日、未來與已完成旅程，放在同一個小小旅行手帳。">
   <title>我們的家庭旅行手帳</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="travel-prep.css?v=20261011-reading-cafe-5">
+  <link rel="stylesheet" href="travel-prep.css?v=20261011-sushiro-arrival-6">
   <style>
     :root{--paper:#fffcf6;--ink:#3e3a39;--pink:#f2a497;--yellow:#f6d27a;--blue:#a8d3e6;--green:#b9daa5;--white:#fffefa;--muted:#77716d;--line:3px solid var(--ink);--round:26px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","Noto Sans TC",system-ui,sans-serif;line-height:1.6}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}
@@ -37,7 +37,7 @@
   </header>
   <main id="app"></main>
   <noscript><main><h1>我們的家庭旅行手帳</h1><p>請開啟 JavaScript 查看今日、未來與已完成旅程。</p></main></noscript>
-  <script src="travel-prep.js?v=20261011-reading-cafe-5"></script>
+  <script src="travel-prep.js?v=20261011-sushiro-arrival-6"></script>
   <script>
     const trips = [
       {
@@ -137,12 +137,12 @@
         "label": "今天",
         "title": "三點壽司郎國際路店，吃完回家睡午覺",
         "area": "桃園・國際路",
-        "summary": "今天 15:00 去壽司郎桃園國際路店，吃完回家讓理悠睡午覺；媽媽想趁午睡看書，我挑了桃園總圖旁的咖啡廳作候選。",
+        "summary": "目前已到壽司郎桃園國際路店等候入場；用餐後回家讓理悠午睡，媽媽的看書咖啡廳候選已整理好。",
         "stops": [
           {
             "time": "現在・候位",
-            "title": "已取號牌 #175",
-            "desc": "候位畫面顯示下一組來賓叫號為 167–169。來店後，依畫面指示到帶位台輸入報到碼 7152 完成報到。"
+            "title": "已到店等候入場｜號碼牌 #175",
+            "desc": "你們已抵達壽司郎桃園國際路店，正在等候帶位入場。若報到尚未完成，到帶位台輸入報到碼 7152；之後依現場叫號為準。"
           },
           {
             "time": "用餐前",
@@ -232,10 +232,10 @@
         "checkedOn": "2026/10/11",
         "conversation": {
           "updatedOn": "2026/10/11",
-          "confirmed": "已取壽司郎桃園國際路店候位號碼牌 175；預計 15:00 用餐，吃完回家讓理悠睡午覺。",
+          "confirmed": "已取壽司郎桃園國際路店候位號碼牌 175；目前已到店等候入場，吃完回家讓理悠睡午覺。",
           "idea": "太太想趁理悠午睡時找間咖啡廳看書，等她起床；偏好住家附近、方便停車。",
           "notes": [
-            {"kind":"reminder","title":"到帶位台完成報到","body":"輸入報到碼 7152；候位畫面目前顯示下一組叫號 167–169。"},
+            {"kind":"reminder","title":"等候帶位入場","body":"你們已到店等候。若報到尚未完成，到帶位台輸入報到碼 7152；之後依現場叫號為準。"},
             {"kind":"reminder","title":"午睡看書的咖啡廳候選","body":"我先挑星巴克桃園總圖門市：與蔦屋書店同棟，總圖地下有收費停車場。這是助理建議，依午睡狀況再決定是否前往。"}
           ]
         }
@@ -257,6 +257,7 @@
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
     const todayForTrip=t=>new Intl.DateTimeFormat("sv-SE",{timeZone:t.timeZone||"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
     const siteUpdates=[
+      {date:"2026/10/11",text:"更新現場狀態：已到壽司郎桃園國際路店等候入場，保留報到碼提醒。"},
       {date:"2026/10/11",text:"新增午睡看書咖啡廳候選：星巴克桃園總圖門市，附總圖地下停車場與店家導航；住家社區名稱不公開。"},
       {date:"2026/10/11",text:"補上壽司郎候位號碼牌與報到方式。"},
       {date:"2026/10/11",text:"咖啡廳條件補充為住家附近、方便停車；待提供大致區域後選店並補導航。"},
@@ -330,7 +331,7 @@
     document.addEventListener("travel-prep:updated",()=>{if(trip)renderTrip(trip);else renderHome(viewFromUrl())});
     window.addEventListener("hashchange",()=>{if(!params.has("t"))renderHome(viewFromUrl())});
   </script>
-  <script src="site-updates.js?v=20261011-reading-cafe-5"></script>
+  <script src="site-updates.js?v=20261011-sushiro-arrival-6"></script>
 </body>
 </html>
 
