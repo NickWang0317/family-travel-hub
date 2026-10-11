@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffcf6">
-  <meta name="site-revision" content="20261011-cafe-parking-4">
+  <meta name="site-revision" content="20261011-reading-cafe-5">
   <meta name="description" content="一家人的今日、未來與已完成旅程，放在同一個小小旅行手帳。">
   <title>我們的家庭旅行手帳</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="travel-prep.css?v=20261011-cafe-parking-4">
+  <link rel="stylesheet" href="travel-prep.css?v=20261011-reading-cafe-5">
   <style>
     :root{--paper:#fffcf6;--ink:#3e3a39;--pink:#f2a497;--yellow:#f6d27a;--blue:#a8d3e6;--green:#b9daa5;--white:#fffefa;--muted:#77716d;--line:3px solid var(--ink);--round:26px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","Noto Sans TC",system-ui,sans-serif;line-height:1.6}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}
@@ -37,7 +37,7 @@
   </header>
   <main id="app"></main>
   <noscript><main><h1>我們的家庭旅行手帳</h1><p>請開啟 JavaScript 查看今日、未來與已完成旅程。</p></main></noscript>
-  <script src="travel-prep.js?v=20261011-cafe-parking-4"></script>
+  <script src="travel-prep.js?v=20261011-reading-cafe-5"></script>
   <script>
     const trips = [
       {
@@ -137,7 +137,7 @@
         "label": "今天",
         "title": "三點壽司郎國際路店，吃完回家睡午覺",
         "area": "桃園・國際路",
-        "summary": "今天 15:00 去壽司郎桃園國際路店，吃完回家讓理悠睡午覺；媽媽想在住家附近找間方便停車的咖啡廳看書，店家待確認。",
+        "summary": "今天 15:00 去壽司郎桃園國際路店，吃完回家讓理悠睡午覺；媽媽想趁午睡看書，我挑了桃園總圖旁的咖啡廳作候選。",
         "stops": [
           {
             "time": "現在・候位",
@@ -171,17 +171,33 @@
           },
           {
             "time": "吃完後",
-            "title": "回家睡午覺・媽媽想找咖啡廳看書",
-            "desc": "吃完回家讓理悠睡午覺。媽媽想趁她午睡時到住家附近的咖啡廳看書等她醒來；會優先找方便停車的店，區域待確認。"
+            "title": "先回家讓理悠午睡",
+            "desc": "壽司郎用餐後先回家。依午睡狀況與家中照看安排，媽媽再彈性出門看書。"
+          },
+          {
+            "time": "理悠午睡時・彈性",
+            "title": "咖啡閱讀候選｜星巴克桃園總圖門市",
+            "desc": "我先挑桃園總圖一樓的星巴克：同棟有蔦屋書店，適合喝咖啡、找書看；桃園市桃園區南平路301號。開車可停總圖收費地下停車場，再搭電梯上樓。週日總圖圖書館區 17:00 閉館，星巴克門市時間以當日公告為準。這是候選建議，等午睡狀況合適再安排。",
+            "links": [
+              {
+                "label": "星巴克桃園總圖門市導航",
+                "href": "https://www.google.com/maps/search/?api=1&query=%E6%98%9F%E5%B7%B4%E5%85%8B%E6%A1%83%E5%9C%92%E7%B8%BD%E5%9C%96%E9%96%80%E5%B8%82%20%E6%A1%83%E5%9C%92%E5%B8%82%E6%A1%83%E5%9C%92%E5%8D%80%E5%8D%97%E5%B9%B3%E8%B7%AF301%E8%99%9F"
+              },
+              {
+                "label": "總圖地下停車場導航",
+                "href": "https://www.google.com/maps/search/?api=1&query=%E6%A1%83%E5%9C%92%E5%B8%82%E7%AB%8B%E5%9C%96%E6%9B%B8%E9%A4%A8%E7%B8%BD%E9%A4%A8%E5%9C%B0%E4%B8%8B%E5%81%9C%E8%BB%8A%E5%A0%B4"
+              }
+            ]
           }
         ],
         "details": [
           {
             "title": "今天就照這個節奏",
-            "intro": "三點吃飯，吃完回家讓理悠睡午覺；媽媽想在住家附近找間方便停車的咖啡廳看書等她醒來。",
+            "intro": "三點吃飯，吃完先回家讓理悠午睡；媽媽的看書咖啡廳先挑桃園總圖星巴克，行程依午睡狀況彈性安排。",
             "bullets": [
               "15:00 是預計用餐時間。",
-              "回家時間隨用餐狀況，不另外設定固定時間。"
+              "總圖地下有收費停車場；桃園總圖門市地址為南平路301號。",
+              "星巴克候選尚未視為已決定；圖書館區週日 17:00 閉館，店家營業時間以當日公告為準。"
             ]
           }
         ],
@@ -195,16 +211,32 @@
           [
             "壽司郎桃園國際路店｜地址與營業時間",
             "https://www.sushiro.com.tw/Shop/ShopInfo?shopId=152"
+          ],
+          [
+            "星巴克門市查詢｜桃園總圖門市",
+            "https://www.starbucks.com.tw/stores/storesearch.jspx?type=instore"
+          ],
+          [
+            "桃園市立圖書館總館｜開放時間與地下停車場",
+            "https://www.typl.gov.tw/zh-tw/About/Introduce"
+          ],
+          [
+            "臺灣蔦屋｜桃園藝文店地址與營業時間",
+            "https://www.tsutaya.com.tw/shop/"
+          ],
+          [
+            "桃園總圖星巴克｜門市時間參考",
+            "https://footinder.com.tw/%E6%A1%83%E5%9C%92%E5%B8%82%E6%A1%83%E5%9C%92%E5%8D%80/97285/"
           ]
         ],
         "checkedOn": "2026/10/11",
         "conversation": {
           "updatedOn": "2026/10/11",
           "confirmed": "已取壽司郎桃園國際路店候位號碼牌 175；預計 15:00 用餐，吃完回家讓理悠睡午覺。",
-          "idea": "太太想趁理悠午睡時，在住家附近找間方便停車的咖啡廳看書，等她起床。",
+          "idea": "太太想趁理悠午睡時找間咖啡廳看書，等她起床；偏好住家附近、方便停車。",
           "notes": [
             {"kind":"reminder","title":"到帶位台完成報到","body":"輸入報到碼 7152；候位畫面目前顯示下一組叫號 167–169。"},
-            {"kind":"question","title":"住家附近哪個區域／地標？","body":"不用提供住家門牌，給我附近的區域或大地標就可以。我會優先找適合看書、停車方便的咖啡廳，再補上導航。"}
+            {"kind":"reminder","title":"午睡看書的咖啡廳候選","body":"我先挑星巴克桃園總圖門市：與蔦屋書店同棟，總圖地下有收費停車場。這是助理建議，依午睡狀況再決定是否前往。"}
           ]
         }
       },
@@ -225,6 +257,7 @@
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
     const todayForTrip=t=>new Intl.DateTimeFormat("sv-SE",{timeZone:t.timeZone||"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
     const siteUpdates=[
+      {date:"2026/10/11",text:"新增午睡看書咖啡廳候選：星巴克桃園總圖門市，附總圖地下停車場與店家導航；住家社區名稱不公開。"},
       {date:"2026/10/11",text:"補上壽司郎候位號碼牌與報到方式。"},
       {date:"2026/10/11",text:"咖啡廳條件補充為住家附近、方便停車；待提供大致區域後選店並補導航。"},
       {date:"2026/10/11",text:"新增理悠午睡時看書的咖啡廳想法，待確認地點後選店。"},
@@ -297,7 +330,7 @@
     document.addEventListener("travel-prep:updated",()=>{if(trip)renderTrip(trip);else renderHome(viewFromUrl())});
     window.addEventListener("hashchange",()=>{if(!params.has("t"))renderHome(viewFromUrl())});
   </script>
-  <script src="site-updates.js?v=20261011-cafe-parking-4"></script>
+  <script src="site-updates.js?v=20261011-reading-cafe-5"></script>
 </body>
 </html>
 
