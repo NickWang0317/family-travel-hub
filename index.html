@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffcf6">
-  <meta name="site-revision" content="20261011-today-blog-1">
+  <meta name="site-revision" content="20261011-sushiro-blog-codes-1">
   <meta name="description" content="一家人的今日、未來與已完成旅程，放在同一個小小旅行手帳。">
   <title>我們的家庭旅行手帳</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="travel-prep.css?v=20261011-today-blog-1">
+  <link rel="stylesheet" href="travel-prep.css?v=20261011-sushiro-blog-codes-1">
   <style>
     :root{--paper:#fffcf6;--ink:#3e3a39;--pink:#f2a497;--yellow:#f6d27a;--blue:#a8d3e6;--green:#b9daa5;--white:#fffefa;--muted:#77716d;--line:3px solid var(--ink);--round:26px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","Noto Sans TC",system-ui,sans-serif;line-height:1.6}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}
@@ -39,9 +39,10 @@
   </header>
   <main id="app"></main>
   <noscript><main><h1>我們的家庭旅行手帳</h1><p>請開啟 JavaScript 查看今日、未來與已完成旅程。</p></main></noscript>
-  <script src="travel-prep.js?v=20261011-today-blog-1"></script>
+  <script src="travel-prep.js?v=20261011-sushiro-blog-codes-1"></script>
   <script>
     const todayBlogEntries = [
+      {date:"2026/10/11",title:"一家人在壽司郎用餐",paragraphs:["今天一家人在壽司郎用餐，理悠和媽媽笑著碰拳，把一起吃飯的時光留在照片裡。"],photos:[["photos/2026-10-11-sushiro-meal.jpg","理悠和媽媽在壽司郎座位上碰拳","一家人在壽司郎用餐時，理悠和媽媽開心地碰拳。"]]},
       {date:"2026/10/11",title:"等候入場，也在壽司塔前留個影",paragraphs:["今天到壽司郎桃園國際路店，等待入場時，理悠在壽司盤高度看板前拍下這張照片，把一家人一起出門的片刻留了下來。"],photos:[["photos/2026-10-11-sushiro-waiting.jpg","理悠在壽司郎鮮魚塔看板前留影","等候入場時，在壽司塔前拍下今天的紀念照。"]]}
     ];
     const trips = [
@@ -255,7 +256,7 @@
     ];
     const app = document.getElementById("app");
     const params = new URLSearchParams(location.search);
-    const BLOG_ACCESS_CODE = "FAMILY-4826";
+    const BLOG_ACCESS_CODES = new Set(["0317", "0902", "0416"]);
     const BLOG_UNLOCK_KEY = "family-travel-hub:blog-unlocked";
     let pendingBlogContent = "";
     const validViews=["today","today-blog","upcoming","past","all"];
@@ -265,8 +266,9 @@
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
     const todayForTrip=t=>new Intl.DateTimeFormat("sv-SE",{timeZone:t.timeZone||"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
     const siteUpdates=[
+      {date:"2026/10/11",text:"今日網誌新增全家在壽司郎用餐的照片與紀錄；三組家人通行碼任一組即可瀏覽網誌。"},
       {date:"2026/10/11",text:"新增今日網誌分頁，與今日行程分開；記下壽司郎候位時的家庭照片。"},
-      {date:"2026/10/11",text:"網誌新增簡易密碼提示；首頁、行程資訊與相簿照片維持公開。"},
+      {date:"2026/10/11",text:"網誌新增簡易通行碼提示；首頁、行程資訊與相簿照片維持公開。"},
       {date:"2026/10/11",text:"更新現場狀態：已到壽司郎桃園國際路店等候入場，保留報到碼提醒。"},
       {date:"2026/10/11",text:"新增午睡看書咖啡廳候選：星巴克桃園總圖門市，附總圖地下停車場與店家導航；住家社區名稱不公開。"},
       {date:"2026/10/11",text:"補上壽司郎候位號碼牌與報到方式。"},
@@ -287,7 +289,7 @@
       if(!isBlog)return content;
       try{if(sessionStorage.getItem(BLOG_UNLOCK_KEY)==="1")return content}catch{}
       pendingBlogContent=content;
-      return '<section class="blog-lock" aria-labelledby="blog-lock-title"><span class="blog-lock-kicker">家庭網誌</span><h2 id="blog-lock-title">這趟旅程的網誌有通行碼</h2><p>輸入家人收到的通行碼，即可在此瀏覽每日紀錄。</p><form data-blog-unlock><label for="blog-access-code">網誌通行碼</label><div class="blog-lock-controls"><input id="blog-access-code" name="blog-access-code" type="password" autocomplete="off" autocapitalize="characters" aria-describedby="blog-lock-status" required><button type="submit">開啟網誌</button></div><p class="blog-lock-status" id="blog-lock-status" role="status" aria-live="polite"></p></form></section>';
+      return '<section class="blog-lock" aria-labelledby="blog-lock-title"><span class="blog-lock-kicker">家庭網誌</span><h2 id="blog-lock-title">這趟旅程的網誌有通行碼</h2><p>輸入三組家人通行碼其中一組，即可在此瀏覽每日紀錄。</p><form data-blog-unlock><label for="blog-access-code">網誌通行碼</label><div class="blog-lock-controls"><input id="blog-access-code" name="blog-access-code" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" autocapitalize="characters" aria-describedby="blog-lock-status" required><button type="submit">開啟網誌</button></div><p class="blog-lock-status" id="blog-lock-status" role="status" aria-live="polite"></p></form></section>';
     }
     function restoreChecks(){document.querySelectorAll(".trip-check").forEach(input=>{const key="family-travel-hub:"+input.dataset.check;try{input.checked=localStorage.getItem(key)==="1"}catch{} input.addEventListener("change",()=>{try{localStorage.setItem(key,input.checked?"1":"0")}catch{input.closest("section").querySelector("h3,h2").textContent="此瀏覽器無法保存勾選，離開前請自行記錄。"}})});}
     function card(t,view){
@@ -353,8 +355,8 @@
     document.addEventListener("submit",e=>{
       const form=e.target.closest("[data-blog-unlock]");if(!form)return;
       e.preventDefault();
-      const entered=form.elements["blog-access-code"].value.trim().toUpperCase();
-      if(entered!==BLOG_ACCESS_CODE){form.querySelector("[data-blog-status],#blog-lock-status").textContent="通行碼不正確，請再確認後輸入。";return}
+      const entered=form.elements["blog-access-code"].value.trim();
+      if(!BLOG_ACCESS_CODES.has(entered)){form.querySelector("[data-blog-status],#blog-lock-status").textContent="通行碼不正確，請再確認後輸入。";return}
       try{sessionStorage.setItem(BLOG_UNLOCK_KEY,"1")}catch{}
       const locked=document.querySelector(".blog-lock");
       if(locked)locked.outerHTML=pendingBlogContent;
@@ -366,7 +368,7 @@
     document.addEventListener("travel-prep:updated",()=>{if(trip)renderTrip(trip);else renderHome(viewFromUrl())});
     window.addEventListener("hashchange",()=>{if(!params.has("t"))renderHome(viewFromUrl())});
   </script>
-  <script src="site-updates.js?v=20261011-today-blog-1"></script>
+  <script src="site-updates.js?v=20261011-sushiro-blog-codes-1"></script>
 </body>
 </html>
 
