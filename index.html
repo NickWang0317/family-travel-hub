@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffcf6">
-  <meta name="site-revision" content="20261011-queue-2">
+  <meta name="site-revision" content="20261011-cafe-3">
   <meta name="description" content="一家人的今日、未來與已完成旅程，放在同一個小小旅行手帳。">
   <title>我們的家庭旅行手帳</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="travel-prep.css?v=20261011-queue-2">
+  <link rel="stylesheet" href="travel-prep.css?v=20261011-cafe-3">
   <style>
     :root{--paper:#fffcf6;--ink:#3e3a39;--pink:#f2a497;--yellow:#f6d27a;--blue:#a8d3e6;--green:#b9daa5;--white:#fffefa;--muted:#77716d;--line:3px solid var(--ink);--round:26px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","Noto Sans TC",system-ui,sans-serif;line-height:1.6}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}
@@ -37,7 +37,7 @@
   </header>
   <main id="app"></main>
   <noscript><main><h1>我們的家庭旅行手帳</h1><p>請開啟 JavaScript 查看今日、未來與已完成旅程。</p></main></noscript>
-  <script src="travel-prep.js?v=20261011-queue-2"></script>
+  <script src="travel-prep.js?v=20261011-cafe-3"></script>
   <script>
     const trips = [
       {
@@ -137,7 +137,7 @@
         "label": "今天",
         "title": "三點壽司郎國際路店，吃完回家睡午覺",
         "area": "桃園・國際路",
-        "summary": "今天 15:00 去壽司郎桃園國際路店，吃完直接回家睡午覺。用餐後不再排其他行程。",
+        "summary": "今天 15:00 去壽司郎桃園國際路店，吃完回家讓理悠睡午覺；媽媽想趁午睡時找間咖啡廳看書，店家待確認。",
         "stops": [
           {
             "time": "現在・候位",
@@ -171,14 +171,14 @@
           },
           {
             "time": "吃完後",
-            "title": "回家睡午覺",
-            "desc": "吃完直接回家睡午覺，今天後面不再排其他行程。"
+            "title": "回家睡午覺・媽媽想找咖啡廳看書",
+            "desc": "吃完回家讓理悠睡午覺。媽媽想趁她午睡時到咖啡廳看書等她醒來；店家依午睡地點再安排。"
           }
         ],
         "details": [
           {
             "title": "今天就照這個節奏",
-            "intro": "三點吃飯，吃完回家休息。",
+            "intro": "三點吃飯，吃完回家讓理悠睡午覺；媽媽想找咖啡廳看書等她醒來。",
             "bullets": [
               "15:00 是預計用餐時間。",
               "回家時間隨用餐狀況，不另外設定固定時間。"
@@ -200,10 +200,11 @@
         "checkedOn": "2026/10/11",
         "conversation": {
           "updatedOn": "2026/10/11",
-          "confirmed": "已取壽司郎桃園國際路店候位號碼牌 175；預計 15:00 用餐，吃完回家睡午覺。",
+          "confirmed": "已取壽司郎桃園國際路店候位號碼牌 175；預計 15:00 用餐，吃完回家讓理悠睡午覺。",
+          "idea": "太太想趁理悠午睡時找間咖啡廳看書，等她起床。",
           "notes": [
             {"kind":"reminder","title":"到帶位台完成報到","body":"輸入報到碼 7152；候位畫面目前顯示下一組叫號 167–169。"},
-            {"kind":"reminder","title":"回家休息的時間留彈性","body":"若需要候位，就讓回家時間跟著用餐狀況走；吃完後直接回家睡午覺。"}
+            {"kind":"question","title":"咖啡廳想找哪一區？","body":"午睡地點確定後，告訴我住家附近的地標或區域，我就找安靜、方便回去的咖啡廳並補上導航。"}
           ]
         }
       },
@@ -225,6 +226,7 @@
     const todayForTrip=t=>new Intl.DateTimeFormat("sv-SE",{timeZone:t.timeZone||"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
     const siteUpdates=[
       {date:"2026/10/11",text:"補上壽司郎候位號碼牌與報到方式。"},
+      {date:"2026/10/11",text:"新增理悠午睡時看書的咖啡廳想法，待確認地點後選店。"},
       {date:"2026/10/11",text:"建立長期對話筆記，加入待確認問題、助理提醒與開啟頁面的自動更新。"},
       {date:"2026/10/11",text:"今天改為 15:00 壽司郎桃園國際路店，吃完回家睡午覺；補上導航。"},
       {date:"2026/10/11",text:"移除安全座椅、水壺／濕紙巾、停車折抵憑證提醒。"}
@@ -233,7 +235,7 @@
     function conversation(t){
       const c=t.conversation;if(!c)return "";
       const notes=(c.notes||[]).filter(n=>!n.resolved);
-      return '<section class="conversation-board" aria-label="我們的對話筆記"><header><h2>我們的對話筆記</h2><span>整理至 '+escapeHtml(c.updatedOn)+'</span></header><p class="conversation-confirmed"><span>已記下</span>'+escapeHtml(c.confirmed)+'</p><div class="conversation-notes">'+notes.map(n=>'<article class="conversation-note '+(n.kind==="question"?'is-question':'')+'"><span class="conversation-label">'+(n.kind==="question"?'想跟你確認':'想提醒你')+'</span><h3>'+escapeHtml(n.title)+'</h3><p>'+escapeHtml(n.body)+'</p></article>').join('')+'</div><p class="conversation-reply">回覆我就好，我會整理到這裡。</p></section>';
+      return '<section class="conversation-board" aria-label="我們的對話筆記"><header><h2>我們的對話筆記</h2><span>整理至 '+escapeHtml(c.updatedOn)+'</span></header><p class="conversation-confirmed"><span>已記下</span>'+escapeHtml(c.confirmed)+'</p>'+(c.idea?'<p class="conversation-idea"><span>新想法</span>'+escapeHtml(c.idea)+'</p>':'')+'<div class="conversation-notes">'+notes.map(n=>'<article class="conversation-note '+(n.kind==="question"?'is-question':'')+'"><span class="conversation-label">'+(n.kind==="question"?'想跟你確認':'想提醒你')+'</span><h3>'+escapeHtml(n.title)+'</h3><p>'+escapeHtml(n.body)+'</p></article>').join('')+'</div><p class="conversation-reply">回覆我就好，我會整理到這裡。</p></section>';
     }
     function footer(){return '<footer class="footnote">固定一個家庭總站，每趟旅程有自己的分享網址。公開連結不用邀請即可開啟。<br>旅程資訊由我們在對話中一起整理更新；出門清單的勾選只保存在此裝置。<br><details class="site-history"><summary>最近更新</summary><ul>'+siteUpdates.map(x=>'<li><time>'+escapeHtml(x.date)+'</time>'+escapeHtml(x.text)+'</li>').join('')+'</ul></details><span id="site-update-status" role="status">開著網站時，每分鐘檢查一次新版；發布完成後自動載入。</span></footer>'}
     function restoreChecks(){document.querySelectorAll(".trip-check").forEach(input=>{const key="family-travel-hub:"+input.dataset.check;try{input.checked=localStorage.getItem(key)==="1"}catch{} input.addEventListener("change",()=>{try{localStorage.setItem(key,input.checked?"1":"0")}catch{input.closest("section").querySelector("h3,h2").textContent="此瀏覽器無法保存勾選，離開前請自行記錄。"}})});}
@@ -294,7 +296,7 @@
     document.addEventListener("travel-prep:updated",()=>{if(trip)renderTrip(trip);else renderHome(viewFromUrl())});
     window.addEventListener("hashchange",()=>{if(!params.has("t"))renderHome(viewFromUrl())});
   </script>
-  <script src="site-updates.js?v=20261011-queue-2"></script>
+  <script src="site-updates.js?v=20261011-cafe-3"></script>
 </body>
 </html>
 

@@ -38,3 +38,4 @@
 @media(max-width:720px){.conversation-board{padding:18px}.conversation-notes{grid-template-columns:1fr;gap:17px}.conversation-board>header h2{font-size:20px}}
 
 .site-history{margin:12px 0}.site-history summary{cursor:pointer;min-height:36px;padding:5px 0;color:var(--prep-sea)}.site-history ul{padding-left:18px;margin:7px 0}.site-history li{margin:8px 0;line-height:1.8}.site-history time{display:block;font-size:11px}
+.conversation-board .conversation-idea{font-size:14px;line-height:1.8;margin:11px 0 16px;padding:9px 13px;border:1px dashed #174d4870;border-radius:10px}.conversation-idea>span{display:block;font-size:11px;font-weight:bold;letter-spacing:.08em;margin-bottom:3px}
