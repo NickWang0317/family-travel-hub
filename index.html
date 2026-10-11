@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffcf6">
-  <meta name="site-revision" content="20261011-blog-pass-1">
+  <meta name="site-revision" content="20261011-today-blog-1">
   <meta name="description" content="一家人的今日、未來與已完成旅程，放在同一個小小旅行手帳。">
   <title>我們的家庭旅行手帳</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="travel-prep.css?v=20261011-blog-pass-1">
+  <link rel="stylesheet" href="travel-prep.css?v=20261011-today-blog-1">
   <style>
     :root{--paper:#fffcf6;--ink:#3e3a39;--pink:#f2a497;--yellow:#f6d27a;--blue:#a8d3e6;--green:#b9daa5;--white:#fffefa;--muted:#77716d;--line:3px solid var(--ink);--round:26px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","Noto Sans TC",system-ui,sans-serif;line-height:1.6}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}
@@ -30,16 +30,20 @@
 <body>
   <header class="topbar">
     <a class="brand" href="/family-travel-hub/">🍙 我們的家庭旅行手帳</a>
-    <nav class="nav" aria-label="行程分類">
-      <a href="/family-travel-hub/#today" data-view="today">今天</a>
+    <nav class="nav" aria-label="網站導覽">
+      <a href="/family-travel-hub/#today" data-view="today">今日行程</a>
+      <a href="/family-travel-hub/#today-blog" data-view="today-blog">今日網誌</a>
       <a href="/family-travel-hub/#upcoming" data-view="upcoming">接下來</a>
       <a href="/family-travel-hub/#past" data-view="past">走過的日子</a>
     </nav>
   </header>
   <main id="app"></main>
   <noscript><main><h1>我們的家庭旅行手帳</h1><p>請開啟 JavaScript 查看今日、未來與已完成旅程。</p></main></noscript>
-  <script src="travel-prep.js?v=20261011-blog-pass-1"></script>
+  <script src="travel-prep.js?v=20261011-today-blog-1"></script>
   <script>
+    const todayBlogEntries = [
+      {date:"2026/10/11",title:"等候入場，也在壽司塔前留個影",paragraphs:["今天到壽司郎桃園國際路店，等待入場時，理悠在壽司盤高度看板前拍下這張照片，把一家人一起出門的片刻留了下來。"],photos:[["photos/2026-10-11-sushiro-waiting.jpg","理悠在壽司郎鮮魚塔看板前留影","等候入場時，在壽司塔前拍下今天的紀念照。"]]}
+    ];
     const trips = [
       {
         id: "K8mQ2r", start: "2026-04-28", end: "2026-05-05", state: "done", label: "已完成",
@@ -254,13 +258,14 @@
     const BLOG_ACCESS_CODE = "FAMILY-4826";
     const BLOG_UNLOCK_KEY = "family-travel-hub:blog-unlocked";
     let pendingBlogContent = "";
-    const validViews=["today","upcoming","past","all"];
+    const validViews=["today","today-blog","upcoming","past","all"];
     const viewFromUrl=()=>{const queryView=params.get("v"),hashView=location.hash.slice(1);return validViews.includes(queryView)?queryView:validViews.includes(hashView)?hashView:"all"};
     const dayNow = new Intl.DateTimeFormat("sv-SE", {timeZone:"Asia/Taipei", year:"numeric", month:"2-digit", day:"2-digit"}).format(new Date());
     const dateText = (s,e) => s === e ? s.replaceAll("-",".") : s.replaceAll("-",".") + " – " + e.slice(5).replaceAll("-",".");
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
     const todayForTrip=t=>new Intl.DateTimeFormat("sv-SE",{timeZone:t.timeZone||"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
     const siteUpdates=[
+      {date:"2026/10/11",text:"新增今日網誌分頁，與今日行程分開；記下壽司郎候位時的家庭照片。"},
       {date:"2026/10/11",text:"網誌新增簡易密碼提示；首頁、行程資訊與相簿照片維持公開。"},
       {date:"2026/10/11",text:"更新現場狀態：已到壽司郎桃園國際路店等候入場，保留報到碼提醒。"},
       {date:"2026/10/11",text:"新增午睡看書咖啡廳候選：星巴克桃園總圖門市，附總圖地下停車場與店家導航；住家社區名稱不公開。"},
@@ -305,7 +310,16 @@
       const itinerary=expanded?'<section class="today-expanded" aria-label="行程安排"><h3>'+(view==="today"?"今日安排":"目前行程資訊")+'</h3><div class="timeline">'+stops+'</div>'+details+checklist+sources+'</section>':"";
       return '<article class="trip-card '+(expanded?"trip-card-expanded":"")+'"><div class="card-top"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h3>'+escapeHtml(t.title)+'</h3><p class="small">'+escapeHtml(t.area)+'</p><p>'+escapeHtml(expanded?"":excerpt)+'</p>'+action+(expanded?conversation(t):"")+itinerary+'</article>';
     }
+    function renderTodayBlog(){
+      app.className="home-view-today-blog";
+      const posts=todayBlogEntries.map(entry=>'<article class="daily-entry"><span class="date-chip">'+escapeHtml(entry.date)+'</span><h2>'+escapeHtml(entry.title)+'</h2>'+entry.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join("")+entry.photos.map(p=>'<figure><img src="'+escapeHtml(p[0])+'" alt="'+escapeHtml(p[1])+'" loading="lazy"><figcaption>'+escapeHtml(p[2])+'</figcaption></figure>').join("")+'</article>').join("")||'<div class="empty"><p><b>目前還沒有網誌紀錄</b></p><p class="small">有照片或今天的小片段時，我會幫你整理到這裡。</p></div>';
+      const content='<section class="today-blog-content"><div class="section-head"><div><h2>今日網誌</h2><p>把照片和家庭片段，獨立收在今日行程之外。</p></div></div>'+posts+'</section>';
+      app.innerHTML=protectBlog(content,true)+footer();
+      document.title="今日網誌｜家庭旅行手帳";
+      document.querySelectorAll(".nav a").forEach(a=>a.classList.toggle("active",a.dataset.view==="today-blog"));
+    }
     function renderHome(view){
+      if(view==="today-blog"){renderTodayBlog();return}
       app.className=view==="all"?"home-view":"home-view-"+view;
       const filtered=trips.map(t=>TravelPrep.withUpdates(t)).filter(t=>view==="all" || (view==="today" && t.start<=todayForTrip(t) && t.end>=todayForTrip(t)) || (view==="upcoming" && t.start>todayForTrip(t)) || (view==="past" && t.end<todayForTrip(t)));
       const labels={today:["今天的行程","今天要走的路，打開就看得到。"],upcoming:["接下來的行程","已規劃、還沒出發的家庭旅行。"],past:["走過的日子","已完成的旅程，和日期已過但還沒回填的規劃。"],all:["全部旅程","今天、以後與已經走過的日子，都在這裡。"]};
@@ -352,7 +366,7 @@
     document.addEventListener("travel-prep:updated",()=>{if(trip)renderTrip(trip);else renderHome(viewFromUrl())});
     window.addEventListener("hashchange",()=>{if(!params.has("t"))renderHome(viewFromUrl())});
   </script>
-  <script src="site-updates.js?v=20261011-blog-pass-1"></script>
+  <script src="site-updates.js?v=20261011-today-blog-1"></script>
 </body>
 </html>
 
