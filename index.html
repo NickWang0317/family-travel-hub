@@ -4,12 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffcf6">
+  <meta name="site-revision" content="20261011-dialogue-1">
   <meta name="description" content="一家人的今日、未來與已完成旅程，放在同一個小小旅行手帳。">
   <title>我們的家庭旅行手帳</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="travel-prep.css">
+  <link rel="stylesheet" href="travel-prep.css?v=20261011-dialogue-1">
   <style>
     :root{--paper:#fffcf6;--ink:#3e3a39;--pink:#f2a497;--yellow:#f6d27a;--blue:#a8d3e6;--green:#b9daa5;--white:#fffefa;--muted:#77716d;--line:3px solid var(--ink);--round:26px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Huninn","Noto Sans TC",system-ui,sans-serif;line-height:1.6}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}
@@ -36,7 +37,7 @@
   </header>
   <main id="app"></main>
   <noscript><main><h1>我們的家庭旅行手帳</h1><p>請開啟 JavaScript 查看今日、未來與已完成旅程。</p></main></noscript>
-  <script src="travel-prep.js"></script>
+  <script src="travel-prep.js?v=20261011-dialogue-1"></script>
   <script>
     const trips = [
       {
@@ -191,7 +192,15 @@
             "https://www.sushiro.com.tw/Shop/ShopInfo?shopId=152"
           ]
         ],
-        "checkedOn": "2026/10/11"
+        "checkedOn": "2026/10/11",
+        "conversation": {
+          "updatedOn": "2026/10/11",
+          "confirmed": "15:00 壽司郎桃園國際路店，吃完回家睡午覺。",
+          "notes": [
+            {"kind":"question","title":"壽司郎已訂位，還是打算現場候位？","body":"目前記下的是預計 15:00 用餐，訂位狀態還沒確認。你在對話裡告訴我，我就更新這裡。"},
+            {"kind":"reminder","title":"回家休息的時間留彈性","body":"若需要候位，就讓回家時間跟著用餐狀況走；吃完後直接回家睡午覺。"}
+          ]
+        }
       },
       {
         id: "FQp6V2", start: "2026-11-11", end: "2026-11-16", state: "planned", label: "規劃中",
@@ -209,8 +218,18 @@
     const dateText = (s,e) => s === e ? s.replaceAll("-",".") : s.replaceAll("-",".") + " – " + e.slice(5).replaceAll("-",".");
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
     const todayForTrip=t=>new Intl.DateTimeFormat("sv-SE",{timeZone:t.timeZone||"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
+    const siteUpdates=[
+      {date:"2026/10/11",text:"建立長期對話筆記，加入待確認問題、助理提醒與開啟頁面的自動更新。"},
+      {date:"2026/10/11",text:"今天改為 15:00 壽司郎桃園國際路店，吃完回家睡午覺；補上導航。"},
+      {date:"2026/10/11",text:"移除安全座椅、水壺／濕紙巾、停車折抵憑證提醒。"}
+    ];
     const tripUrl = id => location.origin + location.pathname + "?t=" + encodeURIComponent(id);
-    function footer(){return '<footer class="footnote">固定一個家庭總站，每趟旅程有自己的分享網址。公開連結不用邀請即可開啟。<br>旅程資訊由我們在對話中一起整理更新；出門清單的勾選只保存在此裝置。</footer>'}
+    function conversation(t){
+      const c=t.conversation;if(!c)return "";
+      const notes=(c.notes||[]).filter(n=>!n.resolved);
+      return '<section class="conversation-board" aria-label="我們的對話筆記"><header><h2>我們的對話筆記</h2><span>整理至 '+escapeHtml(c.updatedOn)+'</span></header><p class="conversation-confirmed"><span>已記下</span>'+escapeHtml(c.confirmed)+'</p><div class="conversation-notes">'+notes.map(n=>'<article class="conversation-note '+(n.kind==="question"?'is-question':'')+'"><span class="conversation-label">'+(n.kind==="question"?'想跟你確認':'想提醒你')+'</span><h3>'+escapeHtml(n.title)+'</h3><p>'+escapeHtml(n.body)+'</p></article>').join('')+'</div><p class="conversation-reply">回覆我就好，我會整理到這裡。</p></section>';
+    }
+    function footer(){return '<footer class="footnote">固定一個家庭總站，每趟旅程有自己的分享網址。公開連結不用邀請即可開啟。<br>旅程資訊由我們在對話中一起整理更新；出門清單的勾選只保存在此裝置。<br><details class="site-history"><summary>最近更新</summary><ul>'+siteUpdates.map(x=>'<li><time>'+escapeHtml(x.date)+'</time>'+escapeHtml(x.text)+'</li>').join('')+'</ul></details><span id="site-update-status" role="status">開著網站時，每分鐘檢查一次新版；發布完成後自動載入。</span></footer>'}
     function restoreChecks(){document.querySelectorAll(".trip-check").forEach(input=>{const key="family-travel-hub:"+input.dataset.check;try{input.checked=localStorage.getItem(key)==="1"}catch{} input.addEventListener("change",()=>{try{localStorage.setItem(key,input.checked?"1":"0")}catch{input.closest("section").querySelector("h3,h2").textContent="此瀏覽器無法保存勾選，離開前請自行記錄。"}})});}
     function card(t,view){
       t=TravelPrep.withUpdates(t);
@@ -230,7 +249,7 @@
       const sources=expanded&&t.sources?'<section class="panel"><h3>店家與官方資訊</h3><ul class="source-list">'+t.sources.map(s=>'<li><a href="'+escapeHtml(s[1])+'" target="_blank" rel="noopener">'+escapeHtml(s[0])+' ↗</a></li>').join("")+'</ul><p class="small">資訊查核：'+escapeHtml(t.checkedOn||"")+'</p></section>':"";
       const action='<div class="card-actions"><a class="button" href="?t='+encodeURIComponent(t.id)+'">打開這趟行程 ↗</a><button class="button alt" type="button" data-copy="'+escapeHtml(t.id)+'">複製行程網址</button></div><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span>';
       const itinerary=expanded?'<section class="today-expanded" aria-label="行程安排"><h3>'+(view==="today"?"今日安排":"目前行程資訊")+'</h3><div class="timeline">'+stops+'</div>'+details+checklist+sources+'</section>':"";
-      return '<article class="trip-card '+(expanded?"trip-card-expanded":"")+'"><div class="card-top"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h3>'+escapeHtml(t.title)+'</h3><p class="small">'+escapeHtml(t.area)+'</p><p>'+escapeHtml(expanded?"":excerpt)+'</p>'+action+itinerary+'</article>';
+      return '<article class="trip-card '+(expanded?"trip-card-expanded":"")+'"><div class="card-top"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h3>'+escapeHtml(t.title)+'</h3><p class="small">'+escapeHtml(t.area)+'</p><p>'+escapeHtml(expanded?"":excerpt)+'</p>'+action+(expanded?conversation(t):"")+itinerary+'</article>';
     }
     function renderHome(view){
       app.className=view==="all"?"home-view":"home-view-"+view;
@@ -238,7 +257,7 @@
       const labels={today:["今天的行程","今天要走的路，打開就看得到。"],upcoming:["接下來的行程","已規劃、還沒出發的家庭旅行。"],past:["走過的日子","已完成的旅程，和日期已過但還沒回填的規劃。"],all:["全部旅程","今天、以後與已經走過的日子，都在這裡。"]};
       const label=labels[view]||labels.today;
       const cards=filtered.length?filtered.map(t=>card(t,view)).join(""):'<div class="empty"><p><b>這個分類目前沒有行程</b></p><p class="small">點左上角手帳標誌或其他日期看看。</p></div>';
-      app.innerHTML=(view==="all"?'<section class="hero"><div class="hero-copy"><div class="eyebrow">FAMILY TRAVEL JOURNAL · 桃園出發</div><h1>把一起走過的路，<br>和下一趟放在同一處。</h1><p>今天、未來和已完成的家庭行程，都用同一個網址整理。每趟旅程另有自己的短連結，方便放進家族行事曆。</p><div class="stat-row"><span class="stat">'+trips.filter(t=>t.state==="done").length+' 趟已完成</span><span class="stat">'+trips.filter(t=>t.state!=="done").length+' 筆行程待走／回填</span></div></div><figure class="hero-photo"><img src="https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d4-kyoto.jpg" alt="京阪之旅留下的京都街景照片" onerror="this.style.display=\'none\'"><figcaption>京阪之旅的風景，也收在這本手帳裡。</figcaption></figure></section><div class="notice"><p><b>給家人的固定入口</b></p><p>分享總站就能看全部行程；放入行事曆時，請複製該趟專屬網址。頁面公開，不需要另外邀請。</p></div>':"")+(view==="upcoming"&&filtered.some(t=>t.id===TravelPrep.tripId)?TravelPrep.board():view==="all"||view==="today"?TravelPrep.summary():"")+'<section><div class="section-head"><div><h2>'+label[0]+'</h2><p>'+label[1]+'</p></div><p>今天 · '+escapeHtml(dayNow.replaceAll("-","/"))+'</p></div><div class="cards">'+cards+'</div></section>'+footer();
+      app.innerHTML=(view==="all"?'<section class="hero"><div class="hero-copy"><div class="eyebrow">FAMILY TRAVEL JOURNAL · 桃園出發</div><h1>把一起走過的路，<br>和下一趟放在同一處。</h1><p>今天、未來和已完成的家庭行程，都用同一個網址整理。每趟旅程另有自己的短連結，方便放進家族行事曆。</p><div class="stat-row"><span class="stat">'+trips.filter(t=>t.state==="done").length+' 趟已完成</span><span class="stat">'+trips.filter(t=>t.state!=="done").length+' 筆行程待走／回填</span></div></div><figure class="hero-photo"><img src="https://raw.githubusercontent.com/NickWang0317/osaka-chill-trip/main/images/d4-kyoto.jpg" alt="京阪之旅留下的京都街景照片" onerror="this.style.display=\'none\'"><figcaption>京阪之旅的風景，也收在這本手帳裡。</figcaption></figure></section><div class="notice"><p><b>給家人的固定入口</b></p><p>分享總站就能看全部行程；放入行事曆時，請複製該趟專屬網址。頁面公開，不需要另外邀請。</p></div>':"")+(view==="upcoming"&&filtered.some(t=>t.id===TravelPrep.tripId)?TravelPrep.board():view==="all"?TravelPrep.summary():"")+'<section><div class="section-head"><div><h2>'+label[0]+'</h2><p>'+label[1]+'</p></div><p>今天 · '+escapeHtml(dayNow.replaceAll("-","/"))+'</p></div><div class="cards">'+cards+'</div></section>'+(view==="today"?TravelPrep.summary():"")+footer();
       restoreChecks();
       document.title="我們的家庭旅行手帳";
       document.querySelectorAll(".nav a").forEach(a=>a.classList.toggle("active",a.dataset.view===view));
@@ -257,7 +276,7 @@
       const blog=t.blog?'<article class="blog-article"><p class="blog-intro">'+escapeHtml(t.blog.intro)+'</p>'+t.blog.sections.map(s=>'<section class="blog-section"><h2>'+escapeHtml(s.title)+'</h2><p>'+escapeHtml(s.text)+'</p>'+(s.photo?'<figure><img src="'+escapeHtml(s.photo[0])+'" alt="'+escapeHtml(s.photo[1])+'" loading="lazy"><figcaption>'+escapeHtml(s.photo[2])+'</figcaption></figure>':'')+'</section>').join('')+'<p class="blog-ending">今天沒有照原定計畫走，卻用一場車窗外的煙火，替 10/10 留下了結尾。</p></article>':'';
       const dailyBlog=(()=>{const days=t.blogDays||[];const requested=Number(params.get("day"));const active=Number.isInteger(requested)&&requested>=1&&requested<=days.length?requested-1:0;const d=days[active];if(!d)return "";const tabs=days.map((x,i)=>'<a class="daily-tab '+(i===active?'active':'')+'" href="?t='+encodeURIComponent(t.id)+'&day='+(i+1)+'"'+(i===active?' aria-current="page"':'')+'>第 '+(i+1)+' 天<br>'+escapeHtml(x.date.slice(5))+'</a>').join("");const paragraphs=d.paragraphs.map(p=>'<p>'+escapeHtml(p)+'</p>').join("");const photo=d.photo?'<figure><img src="'+escapeHtml(d.photo[0])+'" alt="'+escapeHtml(d.photo[1])+'" loading="lazy"><figcaption>'+escapeHtml(d.photo[2])+'</figcaption></figure>':'<div class="photo-missing">📷 這一天目前還沒有照片，網誌先保留文字。</div>';const dayUrl=location.origin+location.pathname+'?t='+encodeURIComponent(t.id)+'&day='+(active+1);return '<section class="daily-blogs"><nav class="daily-nav" aria-label="京阪每日網誌">'+tabs+'</nav><article class="daily-entry"><span class="date-chip">'+escapeHtml(d.date)+'</span><h2>'+escapeHtml(d.title)+'</h2>'+paragraphs+photo+'<div class="day-share"><div><b>分享這一天</b><br><code>'+escapeHtml(dayUrl)+'</code></div><button class="button" type="button" data-copy-url="'+escapeHtml(dayUrl)+'">複製本日網址</button></div><p class="daily-source-note">依已保存的京阪行程紀錄整理；沒有記下的臨時變動不自行補寫。</p></article></section>'})();
       const tripContent=t.blogDays?dailyBlog:t.blog?blog:'<section><div class="section-head"><div><h2>旅程內容</h2><p>行程隨當天狀況彈性調整。</p></div></div><div class="timeline">'+timeline+'</div></section>'+(details?'<div class="guide-grid">'+details+'</div>':'')+checklist+sources+(notes&&!t.sources?'<section class="panel"><h2>出發前記得</h2><ul>'+notes+'</ul></section>':'')+archive;
-      app.innerHTML='<a class="back-link" href="/family-travel-hub/">← 回到首頁</a><section class="detail-hero"><div class="detail-meta"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h1>'+escapeHtml(t.title)+'</h1><p><b>'+escapeHtml(t.area)+'</b></p><p>'+escapeHtml(t.summary)+'</p></section>'+photos+'<div class="calendar-box"><div><b>這趟的分享網址</b><br><code>'+escapeHtml(tripUrl(t.id))+'</code></div><button class="button" type="button" data-copy="'+escapeHtml(t.id)+'">複製網址</button><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span></div>'+extra+(t.id===TravelPrep.tripId?TravelPrep.board():"")+tripContent+footer();
+      app.innerHTML='<a class="back-link" href="/family-travel-hub/">← 回到首頁</a><section class="detail-hero"><div class="detail-meta"><span class="date-chip">'+escapeHtml(dateText(t.start,t.end))+'</span><span class="status '+statusClass+'">'+escapeHtml(t.label)+'</span></div><h1>'+escapeHtml(t.title)+'</h1><p><b>'+escapeHtml(t.area)+'</b></p><p>'+escapeHtml(t.summary)+'</p></section>'+photos+'<div class="calendar-box"><div><b>這趟的分享網址</b><br><code>'+escapeHtml(tripUrl(t.id))+'</code></div><button class="button" type="button" data-copy="'+escapeHtml(t.id)+'">複製網址</button><span class="toast" data-toast="'+escapeHtml(t.id)+'" aria-live="polite"></span></div>'+extra+conversation(t)+(t.id===TravelPrep.tripId?TravelPrep.board():"")+tripContent+footer();
       restoreChecks();
       const activeView=t.start<=todayForTrip(t)&&t.end>=todayForTrip(t)?"today":t.start>todayForTrip(t)?"upcoming":"past";
       document.querySelectorAll(".nav a").forEach(a=>a.classList.toggle("active",a.dataset.view===activeView));
@@ -269,6 +288,7 @@
     document.addEventListener("travel-prep:updated",()=>{if(trip)renderTrip(trip);else renderHome(viewFromUrl())});
     window.addEventListener("hashchange",()=>{if(!params.has("t"))renderHome(viewFromUrl())});
   </script>
+  <script src="site-updates.js?v=20261011-dialogue-1"></script>
 </body>
 </html>
 
