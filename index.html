@@ -190,6 +190,16 @@
         }
       },
       {
+        id: "TY1017A", start: "2026-10-17", end: "2026-10-17", state: "planned", label: "今日進行中",
+        title: "運動會與平鎮朋友家｜週末家庭日", area: "桃園・平鎮",
+        summary: "上午參加學校運動會；下午準備到平鎮朋友家玩。今天先記下確定的兩站，其他細節與照片之後再補。",
+        details: [],
+        stops: [
+          {time:"上午・已參加", title:"學校運動會", desc:"今天早上參加學校運動會。精彩片段與照片可在活動結束後再補進家庭網誌。"},
+          {time:"下午・預計前往", title:"平鎮・朋友家玩", desc:"下午預計前往平鎮朋友家相聚，出發與回程時間尚未確認。公開頁面不顯示朋友姓名或私人住址。", restroom:"出發前先上廁所；抵達後先確認附近方便使用的洗手間。"}
+        ]
+      },
+      {
         id: "FQp6V2", start: "2026-11-11", end: "2026-11-16", state: "planned", label: "規劃中",
         title: "富國島慢慢玩｜6天5夜", area: "越南・富國島",
         // Booking facts and reminders come from travel-prep.js.
@@ -209,6 +219,7 @@
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
     const todayForTrip=t=>new Intl.DateTimeFormat("sv-SE",{timeZone:t.timeZone||"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
     const siteUpdates=[
+      {date:"2026/10/17",text:"新增 10/17 家庭日：上午學校運動會已參加，下午準備去平鎮朋友家玩，等待照片與實際行程回填。"},
       {date:"2026/10/11",text:"補上午睡後的大有梯田公園小旅行：麻麻騎滑板車帶理悠去玩，回家時帶了晚餐和草莓冰淇淋。"},
       {date:"2026/10/11",text:"記下 10/11 壽司郎後的實際行程：理悠跟把拔在車上午睡，麻麻去珍珠貝比買裙子，之後一家人先回家；今天沒有去咖啡廳。"},
       {date:"2026/10/11",text:"補上壽司郎碰拳照片的小故事：麻麻和理悠約好一起努力買銀駒。"},
