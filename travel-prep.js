@@ -7,7 +7,7 @@
   const today=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   // null = booking status not confirmed; false = explicitly not booked.
   const preparation={
-    updatedOn:'2026-10-11',
+    updatedOn:'2026-10-22',
     outbound:{booked:null,airline:'',number:'',date:'2026-11-11',origin:'',destination:'富國島 PQC',departure:'',arrival:'20:20'},
     return:{booked:null,airline:'',number:'',date:'2026-11-16',origin:'富國島 PQC',destination:'',departure:'11:20',arrival:''},
     'first-hotel':{booked:false,name:'',address:'',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:''},
@@ -59,7 +59,7 @@
     const out=preparation.outbound,back=preparation.return;
     const hotel=(id,label)=>{const item=preparation[id],d=definitions.find(x=>x.id===id);return {date:item.checkin,endDate:new Date(Date.parse(item.checkout+'T12:00:00Z')-86400000).toISOString().slice(0,10),time:shortDate(item.checkin)+'–'+shortDate(item.checkout),title:label+'｜'+(item.name||'住宿待安排'),desc:[status(d),item.address,item.checkinTime?'入住 '+item.checkinTime:'可入住時間待補'].filter(Boolean).join(' · '),links:mapLink(item.address)};};
     const transfer=(id,title)=>{const item=preparation[id],d=definitions.find(x=>x.id===id);return {date:item.date,time:shortDate(item.date)+' '+(item.time||'時間待補'),title,desc:[status(d),item.provider||'交通方式待確認',item.meeting?'上車／碰面：'+item.meeting:'碰面地點待補',item.destination?'前往：'+item.destination:'目的地待補'].filter(Boolean).join(' · '),links:mapLink(item.meeting)};};
-    return {...trip,start:out.date,end:back.date,timeZone:'Asia/Ho_Chi_Minh',summary:'兩大一小，慢慢玩富國島。'+pending().length+' 項資訊等我們補齊；已確認的安排會直接列在行程裡。',stops:[{date:out.date,time:shortDate(out.date)+' '+out.arrival,title:'去程・抵達富國島',desc:flight(definitions[0])},transfer('pickup','機場接機・前往住宿'),hotel('first-hotel','前兩晚'),hotel('resort','後三晚'),...(trip.dailyPlans||[]),transfer('dropoff','飯店出發・送機'),{date:back.date,time:shortDate(back.date)+' '+back.departure,title:'回程・離開富國島',desc:flight(definitions[1])}],details:[{title:'我們的旅行節奏',intro:'航班填各機場當地時間，富國島行程與接送使用越南當地時間。',bullets:['以午睡與飯店體驗為優先，不把行程排滿。','景點、用餐與每日活動，等我們下一輪一起安排。']},{title:'下次記得告訴我',intro:'你提供資料後，我會更新網站。',bullets:pending().length?pending().map(d=>d.title+'：'+missing(d).join('、')):['六張準備卡的資料已收好。']}],checklist:['航班與住宿資料','機場接送與碰面地點','孩子的水壺、備用衣物與午睡用品']};
+    return {...trip,start:out.date,end:back.date,timeZone:'Asia/Ho_Chi_Minh',summary:'兩大一小，慢慢玩富國島。'+pending().length+' 項資訊等我們補齊；已確認的安排會直接列在行程裡。',stops:[{date:out.date,time:shortDate(out.date)+' '+out.arrival,title:'去程・抵達富國島',desc:flight(definitions[0])},transfer('pickup','機場接機・前往住宿'),hotel('first-hotel','前兩晚'),hotel('resort','後三晚'),...(trip.dailyPlans||[]),transfer('dropoff','飯店出發・送機'),{date:back.date,time:shortDate(back.date)+' '+back.departure,title:'回程・離開富國島',desc:flight(definitions[1])}],details:[{title:'我們的旅行節奏',intro:'航班填各機場當地時間，富國島行程與接送使用越南當地時間。',bullets:['以午睡與飯店體驗為優先，不把行程排滿。','11/13–15 是建議行程，景點與用餐尚未預訂；依孩子作息與天氣彈性調整。']},{title:'下次記得告訴我',intro:'你提供資料後，我會更新網站。',bullets:pending().length?pending().map(d=>d.title+'：'+missing(d).join('、')):['六張準備卡的資料已收好。']}],checklist:['航班與住宿資料','機場接送與碰面地點','孩子的水壺、備用衣物與午睡用品']};
   }
   document.addEventListener('click',async event=>{
     if(event.target.closest('[data-show-complete]')){showComplete=!showComplete;document.dispatchEvent(new CustomEvent('travel-prep:updated'));return;}
