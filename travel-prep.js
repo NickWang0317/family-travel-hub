@@ -68,5 +68,5 @@
     try{await navigator.clipboard.writeText(text);feedback='清單已複製。貼到我們的對話，再補上你知道的資料就可以。';copyFallback='';const live=document.getElementById('prep-feedback');if(live)live.textContent=feedback;}
     catch{feedback='複製未成功，已展開可手動複製的清單。';copyFallback=text;document.dispatchEvent(new CustomEvent('travel-prep:updated'));document.querySelector('.prep-copy-fallback')?.scrollIntoView({block:'center',behavior:'auto'});}
   });
-  window.TravelPrep={tripId:TRIP,summary,board,withUpdates};
+  window.TravelPrep={tripId:TRIP,summary,board,withUpdates,getPreparation:()=>JSON.parse(JSON.stringify(preparation))};
 })();
