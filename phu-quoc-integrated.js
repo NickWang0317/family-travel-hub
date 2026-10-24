@@ -61,7 +61,7 @@ if(trip && Array.isArray(trip.stops)){
     const confirmed=/已訂|已確認/.test(detail)&&!/待確認/.test(detail);
     const isFlight=/去程|回程|航班|飛機/.test(name);
     const isSuggest=/建議|未訂/.test(name)||/尚未預訂/.test(detail);
-    return {time:String(row.time||'時間待確認').replace(/^11\\/\\d{2}\\s*/,''),tag:isFlight?'航班':isSuggest?'建議':confirmed?'已訂':'行程',color:isFlight?'blue':confirmed?'green':isSuggest?'pink':'green',title:name,desc:detail||'詳細資訊待補',link:row.links?.[0]?.href};
+    return {time:String(row.time||'時間待確認'),tag:isFlight?'航班':isSuggest?'建議':confirmed?'已訂':'行程',color:isFlight?'blue':confirmed?'green':isSuggest?'pink':'green',title:name,desc:detail||'詳細資訊待補',link:row.links?.[0]?.href};
    });
   }
  }
