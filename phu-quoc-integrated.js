@@ -224,14 +224,14 @@ function syncPreparation(){
   if(muted)muted.textContent=[data.checkin?.slice(5).replace('-','/'),data.checkout?.slice(5).replace('-','/'),data.room,data.breakfast,data.payment,data.refund,data.checkinTime?'入住 '+data.checkinTime:'入住時間待確認'].filter(Boolean).join(' · ');
   let map=card.querySelector('.card-content a[href*="google.com/maps"]');
   if(!map&&data.name){
-   const row=root.createElement('p');map=root.createElement('a');row.append(map);card.querySelector('.card-content').append(row);
+   const row=document.createElement('p');map=document.createElement('a');row.append(map);card.querySelector('.card-content').append(row);
    map.target='_blank';map.rel='noopener noreferrer';map.textContent='開啟飯店地圖 ↗';
   }
   if(map&&data.name)map.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(data.name+' Phu Quoc');
  }
  const costs=p.costs;
  if(costs&&!root.querySelector('.trip-cost-summary')){
-  const card=root.createElement('article');card.className='card trip-cost-summary';
+  const card=document.createElement('article');card.className='card trip-cost-summary';
   card.innerHTML='<div class="card-head green"><span>已訂費用｜2 大 1 小</span><span class="pill green">新台幣參考</span></div>'+
    '<div class="card-content"><dl class="trip-cost-lines">'+
     '<div><dt>來回機票</dt><dd>NT$ '+Number(costs.airfareTWD).toLocaleString('en-US')+'</dd></div>'+
