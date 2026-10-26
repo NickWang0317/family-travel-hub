@@ -140,12 +140,13 @@ function photoMarkup(stop){
 function mealOverview(stops){
  const meals=stops.map((item,index)=>({item,index})).filter(({item})=>item.kind==='food');
  if(!meals.length)return '';
+ const breakfastIsIncluded=item=>/含早餐|早餐已包含|包含於房費/.test(item.desc||'')&&!/不含早餐/.test(item.desc||'');
  const mealLabel=item=>{
   const name=item.title+' '+item.time;
   const match=name.match(/早餐|午餐|晚餐|下午茶|點心|宵夜/);
   return match?match[0]:'用餐';
  };
- return '<nav class="day-meal-nav" aria-label="本日美食站點快速導覽"><div class="meal-nav-heading"><strong>今天吃什麼</strong><span>點餐點直達行程 · 不折疊</span></div><div class="meal-nav-items">'+meals.map(({item,index})=>'<a class="meal-nav-item" href="#meal-stop-'+index+'" data-meal-jump="'+index+'"><span>'+escape(mealLabel(item))+'</span><strong>'+escape(item.restaurantName||item.dish||item.title)+'</strong><small>'+(item.restaurantName?'已指定店家':'餐廳待選')+'</small></a>').join('')+'</div></nav>';
+ return '<nav class="day-meal-nav" aria-label="本日美食站點快速導覽"><div class="meal-nav-heading"><strong>今天吃什麼</strong><span>點餐點直達行程 · 不折疊</span></div><div class="meal-nav-items">'+meals.map(({item,index})=>'<a class="meal-nav-item" href="#meal-stop-'+index+'" data-meal-jump="'+index+'"><span>'+escape(mealLabel(item))+'</span><strong>'+escape(item.restaurantName||item.dish||item.title)+'</strong><small>'+(breakfastIsIncluded(item)?'房費含早餐':item.restaurantName?'已指定店家':'餐廳待選')+'</small></a>').join('')+'</div></nav>';
 }
 function segmentBetween(previous,next){
  const from=next.fromPlace||previous.place||'',to=next.place||'';
@@ -164,11 +165,11 @@ function stopMarkup(item,index,dayIndex){
  const direct=(!links.length&&item.place)?'<a href="'+escape(linkFor(item.place))+'" target="_blank" rel="noopener noreferrer">開啟導航 ↗</a>':'';
  const desc=item.desc?'<p>'+escape(item.desc)+'</p>':'';
  const dish=item.dish?'<p class="food-dish"><strong>推薦料理｜'+escape(item.dish)+'</strong></p>':'';
- const breakfastIncluded=food&&/含早餐|早餐已包含|包含於房費/.test(item.desc||'');
- const foodStatus=food?'<div class="food-stop-meta"><span>'+(item.restaurantName?'已指定店家｜'+escape(item.restaurantName):'餐廳尚未指定')+'</span>'+(breakfastIncluded?'<span>房費已含早餐</span>':'')+'</div>':'';
+ const breakfastIncluded=food&&/含早餐|早餐已包含|包含於房費/.test(item.desc||'')&&!/不含早餐/.test(item.desc||'');
+ const foodStatus=food?'<div class="food-stop-meta"><span>'+(breakfastIncluded?'房費含早餐':item.restaurantName?'已指定店家｜'+escape(item.restaurantName):'餐廳尚未指定')+'</span></div>':'';
  const hotel=dayIndex<=1?preparation?.['first-hotel']?.name:preparation?.resort?.name;
  const near=item.place||(/日落小鎮|小鎮/.test(item.title)?'Sunset Town Phu Quoc':hotel||'Phu Quoc');
- const search=food&&!item.restaurantName&&!/行程內|套裝/.test(item.title)?'<a href="'+escape(linkFor('restaurants near '+near))+'" target="_blank" rel="noopener noreferrer">找附近美食 ↗</a>':'';
+ const search=food&&!breakfastIncluded&&!item.restaurantName&&!/行程內|套裝/.test(item.title)?'<a href="'+escape(linkFor('restaurants near '+near))+'" target="_blank" rel="noopener noreferrer">找附近美食 ↗</a>':'';
  const knownRestaurant=food&&item.restaurantName&&!item.place?'<a href="'+escape(linkFor(item.restaurantName+' Phu Quoc'))+'" target="_blank" rel="noopener noreferrer">餐廳地圖 ↗</a>':'';
  const id=food?' id="meal-stop-'+index+'" tabindex="-1"':'';
  return '<div class="stop'+(food?' stop-food':'')+'"'+id+'><div class="hour">'+escape(item.time)+'</div><div class="circle"></div><div class="detail"><article class="boxed"><div class="stop-head"><span class="pill '+escape(item.color)+'">'+escape(item.tag)+'</span>'+(food?'<span class="food-stop-tag">今天吃什麼</span>':'')+'</div><h4>'+escape(item.title)+'</h4>'+dish+image+foodStatus+desc+((actions||direct||knownRestaurant||search)?'<div class="stop-links">'+actions+direct+knownRestaurant+search+'</div>':'')+'</article></div></div>';
