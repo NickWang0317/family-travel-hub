@@ -7,10 +7,10 @@
   const today=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   // null = booking status not confirmed; false = explicitly not booked.
   const preparation={
-    updatedOn:'2026-10-26',
+    updatedOn:'2026-10-27',
     outbound:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G511',date:'2026-11-11',origin:'桃園機場 TPE（第一航廈）',destination:'富國島機場 PQC',departure:'17:25',arrival:'20:20'},
     return:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G510',date:'2026-11-16',origin:'富國島機場 PQC',destination:'桃園機場 TPE（第一航廈）',departure:'11:20',arrival:'16:00'},
-    'first-hotel':{booked:true,name:'ROSIE SUNSET HOTEL',address:'',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'',room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金',costTWD:5496},
+    'first-hotel':{booked:true,name:'ROSIE SUNSET HOTEL',address:'',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'',lateArrivalNoticeConfirmed:null,room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金',costTWD:5496},
     resort:{booked:true,name:'WorldHotels Long Beach Resort Phu Quoc',address:'152 Tran Hung Dao Street, Cua Lap Quarter, Duong To, Phu Quoc',checkin:'2026-11-13',checkout:'2026-11-16',checkinTime:'14:00 起',room:'私人花園景豪華雙床房',breakfast:'含早餐',refund:'不可退款',costTWD:21258},
     'island-tour':{booked:null,provider:'KKday',product:'快艇三島一日遊',date:'2026-11-12',meetingTime:'',meetingPoint:'',childJacket:'',returnTime:'約 15:00 回到碼頭（行程規劃）'},
     pickup:{booked:null,provider:'',date:'2026-11-11',time:'',meeting:'',destination:'ROSIE SUNSET HOTEL'},
