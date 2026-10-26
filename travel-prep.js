@@ -66,14 +66,16 @@
       const item=preparation[id],d=definitions.find(x=>x.id===id);
       return {date:item.checkin,endDate:new Date(Date.parse(item.checkout+'T12:00:00Z')-86400000).toISOString().slice(0,10),
         order,time:item.checkinTime||'晚上',title:label+'｜'+(item.name||'住宿待安排'),
-        desc:[item.booked===true?'已訂房':status(d),item.room,item.breakfast,item.payment,item.refund,item.checkinTime?'入住 '+item.checkinTime:'入住時間待確認'].filter(Boolean).join(' · '),
+        desc:[item.booked===true?'已訂房':status(d),item.room,item.breakfast,item.payment,item.refund,item.checkinTime?'入住 '+item.checkinTime:'入住時間待確認',id==='first-hotel'?'晚到入住後休息':''].filter(Boolean).join(' · '),
         place:item.name||'',links:mapLink(item.name||item.address)};
     };
     const transfer=(id,title,order)=>{
       const item=preparation[id],d=definitions.find(x=>x.id===id);
-      return {date:item.date,order,time:item.time||'時間待確認',title,
+      const fromPlace=id==='pickup'?'Phu Quoc International Airport':id==='hotel-transfer'?preparation['first-hotel'].name:id==='dropoff'?preparation.resort.name:'';
+      const toPlace=id==='dropoff'?'Phu Quoc International Airport':item.destination||'';
+      return {date:item.date,order,time:item.time||'時間待確認',title,kind:'transfer',travelMode:'driving',
         desc:[status(d),item.provider||'交通方式待確認',item.meeting?'出發／集合：'+item.meeting:'集合地點待確認',item.destination?'前往：'+item.destination:'目的地待確認',item.arrivalGoal].filter(Boolean).join(' · '),
-        place:item.destination||'',links:mapLink(item.destination)};
+        fromPlace,place:toPlace,links:mapLink(toPlace)};
     };
     const stops=[
       ...(trip.dailyPlans||[]),
