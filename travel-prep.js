@@ -7,21 +7,26 @@
   const today=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   // null = booking status not confirmed; false = explicitly not booked.
   const preparation={
-    updatedOn:'2026-10-22',
-    outbound:{booked:null,airline:'',number:'',date:'2026-11-11',origin:'',destination:'富國島 PQC',departure:'',arrival:'20:20'},
-    return:{booked:null,airline:'',number:'',date:'2026-11-16',origin:'富國島 PQC',destination:'',departure:'11:20',arrival:''},
-    'first-hotel':{booked:false,name:'',address:'',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:''},
-    resort:{booked:true,name:'WorldHotels Long Beach Resort Phu Quoc',address:'152 Tran Hung Dao Street, Cua Lap Quarter, Duong To, Phu Quoc',checkin:'2026-11-13',checkout:'2026-11-16',checkinTime:''},
-    pickup:{booked:null,provider:'',date:'2026-11-11',time:'',meeting:'',destination:''},
-    dropoff:{booked:null,provider:'',date:'2026-11-16',time:'',meeting:'',destination:'富國島機場 PQC'}
+    updatedOn:'2026-10-26',
+    outbound:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G511',date:'2026-11-11',origin:'桃園機場 TPE（第一航廈）',destination:'富國島機場 PQC',departure:'17:25',arrival:'20:20'},
+    return:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G510',date:'2026-11-16',origin:'富國島機場 PQC',destination:'桃園機場 TPE（第一航廈）',departure:'11:20',arrival:'16:00'},
+    'first-hotel':{booked:true,name:'ROSIE SUNSET HOTEL',address:'',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'',room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金',costTWD:5496},
+    resort:{booked:true,name:'WorldHotels Long Beach Resort Phu Quoc',address:'152 Tran Hung Dao Street, Cua Lap Quarter, Duong To, Phu Quoc',checkin:'2026-11-13',checkout:'2026-11-16',checkinTime:'14:00 起',room:'私人花園景豪華雙床房',breakfast:'含早餐',refund:'不可退款',costTWD:21258},
+    'island-tour':{booked:null,provider:'KKday',product:'快艇三島一日遊',date:'2026-11-12',meetingTime:'',meetingPoint:'',childJacket:'',returnTime:'約 15:00 回到碼頭（行程規劃）'},
+    pickup:{booked:null,provider:'',date:'2026-11-11',time:'',meeting:'',destination:'ROSIE SUNSET HOTEL'},
+    'hotel-transfer':{booked:null,provider:'',date:'2026-11-13',time:'',meeting:'ROSIE SUNSET HOTEL',destination:'WorldHotels Long Beach Resort Phu Quoc'},
+    dropoff:{booked:null,provider:'',date:'2026-11-16',time:'',meeting:'WorldHotels Long Beach Resort Phu Quoc',destination:'富國島機場 PQC',arrivalGoal:'08:20 抵達機場（目標）'},
+    costs:{airfareTWD:18000,firstHotelTWD:5496,resortTWD:21258,totalTWD:44754,note:'機票與住宿參考合計；未含跳島、接送、餐飲及購物。住宿以越南盾及實際匯率結算。'}
   };
   const definitions=[
-    {id:'outbound',group:'飛行',icon:'↗',title:'去程機票',bookingLabel:'是否已訂票',hint:'目前知道抵達時間。訂好後，把航班資訊告訴我。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
-    {id:'return',group:'飛行',icon:'↙',title:'回程機票',bookingLabel:'是否已訂票',hint:'回程時間已記下，訂票與完整航班資料還等你確認。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
-    {id:'first-hotel',group:'落腳',icon:'01',title:'前兩晚，住哪裡？',bookingLabel:'是否已訂房',hint:'先找到抵達後的落腳處，再把飯店資訊交給我整理。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住時間']]},
-    {id:'resort',group:'落腳',icon:'02',title:'後三晚，飯店已訂',bookingLabel:'是否已訂房',hint:'已經有落腳處。再補入住時間，當天就能直接跟著走。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住時間']]},
-    {id:'pickup',group:'接送',icon:'→',title:'落地後，怎麼到飯店？',bookingLabel:'接機是否已確認',hint:'晚間抵達，把接機方式與碰面資訊告訴我。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','碰面時間'],['meeting','碰面地點'],['destination','目的地']]},
-    {id:'dropoff',group:'接送',icon:'←',title:'回程，怎麼到機場？',bookingLabel:'送機是否已確認',hint:'依回程航班確認送機，把飯店出發時間留在行程裡。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]}
+    {id:'outbound',group:'飛行',icon:'↗',title:'去程機票',bookingLabel:'是否已訂票',hint:'9G511｜11/11 桃園 17:25 → 富國島 20:20（兩地當地時間）。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
+    {id:'return',group:'飛行',icon:'↙',title:'回程機票',bookingLabel:'是否已訂票',hint:'9G510｜11/16 富國島 11:20 → 桃園 16:00（兩地當地時間）。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
+    {id:'first-hotel',group:'住宿',icon:'01',title:'ROSIE｜晚到入住與資訊',bookingLabel:'是否已訂房',hint:'已訂兩晚；請提前告知航班 20:20 抵達，並確認晚到入住、飯店地址與現金付款。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住與晚到方式']]},
+    {id:'resort',group:'住宿',icon:'02',title:'WorldHotels｜11/13–11/16',bookingLabel:'是否已訂房',hint:'已訂三晚，14:00 起可入住；午餐後轉飯店讓孩子午睡。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住時間']]},
+    {id:'island-tour',group:'活動',icon:'03',title:'11/12 KKday 快艇三島',bookingLabel:'是否已訂購',hint:'尚未確認訂購；確認集合時間、地點、3 歲半兒童參加條件與合身救生衣。',fields:[['provider','活動平台'],['product','行程名稱'],['date','活動日期'],['meetingTime','集合時間'],['meetingPoint','集合地點'],['childJacket','兒童救生衣尺寸／適用條件']]},
+    {id:'pickup',group:'交通',icon:'→',title:'11/11 機場 → ROSIE',bookingLabel:'接機是否已確認',hint:'晚間抵達，確認接機方式、集合點與延誤聯絡方式。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','碰面時間'],['meeting','碰面地點'],['destination','目的地']]},
+    {id:'hotel-transfer',group:'交通',icon:'↔',title:'11/13 ROSIE → WorldHotels',bookingLabel:'飯店間交通是否已安排',hint:'建議午餐後取行李並出發，14:00 起可入住後優先安排午覺。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','移動時間'],['meeting','出發地點'],['destination','目的地']]},
+    {id:'dropoff',group:'交通',icon:'←',title:'11/16 WorldHotels → 機場',bookingLabel:'送機是否已確認',hint:'以當地時間 08:20 抵達 PQC 為目標，實際飯店出發時間依交通確認。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]}
   ];
   let showComplete=false,feedback='',copyFallback='';
   const missing=d=>[...(preparation[d.id].booked===true?[]:[d.bookingLabel]),...d.fields.filter(([key])=>!preparation[d.id][key]).map(([,label])=>label)];
@@ -57,9 +62,41 @@
   function withUpdates(trip) {
     if(trip.id!==TRIP)return {...trip,label:trip.label==='今天'&&trip.start!==today()?'待回填':trip.label};
     const out=preparation.outbound,back=preparation.return;
-    const hotel=(id,label)=>{const item=preparation[id],d=definitions.find(x=>x.id===id);return {date:item.checkin,endDate:new Date(Date.parse(item.checkout+'T12:00:00Z')-86400000).toISOString().slice(0,10),time:shortDate(item.checkin)+'–'+shortDate(item.checkout),title:label+'｜'+(item.name||'住宿待安排'),desc:[status(d),item.address,item.checkinTime?'入住 '+item.checkinTime:'可入住時間待補'].filter(Boolean).join(' · '),links:mapLink(item.address)};};
-    const transfer=(id,title)=>{const item=preparation[id],d=definitions.find(x=>x.id===id);return {date:item.date,time:shortDate(item.date)+' '+(item.time||'時間待補'),title,desc:[status(d),item.provider||'交通方式待確認',item.meeting?'上車／碰面：'+item.meeting:'碰面地點待補',item.destination?'前往：'+item.destination:'目的地待補'].filter(Boolean).join(' · '),links:mapLink(item.meeting)};};
-    return {...trip,start:out.date,end:back.date,timeZone:'Asia/Ho_Chi_Minh',summary:'兩大一小，慢慢玩富國島。'+pending().length+' 項資訊等我們補齊；已確認的安排會直接列在行程裡。',stops:[{date:out.date,time:shortDate(out.date)+' '+out.arrival,title:'去程・抵達富國島',desc:flight(definitions[0])},transfer('pickup','機場接機・前往住宿'),hotel('first-hotel','前兩晚'),hotel('resort','後三晚'),...(trip.dailyPlans||[]),transfer('dropoff','飯店出發・送機'),{date:back.date,time:shortDate(back.date)+' '+back.departure,title:'回程・離開富國島',desc:flight(definitions[1])}],details:[{title:'我們的旅行節奏',intro:'航班填各機場當地時間，富國島行程與接送使用越南當地時間。',bullets:['以午睡與飯店體驗為優先，不把行程排滿。','11/13–15 是建議行程，景點與用餐尚未預訂；依孩子作息與天氣彈性調整。']},{title:'下次記得告訴我',intro:'你提供資料後，我會更新網站。',bullets:pending().length?pending().map(d=>d.title+'：'+missing(d).join('、')):['六張準備卡的資料已收好。']}],checklist:['航班與住宿資料','機場接送與碰面地點','孩子的水壺、備用衣物與午睡用品']};
+    const hotel=(id,label,order)=>{
+      const item=preparation[id],d=definitions.find(x=>x.id===id);
+      return {date:item.checkin,endDate:new Date(Date.parse(item.checkout+'T12:00:00Z')-86400000).toISOString().slice(0,10),
+        order,time:item.checkinTime||'晚上',title:label+'｜'+(item.name||'住宿待安排'),
+        desc:[item.booked===true?'已訂房':status(d),item.room,item.breakfast,item.payment,item.refund,item.checkinTime?'入住 '+item.checkinTime:'入住時間待確認'].filter(Boolean).join(' · '),
+        place:item.name||'',links:mapLink(item.name||item.address)};
+    };
+    const transfer=(id,title,order)=>{
+      const item=preparation[id],d=definitions.find(x=>x.id===id);
+      return {date:item.date,order,time:item.time||'時間待確認',title,
+        desc:[status(d),item.provider||'交通方式待確認',item.meeting?'出發／集合：'+item.meeting:'集合地點待確認',item.destination?'前往：'+item.destination:'目的地待確認',item.arrivalGoal].filter(Boolean).join(' · '),
+        place:item.destination||'',links:mapLink(item.destination)};
+    };
+    const stops=[
+      ...(trip.dailyPlans||[]),
+      {date:out.date,order:60,time:out.arrival,title:'抵達富國島｜9G511',kind:'flight',
+        desc:flight(definitions[0]),place:'Phu Quoc International Airport'},
+      transfer('pickup','機場接機｜前往 ROSIE',70),
+      hotel('first-hotel','入住前兩晚飯店',80),
+      transfer('hotel-transfer','取行李後前往 WorldHotels',45),
+      hotel('resort','入住後三晚渡假村',55),
+      transfer('dropoff','飯店出發｜前往機場',30),
+      {date:back.date,order:50,time:back.departure,title:'9G510｜從富國島起飛',kind:'flight',
+        desc:flight(definitions[1]),place:'Phu Quoc International Airport'}
+    ].sort((a,b)=>a.date===b.date?(Number(a.order||50)-Number(b.order||50)):String(a.date).localeCompare(String(b.date)));
+    const tasks=pending();
+    return {...trip,start:out.date,end:back.date,timeZone:'Asia/Ho_Chi_Minh',
+      summary:'兩大一小，11/11–11/16 富國島 6 天 5 夜。機票及兩間飯店已訂，11/12 跳島與三段交通仍待確認；玩樂、午覺與飯店休息優先。',
+      stops,
+      details:[
+        {title:'旅行節奏與時區',intro:'航班時間依出發及抵達機場當地時間；越南比台灣慢 1 小時。',bullets:['11/12 快艇三島列入規劃，尚未確認訂購與兒童安全裝備。','11/13 午餐後轉 WorldHotels；14:00 起入住，優先讓孩子午睡。','11/14 夜市與 11/15 晚間活動視體力和天氣彈性調整。']},
+        {title:'已訂花費（新台幣參考）',intro:'合計約 NT$44,754；未含跳島、接送、餐飲、購物。',bullets:['9G511／9G510 來回機票（2 大 1 小）約 NT$18,000。','ROSIE 2 晚約 NT$5,496；不含早餐、僅收現金。','WorldHotels 3 晚約 NT$21,258；含早餐、不可退款。','住宿金額為換算參考，以越南盾結算及實際匯率為準。']},
+        {title:'行前仍需確認',intro:'已確認的機票及住宿不再列為未訂。',bullets:tasks.length?tasks.map(d=>d.title+'：'+missing(d).join('、')):['已列出的八項確認卡都已完成。']}
+      ],
+      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品']};
   }
   document.addEventListener('click',async event=>{
     if(event.target.closest('[data-show-complete]')){showComplete=!showComplete;document.dispatchEvent(new CustomEvent('travel-prep:updated'));return;}
