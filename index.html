@@ -359,22 +359,48 @@ html{scroll-snap-type:y proximity;scroll-padding-top:76px;overscroll-behavior-y:
         title: "富國島慢慢玩｜6天5夜", area: "越南・富國島",
         // Booking facts and reminders come from travel-prep.js.
         dailyPlans: [
-          {date:"2026-11-13",time:"11/13 下午",title:"建議｜換飯店後慢慢玩",desc:"前兩晚住宿退房後前往 WorldHotels；房間可用時再入住。下午留給午睡、泳池和飯店海灘，傍晚在飯店看夕陽，晚餐就近吃。實際入住時間仍以訂單或飯店確認為準。"},
-          {date:"2026-11-14",time:"11/14 上午",title:"建議｜飯店泳池與海邊",desc:"早餐後在飯店玩水、散步；中午回房休息，不安排跨島移動。"},
-          {date:"2026-11-14",time:"11/14 午後",title:"建議｜回房午睡",desc:"把午睡時間留完整；醒來再決定是否出門。"},
-          {date:"2026-11-14",time:"11/14 傍晚",title:"建議｜丁丘廟、陽東夜市",desc:"傍晚到陽東看海邊景色，若孩子有精神再逛夜市、提早吃晚餐。丁丘廟入口有石階，推車可只在周邊散步；太累就直接回飯店。未訂交通或餐廳。",links:[{label:"丁丘廟地圖",href:"https://www.google.com/maps/search/?api=1&query=Dinh+Cau+Phu+Quoc"},{label:"陽東夜市地圖",href:"https://www.google.com/maps/search/?api=1&query=Phu+Quoc+Night+Market"}]},
-          {date:"2026-11-15",time:"11/15 上午",title:"建議｜星沙灘半日",desc:"早上前往星沙灘（Sao Beach）玩沙、看海，中午就近用餐後返回飯店。依當天海況決定是否下水；交通與午餐尚未預訂。",links:[{label:"星沙灘地圖",href:"https://www.google.com/maps/search/?api=1&query=Sao+Beach+Phu+Quoc"}]},
-          {date:"2026-11-15",time:"11/15 午後",title:"建議｜午睡、飯店與最後一晚",desc:"回飯店午睡，傍晚在泳池或海灘放鬆，晚餐留在飯店周邊；若下雨，就以飯店休息為主。"}
+          {"date":"2026-11-11","order":10,"time":"上午","title":"整理行李｜前往桃園機場","desc":"旅行第一天也是結婚紀念日。以機場報到與孩子休息為主；前往機場交通自行確認。","status":"行程"},
+          {"date":"2026-11-11","order":20,"time":"17:25（台灣）","title":"9G511｜桃園機場起飛","kind":"flight","desc":"太陽富國航空已訂；台灣當地時間 17:25 桃園出發。預定於富國島當地時間 20:20 抵達。","place":"Taiwan Taoyuan International Airport"},
+          {"date":"2026-11-11","order":90,"time":"晚上","title":"ROSIE 晚到入住後休息","desc":"已訂海景豪華三人房，11/11–11/13 共兩晚，不含早餐，僅收現金。需先告知航班 20:20 抵達並確認晚到入住。","place":"ROSIE SUNSET HOTEL","links":[{"label":"飯店地圖","href":"https://www.google.com/maps/search/?api=1&query=ROSIE%20SUNSET%20HOTEL%20Phu%20Quoc"}]},
+          {"date":"2026-11-12","order":10,"time":"早餐後","title":"早餐｜前往 KKday 集合點","kind":"food","desc":"ROSIE 不含早餐；先安排早餐，再依業者回覆的集合時間與地點出發。"},
+          {"date":"2026-11-12","order":20,"time":"上午","title":"KKday 快艇三島一日遊","status":"尚未確認訂購","desc":"列入旅遊計畫，尚未確認訂購。集合時間、地點、3 歲半孩子是否適合參加及合身救生衣均須向業者確認；現場依海況與孩子狀況調整。"},
+          {"date":"2026-11-12","order":30,"time":"午間","title":"跳島行程內午餐","kind":"food","desc":"預計使用套裝行程內安排的餐廳；菜色、實際地點與午餐內容仍待向業者確認。"},
+          {"date":"2026-11-12","order":40,"time":"午後","title":"海島、沙灘活動","desc":"依已購行程及當天海況、孩子狀況進行；不排額外景點。"},
+          {"date":"2026-11-12","order":50,"time":"約 15:00","title":"回到碼頭｜返回 ROSIE","desc":"約 15:00 返回碼頭為目前規劃，實際依 KKday 出團資訊確認；回飯店休息，勿把接下來行程排太滿。"},
+          {"date":"2026-11-12","order":60,"time":"下午","title":"飯店午睡與休息","desc":"回飯店後優先安排孩子休息。"},
+          {"date":"2026-11-12","order":70,"time":"傍晚・可選","title":"日落小鎮散步","desc":"視孩子精神安排，不趕路；煙火是否有演出、時間和觀賞方式均依當日公告。","place":"Sunset Town Phu Quoc","links":[{"label":"日落小鎮地圖","href":"https://www.google.com/maps/search/?api=1&query=Sunset%20Town%20Phu%20Quoc"}]},
+          {"date":"2026-11-12","order":80,"time":"晚上・可選","title":"VUI-Fest 夜市｜找晚餐","kind":"food","desc":"若孩子體力許可，逛 VUI-Fest 夜市、找想吃的餐點；未指定餐廳，沒有訂位。","place":"VUI-Fest Bazaar Phu Quoc","links":[{"label":"夜市地圖","href":"https://www.google.com/maps/search/?api=1&query=VUI-Fest%20Bazaar%20Phu%20Quoc"}]},
+          {"date":"2026-11-13","order":10,"time":"上午","title":"早餐、ROSIE 退房及寄放行李","desc":"ROSIE 不含早餐；退房時間與寄放行李規則先向飯店確認。"},
+          {"date":"2026-11-13","order":20,"time":"上午","title":"日落小鎮散步、拍照","desc":"輕鬆走走，不安排長途移動。","place":"Sunset Town Phu Quoc","links":[{"label":"小鎮地圖","href":"https://www.google.com/maps/search/?api=1&query=Sunset%20Town%20Phu%20Quoc"}]},
+          {"date":"2026-11-13","order":30,"time":"中午","title":"小鎮午餐｜再去取行李","kind":"food","desc":"在日落小鎮附近找午餐；店家尚未選定。吃完回 ROSIE 取行李。"},
+          {"date":"2026-11-13","order":40,"time":"午餐後","title":"回 ROSIE 取行李｜準備換飯店","desc":"完成取行李後前往 WorldHotels；兩間飯店間交通尚未安排。"},
+          {"date":"2026-11-13","order":60,"time":"入住後","title":"優先午睡｜留在飯店","desc":"WorldHotels 14:00 起可入住；午睡約 1.5 小時，若入住手續耽擱則彈性調整。"},
+          {"date":"2026-11-13","order":70,"time":"晚上","title":"飯店或附近吃晚餐","kind":"food","desc":"視孩子精神就近用餐，餐廳與訂位尚未確認。"},
+          {"date":"2026-11-14","order":10,"time":"早餐","title":"WorldHotels 飯店早餐","kind":"food","desc":"已訂房型含早餐；早餐供應時段以飯店現場資訊為準。"},
+          {"date":"2026-11-14","order":20,"time":"上午","title":"泳池、沙灘或 Gemy Kids Zone","desc":"依天氣與孩子喜好在飯店內活動；兒童遊戲區開放條件以飯店公告為準。","place":"WorldHotels Long Beach Resort Phu Quoc","links":[{"label":"Gemy Kids Zone 官方資訊","href":"https://worldhotelslongbeach.com/service/gemy-kids-zone/"}]},
+          {"date":"2026-11-14","order":30,"time":"中午","title":"飯店或附近午餐","kind":"food","desc":"餐廳待選，優先避免往返太遠。"},
+          {"date":"2026-11-14","order":40,"time":"午後","title":"回房午睡約 1.5 小時","desc":"保留安靜、完整的休息時間。"},
+          {"date":"2026-11-14","order":50,"time":"下午","title":"睡醒繼續飯店玩樂","desc":"泳池、沙灘或休息，自由安排。"},
+          {"date":"2026-11-14","order":70,"time":"傍晚／晚上","title":"陽東夜市｜逛街吃晚餐","kind":"food","desc":"看孩子體力決定是否前往，夜市用餐不指定店家；太累就留在飯店吃。","place":"Phu Quoc Night Market","links":[{"label":"陽東夜市地圖","href":"https://www.google.com/maps/search/?api=1&query=Phu%20Quoc%20Night%20Market"}]},
+          {"date":"2026-11-15","order":10,"time":"早餐","title":"WorldHotels 飯店早餐","kind":"food","desc":"已訂房型含早餐。"},
+          {"date":"2026-11-15","order":20,"time":"上午","title":"渡假村一整天｜泳池與沙灘","desc":"依孩子喜好玩水、散步，亦可使用適合年齡的兒童遊戲區；不安排跨島遠行。","place":"WorldHotels Long Beach Resort Phu Quoc"},
+          {"date":"2026-11-15","order":30,"time":"中午","title":"飯店或附近午餐","kind":"food","desc":"彈性用餐，餐廳尚未選定。"},
+          {"date":"2026-11-15","order":40,"time":"午後","title":"回房午睡約 1.5 小時","desc":"午睡後繼續在飯店放慢步調。"},
+          {"date":"2026-11-15","order":50,"time":"下午","title":"自由玩耍｜飯店設施","desc":"泳池、海邊、兒童遊戲區或安靜休息。"},
+          {"date":"2026-11-15","order":60,"time":"晚上","title":"飯店或附近吃晚餐","kind":"food","desc":"可視情況參加適合小朋友的晚間活動；安排前核對現場時間。"},
+          {"date":"2026-11-15","order":70,"time":"睡前","title":"整理行李，隔日輕鬆返程","desc":"確認送機聯絡方式與行李；隔日以 08:20 抵達機場為目標。"},
+          {"date":"2026-11-16","order":10,"time":"早餐後","title":"飯店早餐、退房","kind":"food","desc":"早餐包含於房費，退房與集合時間需配合送機安排。"},
+          {"date":"2026-11-16","order":40,"time":"08:20（目標）","title":"抵達富國島機場 PQC","desc":"以當地時間 08:20 抵達機場為目標。車程與飯店出發時間待接送安排確定後再填。","place":"Phu Quoc International Airport"},
+          {"date":"2026-11-16","order":60,"time":"16:00（台灣）","title":"抵達桃園機場第一航廈","kind":"flight","desc":"太陽富國航空 9G510，預計台灣當地時間 16:00 抵達 TPE 第一航廈，之後返家。","place":"Taiwan Taoyuan International Airport"}
         ],
         sources:[
-          ["飯店設施與位置","https://worldhotelslongbeach.com/"],
-          ["飯店入住政策","https://worldhotelslongbeach.com/policy/"],
-          ["丁丘廟資訊","https://dulich.phuquoc.gov.vn/en/cultural/"],
-          ["陽東夜市資訊","https://dulich.phuquoc.gov.vn/vi/chodempq"],
-          ["星沙灘資訊","https://vietnamtourism.gov.vn/en/printer/17811?type=1"]
+          ["WorldHotels 官方網站","https://worldhotelslongbeach.com/"],
+          ["WorldHotels 入住政策","https://worldhotelslongbeach.com/policy/"],
+          ["Gemy Kids Zone 官方介紹","https://worldhotelslongbeach.com/service/gemy-kids-zone/"]
         ],
-        checkedOn:"2026/10/22",
-        notes:["旅程以午睡與飯店體驗為優先，景點不排太滿。"]
+        checkedOn:"2026/10/26",
+        notes:["使用 11/11–11/16 最新行程；機票與兩間飯店已訂。","11/12 KKday 快艇三島尚未確認訂購，交通接駁與集合細節待確認。","所有航班依起飛與抵達機場當地時間，富國島比台灣慢一小時。"]
+
       },
     ];
     const app = document.getElementById("app");
@@ -389,6 +415,7 @@ html{scroll-snap-type:y proximity;scroll-padding-top:76px;overscroll-behavior-y:
     const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
     const todayForTrip=t=>new Intl.DateTimeFormat("sv-SE",{timeZone:t.timeZone||"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
     const siteUpdates=[
+      {date:"2026/10/26",text:"富國島 11/11–11/16 正式六天行程依最新提供資訊更新：9G511／9G510、ROSIE 兩晚、WorldHotels 三晚、KKday 跳島待訂與三段接送待確認；保留全展開逐日時間軸。"},
       {date:"2026/10/26",text:"富國島正式行程採京阪式全展開時間軸；每日顯示美食安排狀態、景點照片來源、站點間交通待確認及導航；依越南日期自動選日。"},
       {date:"2026/10/26",text:"完成照片來源與授權核對：牛肉麵、豆花、壽司、虎頭山與桃園藝文廣場都保留原作者與圖源；破圖不影響行程。"},
       {date:"2026/10/26",text:"今日美食照片改用已查證的 Wikimedia 料理照片與授權來源，增加手機大圖、示意照片標籤與載入失敗提示；正式店家仍須核對實拍。"},
