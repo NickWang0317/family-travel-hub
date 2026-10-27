@@ -14,8 +14,8 @@
 - 待補資訊清楚標示。不得自行把已知航班時間視為已訂票，或補入未確認的安排。
 - 富國島準備資料以 `travel-prep.js` 的 `preparation` 為準，行程、已訂航班與住宿資訊卡、行前待辦從同一份資料產生。待辦完成後依已確認欄位移出，不另外在瀏覽器儲存訂購狀態；ROSIE 晚到入住通知以 `first-hotel.lateArrivalNoticeConfirmed` 追蹤，只有使用者明確確認已通知飯店後才可改成 `true`（`null` 代表尚未確認），不得用本機勾選冒充已訂購或已安排。
 - 行前兌換越南盾與 Viettel eSIM 的可查證來源存於 `travel-prep.js` 的 `cash.sources`、`mobileData.sources`，會直接在待辦卡片與準備頁呈現；價格、匯率與庫存皆不可寫成已確定，機場晚抵達要預留首晚住宿現金。
-- 富國島換匯計畫：`preparation.cash.plannedUSD`＝700 美元，`airportExchangeUSD`＝桃園機場換其中 100 美元等值越南盾，`phuQuocReserveUSD`＝剩餘 600 美元帶到富國島視情況兌換。不能把 US$100 與 US$600 重複加到 US$700 上，也不能推定已換匯；機場是否直接接受美元換盾仍需確認。
-- ROSIE 兩晚房費獨立預留：`preparation.rosieReserve.reserveUSD`＝US$200，與上述旅費 US$700 分開，總美元現金預算 US$900（參考房費 NT$5,496，原現金預留約 NT$6,000）；入住前仍必須準備足夠越南盾，不能將美元預備金誤當可直接支付給飯店。其 `ready` 為 `false`，表示尚未備妥。`preparation['first-hotel'].paymentSettled`＝`null` 表示是否已支付房費仍待原始訂單／付款收據證明，不可將「僅收現金」誤認成「未付款」。確認房費已付後可移除額外備現提醒，不得修改原訂房紀錄。
+- 富國島最新換匯計畫：旅費 `preparation.cash.plannedUSD`＝US$700，其中 `airportTravelUSD`＝US$100、`phuQuocReserveUSD`＝US$600；另有 ROSIE 住宿 `rosieReserve.reserveUSD`＝US$200。因此總預算 US$900＝桃園機場兌換 `airportExchangeUSD`＝US$300 等值越南盾（100 旅費＋200 住宿）＋當地視情況兌換 US$600。不得把 ROSIE US$200 重複加到桃園機場 US$300 之外，也不得推定任何換匯已執行。機場是否直接接受美元換盾仍需確認。
+- ROSIE 兩晚住宿參考房費 NT$5,496，獨立配置 US$200 在機場換盾的 US$300 內；入住前仍必須準備足夠越南盾，不可將美元預備金誤當可直接支付給飯店。`rosieReserve.ready` 為 `false`，表示尚未備妥。`preparation['first-hotel'].paymentSettled`＝`null` 表示是否已支付房費仍待原始訂單／付款收據證明，不可將「僅收現金」誤認成「未付款」。確認房費已付後可移除額外備現提醒，不得修改原訂房紀錄。
 - 行前「換越南盾」與「買越南網卡／eSIM」記在 `preparation.cash.ready`、`preparation.mobileData.ready`；`false` 表示使用者尚未完成、`null` 表示未確認狀態，只有使用者告知完成才改為 `true`。細節或金額不明時保留待確認，手帳本機準備清單的勾選不等同正式完成狀態。
 - 今日行程直接展開。接下來的「旅行列表」以已訂／待確認與每日概要快速掌握資訊，不重複列出整趟所有站點；點入「完整行程」後，每天先顯示「重點／吃什麼／休息」三個簡短重點，再直接展開全部站點，不使用折疊或 Scroll Snap。餐廳重點讀取既有本機首選並標明尚未訂位，不能冒充訂位完成。
 - 使用者不需要安全座椅、水壺／濕紙巾、停車折抵發票／憑證的提醒；不要在新行程提醒清單加入這些項目。

@@ -16,11 +16,11 @@
     pickup:{booked:null,provider:'',date:'2026-11-11',time:'',meeting:'',destination:'ROSIE SUNSET HOTEL'},
     'hotel-transfer':{booked:null,provider:'',date:'2026-11-13',time:'',meeting:'ROSIE SUNSET HOTEL',destination:'WorldHotels Long Beach Resort Phu Quoc'},
     dropoff:{booked:null,provider:'',date:'2026-11-16',time:'',meeting:'WorldHotels Long Beach Resort Phu Quoc',destination:'富國島機場 PQC',arrivalGoal:'08:20 抵達機場（目標）'},
-    cash:{ready:false,currency:'美金（USD）／越南盾（VND）',plannedUSD:700,airportExchangeUSD:100,phuQuocReserveUSD:600,note:'已決定換匯計畫：先準備 US$700；桃園機場將其中 US$100 等值換為越南盾，剩餘 US$600 帶到富國島視情況分次換盾。三個換匯步驟均尚未執行；ROSIE 僅收現金，務必先確認房費實際付款狀態、應付越南盾金額與付款時間。11/11 晚間抵達前要有足夠越南盾應付住宿及交通。桃園機場兆豐可兌換越南盾，先電話確認是否能直接以美元換盾、是否須用台幣結算，以及櫃台位置與庫存；餘下 US$600 可於富國島合法換匯點比較匯率後再兌換。',
+    cash:{ready:false,currency:'美金（USD）／越南盾（VND）',plannedUSD:700,airportExchangeUSD:300,airportTravelUSD:100,phuQuocReserveUSD:600,note:'最新換匯計畫：總共 US$900（旅費 US$700＋ROSIE 住宿預備金 US$200）。桃園機場將 US$300 等值換成越南盾，內含旅費 US$100 和 ROSIE 住宿預備金 US$200；剩餘 US$600 帶到富國島視實際需要分次換盾。US$200 已算在機場 US$300 中，不能額外加算。換匯尚未完成。出發前向桃園機場兆豐確認櫃台可否直接以美元換越南盾、若須台幣結算的換匯方式及現鈔庫存。ROSIE 僅收現金，房費是否已付、實際 VND 金額與付款時間仍需確認；11/11 晚間抵達前先確保越南盾足夠。',
       sources:[{label:'兆豐銀行現鈔幣別',url:'https://www.megabank.com.tw/personal/savings/foreign-service/fx-cash'},
         {label:'兆豐最新匯率',url:'https://www.megabank.com.tw/personal/savings/foreign-service/forex'},
         {label:'富國島 Robinson Pearl 地圖',url:'https://www.google.com/maps/search/?api=1&query=Robinson+Pearl+54+Tran+Hung+Dao+Phu+Quoc'}]},
-    rosieReserve:{ready:false,reserveUSD:200,currency:'美元（USD），住宿時以越南盾（VND）支付',note:'另外預留 US$200 作為 ROSIE 11/11–11/13 兩晚住宿現金，與 US$700 旅行現金分開；合計預計準備 US$900。原本 NT$6,000 預算以臺銀 2026/10/27 美元現鈔賣出約 NT$32.725 換算為 US$183，向上抓 US$200；訂房參考金額 NT$5,496。這僅是預備金，尚未換好，房費是否已付也仍待確認。飯店僅收現金，入住前務必確認實際應付越南盾金額、付款時間及可用換匯管道；美元不能視同已備妥越南盾。'},
+    rosieReserve:{ready:false,reserveUSD:200,currency:'住宿以越南盾（VND）現金支付',note:'ROSIE 11/11–11/13 兩晚住宿獨立預留 US$200，已包含在桃園機場計畫兌換的 US$300 等值越南盾中（另外 US$100 為旅費），不重複另外準備。旅費 US$700＋住宿 US$200＝總預算 US$900，桃園機場換 US$300 等值越南盾＋富國島視需要換 US$600。訂房參考價 NT$5,496；住宿現金仍未換好，房費是否已支付也待確認。ROSIE 僅收現金，先確認住宿實際應付 VND 金額與付款時間。'},
     mobileData:{ready:false,option:'越南網卡／eSIM',note:'以速度及島上覆蓋優先：推薦 Viettel 原生 5G eSIM，每日 5GB 高速量，選覆蓋 11/11–11/16 六個日曆日以上；太陽富國航空符合資格旅客可另申請 MobiFone 首 24 小時 5GB 免費 eSIM 作備援。買前確認手機支援 eSIM、實際有效期及開通方式。尚未購買。',
       sources:[{label:'KKday Viettel 5G eSIM・含富國島',url:'https://www.kkday.com/zh-tw/product/249518'},
         {label:'航空公司免費 MobiFone eSIM',url:'https://www.sunphuquocairways.com/tw/tw/ticket-info/additional-services/esim-selection'}]},
@@ -35,8 +35,8 @@
     {id:'pickup',group:'交通',icon:'→',title:'11/11 機場 → ROSIE',bookingLabel:'接機是否已確認',hint:'晚間抵達，確認接機方式、集合點與延誤聯絡方式。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','碰面時間'],['meeting','碰面地點'],['destination','目的地']]},
     {id:'hotel-transfer',group:'交通',icon:'↔',title:'11/13 ROSIE → WorldHotels',bookingLabel:'飯店間交通是否已安排',hint:'建議午餐後取行李並出發，14:00 起可入住後優先安排午覺。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','移動時間'],['meeting','出發地點'],['destination','目的地']]},
     {id:'dropoff',group:'交通',icon:'←',title:'11/16 WorldHotels → 機場',bookingLabel:'送機是否已確認',hint:'以當地時間 08:20 抵達 PQC 為目標，實際飯店出發時間依交通確認。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]},
-    {id:'cash',group:'行前準備',icon:'₫',title:'準備 US$700／換越南盾',completionField:'ready',bookingLabel:'是否已換錢',hint:'① 準備 US$700；② 桃園機場把其中 US$100 等值換成越南盾；③ 剩餘 US$600 帶到富國島視需要換盾。均尚未換匯。',fields:[['currency','幣別'],['plannedUSD','預備美元總額'],['airportExchangeUSD','桃園機場換越南盾（美元等值）'],['phuQuocReserveUSD','留在富國島視情況換的美元']]},
-    {id:'rosieReserve',group:'行前準備',icon:'₫',title:'額外準備 ROSIE 住宿現金',completionField:'ready',bookingLabel:'是否已準備住宿現金',hint:'額外備 US$200，不包含原本 US$700 旅費；現金準備總額 US$900。ROSIE 房費參考 NT$5,496，房費是否已付待確認；入住前需先換足越南盾。',fields:[['reserveUSD','住宿美元預備金'],['currency','實際付款幣別提醒']]},
+    {id:'cash',group:'行前準備',icon:'₫',title:'US$900 現金換匯計畫',completionField:'ready',bookingLabel:'是否已換錢',hint:'桃園機場換 US$300 等值越南盾（旅費 US$100＋ROSIE US$200），另留 US$600 到富國島換；合計 US$900，尚未換匯。',fields:[['currency','幣別'],['plannedUSD','旅費美元預算（不含住宿）'],['airportExchangeUSD','桃園機場換盾（含 ROSIE）'],['airportTravelUSD','機場換盾中的旅費部分'],['phuQuocReserveUSD','帶至富國島待換的美元']]},
+    {id:'rosieReserve',group:'行前準備',icon:'₫',title:'ROSIE 住宿現金（含在機場 US$300）',completionField:'ready',bookingLabel:'是否已準備住宿現金',hint:'住宿預備金 US$200 已包含在桃園機場 US$300 的換盾計畫，並非另外再加 US$200；房費參考 NT$5,496，付款仍待確認。',fields:[['reserveUSD','機場換盾中的住宿部分'],['currency','實際付款幣別提醒']]},
     {id:'mobileData',group:'行前準備',icon:'▣',title:'購買越南網卡／eSIM',completionField:'ready',bookingLabel:'是否已買網卡',hint:'尚未購買；依手機支援狀況選 SIM 或 eSIM，核對使用天數及開通方式。',fields:[['option','上網形式']]}
   ];
   let showComplete=false,feedback='',copyFallback='';
@@ -113,7 +113,7 @@
         {title:'已訂花費（新台幣參考）',intro:'合計約 NT$44,754；未含跳島、接送、餐飲、購物。',bullets:['9G511／9G510 來回機票（2 大 1 小）約 NT$18,000。','ROSIE 2 晚約 NT$5,496；不含早餐、僅收現金。','WorldHotels 3 晚約 NT$21,258；含早餐、不可退款。','住宿金額為換算參考，以越南盾結算及實際匯率為準。']},
         {title:'行前仍需確認',intro:'已確認的機票及住宿不再列為未訂。',bullets:tasks.length?tasks.map(d=>d.title+'：'+missing(d).join('、')):['已列出的八項確認卡都已完成。']}
       ],
-      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','換匯計畫：準備 US$700；桃園機場將其中 US$100 等值換成越南盾，剩餘 US$600 帶到富國島視情況換（均尚未完成）','購買越南網卡／eSIM，確認手機可使用及開通方式','額外預留 ROSIE 兩晚房費 US$200（房費參考 NT$5,496），不含於旅費 US$700；現金總計 US$900。房費付款狀態待確認，入住前換足越南盾（尚未完成）']};
+      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','換匯 US$900：桃園機場換 US$300 等值越南盾（旅費 US$100＋ROSIE US$200），US$600 帶到富國島視需要再換（未完成）','購買越南網卡／eSIM，確認手機可使用及開通方式','ROSIE 兩晚房費預備 US$200（已含在機場 US$300 中，不另加）；訂房參考 NT$5,496，付款狀態待確認（未完成）']};
   }
   document.addEventListener('click',async event=>{
     if(event.target.closest('[data-show-complete]')){showComplete=!showComplete;document.dispatchEvent(new CustomEvent('travel-prep:updated'));return;}
