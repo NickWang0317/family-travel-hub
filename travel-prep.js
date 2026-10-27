@@ -16,6 +16,8 @@
     pickup:{booked:null,provider:'',date:'2026-11-11',time:'',meeting:'',destination:'ROSIE SUNSET HOTEL'},
     'hotel-transfer':{booked:null,provider:'',date:'2026-11-13',time:'',meeting:'ROSIE SUNSET HOTEL',destination:'WorldHotels Long Beach Resort Phu Quoc'},
     dropoff:{booked:null,provider:'',date:'2026-11-16',time:'',meeting:'WorldHotels Long Beach Resort Phu Quoc',destination:'富國島機場 PQC',arrivalGoal:'08:20 抵達機場（目標）'},
+    cash:{ready:false,currency:'越南盾（VND）',note:'ROSIE SUNSET HOTEL 僅收現金；換匯金額與地點尚待決定。'},
+    mobileData:{ready:false,option:'越南網卡／eSIM',note:'購買前確認手機相容的 SIM／eSIM 形式、使用天數及抵達後啟用方式。'},
     costs:{airfareTWD:18000,firstHotelTWD:5496,resortTWD:21258,totalTWD:44754,note:'機票與住宿參考合計；未含跳島、接送、餐飲及購物。住宿以越南盾及實際匯率結算。'}
   };
   const definitions=[
@@ -26,12 +28,15 @@
     {id:'island-tour',group:'活動',icon:'03',title:'11/12 KKday 快艇三島',bookingLabel:'是否已訂購',hint:'尚未確認訂購；確認集合時間、地點、3 歲半兒童參加條件與合身救生衣。',fields:[['provider','活動平台'],['product','行程名稱'],['date','活動日期'],['meetingTime','集合時間'],['meetingPoint','集合地點'],['childJacket','兒童救生衣尺寸／適用條件']]},
     {id:'pickup',group:'交通',icon:'→',title:'11/11 機場 → ROSIE',bookingLabel:'接機是否已確認',hint:'晚間抵達，確認接機方式、集合點與延誤聯絡方式。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','碰面時間'],['meeting','碰面地點'],['destination','目的地']]},
     {id:'hotel-transfer',group:'交通',icon:'↔',title:'11/13 ROSIE → WorldHotels',bookingLabel:'飯店間交通是否已安排',hint:'建議午餐後取行李並出發，14:00 起可入住後優先安排午覺。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','移動時間'],['meeting','出發地點'],['destination','目的地']]},
-    {id:'dropoff',group:'交通',icon:'←',title:'11/16 WorldHotels → 機場',bookingLabel:'送機是否已確認',hint:'以當地時間 08:20 抵達 PQC 為目標，實際飯店出發時間依交通確認。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]}
+    {id:'dropoff',group:'交通',icon:'←',title:'11/16 WorldHotels → 機場',bookingLabel:'送機是否已確認',hint:'以當地時間 08:20 抵達 PQC 為目標，實際飯店出發時間依交通確認。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]},
+    {id:'cash',group:'行前準備',icon:'₫',title:'換越南盾｜現金',completionField:'ready',bookingLabel:'是否已換錢',hint:'出發前準備越南盾；ROSIE 僅收現金，兌換金額與地點尚未決定。',fields:[['currency','幣別']]},
+    {id:'mobileData',group:'行前準備',icon:'▣',title:'購買越南網卡／eSIM',completionField:'ready',bookingLabel:'是否已買網卡',hint:'尚未購買；依手機支援狀況選 SIM 或 eSIM，核對使用天數及開通方式。',fields:[['option','上網形式']]}
   ];
   let showComplete=false,feedback='',copyFallback='';
-  const missing=d=>[...(preparation[d.id].booked===true?[]:[d.bookingLabel]),...d.fields.filter(([key])=>!preparation[d.id][key]).map(([,label])=>label)];
+  const completionValue=d=>preparation[d.id][d.completionField||'booked'];
+  const missing=d=>[...(completionValue(d)===true?[]:[d.bookingLabel]),...d.fields.filter(([key])=>!preparation[d.id][key]).map(([,label])=>label)];
   const pending=()=>definitions.filter(d=>missing(d).length);
-  const status=d=>missing(d).length===0?'資料已收好':preparation[d.id].booked===true?'已訂，待補資訊':preparation[d.id].booked===false?'待安排':'訂購／安排狀態待確認';
+  const status=d=>missing(d).length===0?'資料已收好':d.completionField?(completionValue(d)===false?'尚未完成':'待確認是否完成'):preparation[d.id].booked===true?'已訂，待補資訊':preparation[d.id].booked===false?'待安排':'訂購／安排狀態待確認';
   const shortDate=value=>value?value.slice(5).replace('-','/'):'待確認';
   const remaining=()=>Math.ceil((Date.parse(preparation.outbound.date+'T00:00:00Z')-Date.parse(today()+'T00:00:00Z'))/86400000);
   function promptFor(id) {
@@ -46,7 +51,7 @@
   function mission(d) {
     const item=preparation[d.id],gaps=missing(d),done=!gaps.length;
     const known=d.fields.filter(([key])=>item[key]);
-    return '<article class="prep-mission '+(done?'is-complete':'')+'"'+(done&&!showComplete?' hidden':'')+'><div class="prep-mission-top"><span class="prep-mission-symbol" aria-hidden="true">'+d.icon+'</span><span class="prep-tag">'+d.group+'</span><span class="prep-status">'+esc(status(d))+'</span></div><h3>'+esc(d.title)+'</h3><p class="prep-hint">'+esc(done?'這張卡的資料已收好，完整安排在下方行程。':d.hint)+'</p><div class="prep-snippets">'+known.slice(0,3).map(([key])=>'<span>'+esc(item[key])+'</span>').join('')+'</div>'+(gaps.length?'<div class="prep-missing"><span class="prep-eyebrow">下一次，記得告訴我</span><p>'+gaps.map(esc).join('、')+'</p></div>':'<p class="prep-reminder">✓ 資料已確認</p>')+'<details><summary>目前已記下的資訊 <span aria-hidden="true">＋</span></summary><dl class="prep-known">'+'<div><dt>訂購／安排</dt><dd>'+esc(item.booked===true?'已確認':item.booked===false?'尚未安排':'待你確認')+'</dd></div>'+known.map(([key,label])=>'<div><dt>'+esc(label)+'</dt><dd>'+esc(item[key])+'</dd></div>').join('')+'</dl></details>'+(gaps.length?'<button type="button" class="prep-card-copy" data-prep-copy="'+d.id+'">複製這張卡的待補清單 ↗</button>':'')+'</article>';
+    return '<article class="prep-mission '+(done?'is-complete':'')+'"'+(done&&!showComplete?' hidden':'')+'><div class="prep-mission-top"><span class="prep-mission-symbol" aria-hidden="true">'+d.icon+'</span><span class="prep-tag">'+d.group+'</span><span class="prep-status">'+esc(status(d))+'</span></div><h3>'+esc(d.title)+'</h3><p class="prep-hint">'+esc(done?'這張卡的資料已收好，完整安排在下方行程。':d.hint)+'</p><div class="prep-snippets">'+known.slice(0,3).map(([key])=>'<span>'+esc(item[key])+'</span>').join('')+'</div>'+(gaps.length?'<div class="prep-missing"><span class="prep-eyebrow">下一次，記得告訴我</span><p>'+gaps.map(esc).join('、')+'</p></div>':'<p class="prep-reminder">✓ 資料已確認</p>')+'<details><summary>目前已記下的資訊 <span aria-hidden="true">＋</span></summary><dl class="prep-known">'+'<div><dt>'+(d.completionField?'完成狀態':'訂購／安排')+'</dt><dd>'+esc(completionValue(d)===true?'已確認':completionValue(d)===false?'尚未完成':'待你確認')+'</dd></div>'+known.map(([key,label])=>'<div><dt>'+esc(label)+'</dt><dd>'+esc(item[key])+'</dd></div>').join('')+'</dl></details>'+(gaps.length?'<button type="button" class="prep-card-copy" data-prep-copy="'+d.id+'">複製這張卡的待補清單 ↗</button>':'')+'</article>';
   }
   function board() {
     const tasks=pending(),complete=definitions.length-tasks.length,next=tasks[0],days=remaining();
@@ -98,7 +103,7 @@
         {title:'已訂花費（新台幣參考）',intro:'合計約 NT$44,754；未含跳島、接送、餐飲、購物。',bullets:['9G511／9G510 來回機票（2 大 1 小）約 NT$18,000。','ROSIE 2 晚約 NT$5,496；不含早餐、僅收現金。','WorldHotels 3 晚約 NT$21,258；含早餐、不可退款。','住宿金額為換算參考，以越南盾結算及實際匯率為準。']},
         {title:'行前仍需確認',intro:'已確認的機票及住宿不再列為未訂。',bullets:tasks.length?tasks.map(d=>d.title+'：'+missing(d).join('、')):['已列出的八項確認卡都已完成。']}
       ],
-      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品']};
+      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','出發前換越南盾（ROSIE 僅收現金）','購買越南網卡／eSIM，確認手機可使用及開通方式']};
   }
   document.addEventListener('click',async event=>{
     if(event.target.closest('[data-show-complete]')){showComplete=!showComplete;document.dispatchEvent(new CustomEvent('travel-prep:updated'));return;}
