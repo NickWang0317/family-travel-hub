@@ -16,8 +16,13 @@
     pickup:{booked:null,provider:'',date:'2026-11-11',time:'',meeting:'',destination:'ROSIE SUNSET HOTEL'},
     'hotel-transfer':{booked:null,provider:'',date:'2026-11-13',time:'',meeting:'ROSIE SUNSET HOTEL',destination:'WorldHotels Long Beach Resort Phu Quoc'},
     dropoff:{booked:null,provider:'',date:'2026-11-16',time:'',meeting:'WorldHotels Long Beach Resort Phu Quoc',destination:'富國島機場 PQC',arrivalGoal:'08:20 抵達機場（目標）'},
-    cash:{ready:false,currency:'越南盾（VND）',note:'ROSIE SUNSET HOTEL 僅收現金；換匯金額與地點尚待決定。'},
-    mobileData:{ready:false,option:'越南網卡／eSIM',note:'購買前確認手機相容的 SIM／eSIM 形式、使用天數及抵達後啟用方式。'},
+    cash:{ready:false,currency:'越南盾（VND）',note:'ROSIE 僅收現金，11/11 晚間抵達前先確認應付越南盾金額與付款時間。台灣兆豐機場分行可換越南盾，先電 03-398-2200 問庫存及櫃台；富國島機場可先換應急現金，陽東市區再比較合法換匯點的台幣／美元報價。若手上沒有美元，不一定划算特別換兩次。',
+      sources:[{label:'兆豐銀行現鈔幣別',url:'https://www.megabank.com.tw/personal/savings/foreign-service/fx-cash'},
+        {label:'兆豐最新匯率',url:'https://www.megabank.com.tw/personal/savings/foreign-service/forex'},
+        {label:'富國島 Robinson Pearl 地圖',url:'https://www.google.com/maps/search/?api=1&query=Robinson+Pearl+54+Tran+Hung+Dao+Phu+Quoc'}]},
+    mobileData:{ready:false,option:'越南網卡／eSIM',note:'以速度及島上覆蓋優先：推薦 Viettel 原生 5G eSIM，每日 5GB 高速量，選覆蓋 11/11–11/16 六個日曆日以上；太陽富國航空符合資格旅客可另申請 MobiFone 首 24 小時 5GB 免費 eSIM 作備援。買前確認手機支援 eSIM、實際有效期及開通方式。尚未購買。',
+      sources:[{label:'KKday Viettel 5G eSIM・含富國島',url:'https://www.kkday.com/zh-tw/product/249518'},
+        {label:'航空公司免費 MobiFone eSIM',url:'https://www.sunphuquocairways.com/tw/tw/ticket-info/additional-services/esim-selection'}]},
     costs:{airfareTWD:18000,firstHotelTWD:5496,resortTWD:21258,totalTWD:44754,note:'機票與住宿參考合計；未含跳島、接送、餐飲及購物。住宿以越南盾及實際匯率結算。'}
   };
   const definitions=[
@@ -51,7 +56,10 @@
   function mission(d) {
     const item=preparation[d.id],gaps=missing(d),done=!gaps.length;
     const known=d.fields.filter(([key])=>item[key]);
-    return '<article class="prep-mission '+(done?'is-complete':'')+'"'+(done&&!showComplete?' hidden':'')+'><div class="prep-mission-top"><span class="prep-mission-symbol" aria-hidden="true">'+d.icon+'</span><span class="prep-tag">'+d.group+'</span><span class="prep-status">'+esc(status(d))+'</span></div><h3>'+esc(d.title)+'</h3><p class="prep-hint">'+esc(done?'這張卡的資料已收好，完整安排在下方行程。':d.hint)+'</p><div class="prep-snippets">'+known.slice(0,3).map(([key])=>'<span>'+esc(item[key])+'</span>').join('')+'</div>'+(gaps.length?'<div class="prep-missing"><span class="prep-eyebrow">下一次，記得告訴我</span><p>'+gaps.map(esc).join('、')+'</p></div>':'<p class="prep-reminder">✓ 資料已確認</p>')+'<details><summary>目前已記下的資訊 <span aria-hidden="true">＋</span></summary><dl class="prep-known">'+'<div><dt>'+(d.completionField?'完成狀態':'訂購／安排')+'</dt><dd>'+esc(completionValue(d)===true?'已確認':completionValue(d)===false?'尚未完成':'待你確認')+'</dd></div>'+known.map(([key,label])=>'<div><dt>'+esc(label)+'</dt><dd>'+esc(item[key])+'</dd></div>').join('')+'</dl></details>'+(gaps.length?'<button type="button" class="prep-card-copy" data-prep-copy="'+d.id+'">複製這張卡的待補清單 ↗</button>':'')+'</article>';
+    const resources=(item.sources||[]).filter(source=>/^https:\/\//.test(source.url||''))
+      .map(source=>'<a href="'+esc(source.url)+'" target="_blank" rel="noopener noreferrer">'+esc(source.label)+' ↗</a>').join('');
+    const resourceLinks=resources?'<div class="overview-task-links" aria-label="已查證資訊來源">'+resources+'</div>':'';
+    return '<article class="prep-mission '+(done?'is-complete':'')+'"'+(done&&!showComplete?' hidden':'')+'><div class="prep-mission-top"><span class="prep-mission-symbol" aria-hidden="true">'+d.icon+'</span><span class="prep-tag">'+d.group+'</span><span class="prep-status">'+esc(status(d))+'</span></div><h3>'+esc(d.title)+'</h3><p class="prep-hint">'+esc(done?'這張卡的資料已收好，完整安排在下方行程。':d.hint)+'</p>'+resourceLinks+'<div class="prep-snippets">'+known.slice(0,3).map(([key])=>'<span>'+esc(item[key])+'</span>').join('')+'</div>'+(gaps.length?'<div class="prep-missing"><span class="prep-eyebrow">下一次，記得告訴我</span><p>'+gaps.map(esc).join('、')+'</p></div>':'<p class="prep-reminder">✓ 資料已確認</p>')+'<details><summary>目前已記下的資訊 <span aria-hidden="true">＋</span></summary><dl class="prep-known">'+'<div><dt>'+(d.completionField?'完成狀態':'訂購／安排')+'</dt><dd>'+esc(completionValue(d)===true?'已確認':completionValue(d)===false?'尚未完成':'待你確認')+'</dd></div>'+known.map(([key,label])=>'<div><dt>'+esc(label)+'</dt><dd>'+esc(item[key])+'</dd></div>').join('')+'</dl></details>'+(gaps.length?'<button type="button" class="prep-card-copy" data-prep-copy="'+d.id+'">複製這張卡的待補清單 ↗</button>':'')+'</article>';
   }
   function board() {
     const tasks=pending(),complete=definitions.length-tasks.length,next=tasks[0],days=remaining();
