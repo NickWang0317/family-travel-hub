@@ -10,7 +10,7 @@
     updatedOn:'2026-10-27',
     outbound:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G511',date:'2026-11-11',origin:'桃園機場 TPE（第一航廈）',destination:'富國島機場 PQC',departure:'17:25',arrival:'20:20'},
     return:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G510',date:'2026-11-16',origin:'富國島機場 PQC',destination:'桃園機場 TPE（第一航廈）',departure:'11:20',arrival:'16:00'},
-    'first-hotel':{booked:true,name:'ROSIE SUNSET HOTEL',address:'',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'',lateArrivalNoticeConfirmed:null,room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金',costTWD:5496},
+    'first-hotel':{booked:true,paymentSettled:null,name:'ROSIE SUNSET HOTEL',address:'',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'',lateArrivalNoticeConfirmed:null,room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金',costTWD:5496},
     resort:{booked:true,name:'WorldHotels Long Beach Resort Phu Quoc',address:'152 Tran Hung Dao Street, Cua Lap Quarter, Duong To, Phu Quoc',checkin:'2026-11-13',checkout:'2026-11-16',checkinTime:'14:00 起',room:'私人花園景豪華雙床房',breakfast:'含早餐',refund:'不可退款',costTWD:21258},
     'island-tour':{booked:null,provider:'KKday',product:'快艇三島一日遊',date:'2026-11-12',meetingTime:'',meetingPoint:'',childJacket:'',returnTime:'約 15:00 回到碼頭（行程規劃）'},
     pickup:{booked:null,provider:'',date:'2026-11-11',time:'',meeting:'',destination:'ROSIE SUNSET HOTEL'},
@@ -20,6 +20,7 @@
       sources:[{label:'兆豐銀行現鈔幣別',url:'https://www.megabank.com.tw/personal/savings/foreign-service/fx-cash'},
         {label:'兆豐最新匯率',url:'https://www.megabank.com.tw/personal/savings/foreign-service/forex'},
         {label:'富國島 Robinson Pearl 地圖',url:'https://www.google.com/maps/search/?api=1&query=Robinson+Pearl+54+Tran+Hung+Dao+Phu+Quoc'}]},
+    rosieReserve:{ready:false,reserveTWD:6000,currency:'越南盾（VND）',note:'另外預留約 NT$6,000 等值的越南盾現金作為 ROSIE 11/11–11/13 兩晚住宿費，與 US$700 旅行現金分開，不可重複計算。原訂房參考金額約 NT$5,496；僅收現金的規則已有住宿平台資訊支持，但是否已付款尚無原始收據證實。備妥現金與確認房費付款狀態均尚未完成；出發前向住宿確認實際應付 VND 金額及付款時間。'},
     mobileData:{ready:false,option:'越南網卡／eSIM',note:'以速度及島上覆蓋優先：推薦 Viettel 原生 5G eSIM，每日 5GB 高速量，選覆蓋 11/11–11/16 六個日曆日以上；太陽富國航空符合資格旅客可另申請 MobiFone 首 24 小時 5GB 免費 eSIM 作備援。買前確認手機支援 eSIM、實際有效期及開通方式。尚未購買。',
       sources:[{label:'KKday Viettel 5G eSIM・含富國島',url:'https://www.kkday.com/zh-tw/product/249518'},
         {label:'航空公司免費 MobiFone eSIM',url:'https://www.sunphuquocairways.com/tw/tw/ticket-info/additional-services/esim-selection'}]},
@@ -28,17 +29,18 @@
   const definitions=[
     {id:'outbound',group:'飛行',icon:'↗',title:'去程機票',bookingLabel:'是否已訂票',hint:'9G511｜11/11 桃園 17:25 → 富國島 20:20（兩地當地時間）。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
     {id:'return',group:'飛行',icon:'↙',title:'回程機票',bookingLabel:'是否已訂票',hint:'9G510｜11/16 富國島 11:20 → 桃園 16:00（兩地當地時間）。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
-    {id:'first-hotel',group:'住宿',icon:'01',title:'ROSIE｜晚到入住與資訊',bookingLabel:'是否已訂房',hint:'已訂兩晚；請提前告知航班 20:20 抵達，並確認晚到入住、飯店地址與現金付款。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住與晚到方式']]},
+    {id:'first-hotel',group:'住宿',icon:'01',title:'ROSIE｜晚到入住與資訊',bookingLabel:'是否已訂房',hint:'已訂兩晚，僅收現金；房費是否已付仍待核實。請提前告知航班 20:20 抵達，並確認應付金額、付款時間與晚到入住方式。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住與晚到方式']]},
     {id:'resort',group:'住宿',icon:'02',title:'WorldHotels｜11/13–11/16',bookingLabel:'是否已訂房',hint:'已訂三晚，14:00 起可入住；午餐後轉飯店讓孩子午睡。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住時間']]},
     {id:'island-tour',group:'活動',icon:'03',title:'11/12 KKday 快艇三島',bookingLabel:'是否已訂購',hint:'尚未確認訂購；確認集合時間、地點、3 歲半兒童參加條件與合身救生衣。',fields:[['provider','活動平台'],['product','行程名稱'],['date','活動日期'],['meetingTime','集合時間'],['meetingPoint','集合地點'],['childJacket','兒童救生衣尺寸／適用條件']]},
     {id:'pickup',group:'交通',icon:'→',title:'11/11 機場 → ROSIE',bookingLabel:'接機是否已確認',hint:'晚間抵達，確認接機方式、集合點與延誤聯絡方式。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','碰面時間'],['meeting','碰面地點'],['destination','目的地']]},
     {id:'hotel-transfer',group:'交通',icon:'↔',title:'11/13 ROSIE → WorldHotels',bookingLabel:'飯店間交通是否已安排',hint:'建議午餐後取行李並出發，14:00 起可入住後優先安排午覺。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','移動時間'],['meeting','出發地點'],['destination','目的地']]},
     {id:'dropoff',group:'交通',icon:'←',title:'11/16 WorldHotels → 機場',bookingLabel:'送機是否已確認',hint:'以當地時間 08:20 抵達 PQC 為目標，實際飯店出發時間依交通確認。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]},
     {id:'cash',group:'行前準備',icon:'₫',title:'準備 US$700／換越南盾',completionField:'ready',bookingLabel:'是否已換錢',hint:'① 準備 US$700；② 桃園機場把其中 US$100 等值換成越南盾；③ 剩餘 US$600 帶到富國島視需要換盾。均尚未換匯。',fields:[['currency','幣別'],['plannedUSD','預備美元總額'],['airportExchangeUSD','桃園機場換越南盾（美元等值）'],['phuQuocReserveUSD','留在富國島視情況換的美元']]},
+    {id:'rosieReserve',group:'行前準備',icon:'₫',title:'額外準備 ROSIE 住宿現金',completionField:'ready',bookingLabel:'是否已準備住宿現金',hint:'額外備約 NT$6,000 等值越南盾，不包含在 US$700 旅行現金內。兩晚房費參考 NT$5,496；實際是否已付款、應付金額及時間仍待確認。',fields:[['reserveTWD','住宿現金預留（台幣等值）'],['currency','付款幣別']]},
     {id:'mobileData',group:'行前準備',icon:'▣',title:'購買越南網卡／eSIM',completionField:'ready',bookingLabel:'是否已買網卡',hint:'尚未購買；依手機支援狀況選 SIM 或 eSIM，核對使用天數及開通方式。',fields:[['option','上網形式']]}
   ];
   let showComplete=false,feedback='',copyFallback='';
-  const completionValue=d=>preparation[d.id][d.completionField||'booked'];
+  const completionValue=d=>d.id==='rosieReserve'&&preparation['first-hotel'].paymentSettled===true?true:preparation[d.id][d.completionField||'booked'];
   const missing=d=>[...(completionValue(d)===true?[]:[d.bookingLabel]),...d.fields.filter(([key])=>!preparation[d.id][key]).map(([,label])=>label)];
   const pending=()=>definitions.filter(d=>missing(d).length);
   const status=d=>missing(d).length===0?'資料已收好':d.completionField?(completionValue(d)===false?'尚未完成':'待確認是否完成'):preparation[d.id].booked===true?'已訂，待補資訊':preparation[d.id].booked===false?'待安排':'訂購／安排狀態待確認';
@@ -79,7 +81,7 @@
       const item=preparation[id],d=definitions.find(x=>x.id===id);
       return {date:item.checkin,endDate:new Date(Date.parse(item.checkout+'T12:00:00Z')-86400000).toISOString().slice(0,10),
         order,time:item.checkinTime||'晚上',title:label+'｜'+(item.name||'住宿待安排'),
-        desc:[item.booked===true?'已訂房':status(d),item.room,item.breakfast,item.payment,item.refund,item.checkinTime?'入住 '+item.checkinTime:'入住時間待確認',id==='first-hotel'?'晚到入住後休息':''].filter(Boolean).join(' · '),
+        desc:[item.booked===true?'已訂房':status(d),item.room,item.breakfast,item.payment,id==='first-hotel'?(item.paymentSettled===true?'房費已支付':item.paymentSettled===false?'房費尚未付款':'房費付款狀態待確認'):'',item.refund,item.checkinTime?'入住 '+item.checkinTime:'入住時間待確認',id==='first-hotel'?'晚到入住後休息':''].filter(Boolean).join(' · '),
         place:item.name||'',links:mapLink(item.name||item.address)};
     };
     const transfer=(id,title,order)=>{
@@ -111,7 +113,7 @@
         {title:'已訂花費（新台幣參考）',intro:'合計約 NT$44,754；未含跳島、接送、餐飲、購物。',bullets:['9G511／9G510 來回機票（2 大 1 小）約 NT$18,000。','ROSIE 2 晚約 NT$5,496；不含早餐、僅收現金。','WorldHotels 3 晚約 NT$21,258；含早餐、不可退款。','住宿金額為換算參考，以越南盾結算及實際匯率為準。']},
         {title:'行前仍需確認',intro:'已確認的機票及住宿不再列為未訂。',bullets:tasks.length?tasks.map(d=>d.title+'：'+missing(d).join('、')):['已列出的八項確認卡都已完成。']}
       ],
-      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','換匯計畫：準備 US$700；桃園機場將其中 US$100 等值換成越南盾，剩餘 US$600 帶到富國島視情況換（均尚未完成）','購買越南網卡／eSIM，確認手機可使用及開通方式']};
+      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','換匯計畫：準備 US$700；桃園機場將其中 US$100 等值換成越南盾，剩餘 US$600 帶到富國島視情況換（均尚未完成）','購買越南網卡／eSIM，確認手機可使用及開通方式','額外預留 ROSIE 兩晚房費：NT$6,000 等值越南盾（訂房參考 NT$5,496），不包含在 US$700 內，實際付款狀態待確認']};
   }
   document.addEventListener('click',async event=>{
     if(event.target.closest('[data-show-complete]')){showComplete=!showComplete;document.dispatchEvent(new CustomEvent('travel-prep:updated'));return;}
