@@ -20,7 +20,7 @@
       sources:[{label:'兆豐銀行現鈔幣別',url:'https://www.megabank.com.tw/personal/savings/foreign-service/fx-cash'},
         {label:'兆豐最新匯率',url:'https://www.megabank.com.tw/personal/savings/foreign-service/forex'},
         {label:'富國島 Robinson Pearl 地圖',url:'https://www.google.com/maps/search/?api=1&query=Robinson+Pearl+54+Tran+Hung+Dao+Phu+Quoc'}]},
-    rosieReserve:{ready:false,reserveTWD:6000,currency:'越南盾（VND）',note:'另外預留約 NT$6,000 等值的越南盾現金作為 ROSIE 11/11–11/13 兩晚住宿費，與 US$700 旅行現金分開，不可重複計算。原訂房參考金額約 NT$5,496；僅收現金的規則已有住宿平台資訊支持，但是否已付款尚無原始收據證實。備妥現金與確認房費付款狀態均尚未完成；出發前向住宿確認實際應付 VND 金額及付款時間。'},
+    rosieReserve:{ready:false,reserveUSD:200,currency:'美元（USD），住宿時以越南盾（VND）支付',note:'另外預留 US$200 作為 ROSIE 11/11–11/13 兩晚住宿現金，與 US$700 旅行現金分開；合計預計準備 US$900。原本 NT$6,000 預算以臺銀 2026/10/27 美元現鈔賣出約 NT$32.725 換算為 US$183，向上抓 US$200；訂房參考金額 NT$5,496。這僅是預備金，尚未換好，房費是否已付也仍待確認。飯店僅收現金，入住前務必確認實際應付越南盾金額、付款時間及可用換匯管道；美元不能視同已備妥越南盾。'},
     mobileData:{ready:false,option:'越南網卡／eSIM',note:'以速度及島上覆蓋優先：推薦 Viettel 原生 5G eSIM，每日 5GB 高速量，選覆蓋 11/11–11/16 六個日曆日以上；太陽富國航空符合資格旅客可另申請 MobiFone 首 24 小時 5GB 免費 eSIM 作備援。買前確認手機支援 eSIM、實際有效期及開通方式。尚未購買。',
       sources:[{label:'KKday Viettel 5G eSIM・含富國島',url:'https://www.kkday.com/zh-tw/product/249518'},
         {label:'航空公司免費 MobiFone eSIM',url:'https://www.sunphuquocairways.com/tw/tw/ticket-info/additional-services/esim-selection'}]},
@@ -36,7 +36,7 @@
     {id:'hotel-transfer',group:'交通',icon:'↔',title:'11/13 ROSIE → WorldHotels',bookingLabel:'飯店間交通是否已安排',hint:'建議午餐後取行李並出發，14:00 起可入住後優先安排午覺。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','移動時間'],['meeting','出發地點'],['destination','目的地']]},
     {id:'dropoff',group:'交通',icon:'←',title:'11/16 WorldHotels → 機場',bookingLabel:'送機是否已確認',hint:'以當地時間 08:20 抵達 PQC 為目標，實際飯店出發時間依交通確認。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]},
     {id:'cash',group:'行前準備',icon:'₫',title:'準備 US$700／換越南盾',completionField:'ready',bookingLabel:'是否已換錢',hint:'① 準備 US$700；② 桃園機場把其中 US$100 等值換成越南盾；③ 剩餘 US$600 帶到富國島視需要換盾。均尚未換匯。',fields:[['currency','幣別'],['plannedUSD','預備美元總額'],['airportExchangeUSD','桃園機場換越南盾（美元等值）'],['phuQuocReserveUSD','留在富國島視情況換的美元']]},
-    {id:'rosieReserve',group:'行前準備',icon:'₫',title:'額外準備 ROSIE 住宿現金',completionField:'ready',bookingLabel:'是否已準備住宿現金',hint:'額外備約 NT$6,000 等值越南盾，不包含在 US$700 旅行現金內。兩晚房費參考 NT$5,496；實際是否已付款、應付金額及時間仍待確認。',fields:[['reserveTWD','住宿現金預留（台幣等值）'],['currency','付款幣別']]},
+    {id:'rosieReserve',group:'行前準備',icon:'₫',title:'額外準備 ROSIE 住宿現金',completionField:'ready',bookingLabel:'是否已準備住宿現金',hint:'額外備 US$200，不包含原本 US$700 旅費；現金準備總額 US$900。ROSIE 房費參考 NT$5,496，房費是否已付待確認；入住前需先換足越南盾。',fields:[['reserveUSD','住宿美元預備金'],['currency','實際付款幣別提醒']]},
     {id:'mobileData',group:'行前準備',icon:'▣',title:'購買越南網卡／eSIM',completionField:'ready',bookingLabel:'是否已買網卡',hint:'尚未購買；依手機支援狀況選 SIM 或 eSIM，核對使用天數及開通方式。',fields:[['option','上網形式']]}
   ];
   let showComplete=false,feedback='',copyFallback='';
@@ -113,7 +113,7 @@
         {title:'已訂花費（新台幣參考）',intro:'合計約 NT$44,754；未含跳島、接送、餐飲、購物。',bullets:['9G511／9G510 來回機票（2 大 1 小）約 NT$18,000。','ROSIE 2 晚約 NT$5,496；不含早餐、僅收現金。','WorldHotels 3 晚約 NT$21,258；含早餐、不可退款。','住宿金額為換算參考，以越南盾結算及實際匯率為準。']},
         {title:'行前仍需確認',intro:'已確認的機票及住宿不再列為未訂。',bullets:tasks.length?tasks.map(d=>d.title+'：'+missing(d).join('、')):['已列出的八項確認卡都已完成。']}
       ],
-      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','換匯計畫：準備 US$700；桃園機場將其中 US$100 等值換成越南盾，剩餘 US$600 帶到富國島視情況換（均尚未完成）','購買越南網卡／eSIM，確認手機可使用及開通方式','額外預留 ROSIE 兩晚房費：NT$6,000 等值越南盾（訂房參考 NT$5,496），不包含在 US$700 內，實際付款狀態待確認']};
+      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','換匯計畫：準備 US$700；桃園機場將其中 US$100 等值換成越南盾，剩餘 US$600 帶到富國島視情況換（均尚未完成）','購買越南網卡／eSIM，確認手機可使用及開通方式','額外預留 ROSIE 兩晚房費 US$200（房費參考 NT$5,496），不含於旅費 US$700；現金總計 US$900。房費付款狀態待確認，入住前換足越南盾（尚未完成）']};
   }
   document.addEventListener('click',async event=>{
     if(event.target.closest('[data-show-complete]')){showComplete=!showComplete;document.dispatchEvent(new CustomEvent('travel-prep:updated'));return;}
