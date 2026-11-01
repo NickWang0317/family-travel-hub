@@ -7,11 +7,20 @@
   const today=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   // null = booking status not confirmed; false = explicitly not booked.
   const preparation={
-    updatedOn:'2026-10-27',
+    updatedOn:'2026-11-01',
     outbound:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G511',date:'2026-11-11',origin:'桃園機場 TPE（第一航廈）',destination:'富國島機場 PQC',departure:'17:25',arrival:'20:20'},
     return:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G510',date:'2026-11-16',origin:'富國島機場 PQC',destination:'桃園機場 TPE（第一航廈）',departure:'11:20',arrival:'16:00'},
     'first-hotel':{booked:true,paymentSettled:null,name:'ROSIE SUNSET HOTEL',address:'',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'',lateArrivalNoticeConfirmed:null,room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金',costTWD:5496},
     resort:{booked:true,name:'WorldHotels Long Beach Resort Phu Quoc',address:'152 Tran Hung Dao Street, Cua Lap Quarter, Duong To, Phu Quoc',checkin:'2026-11-13',checkout:'2026-11-16',checkinTime:'14:00 起',room:'私人花園景豪華雙床房',breakfast:'含早餐',refund:'不可退款',costTWD:21258},
+    resortKids:{
+      confirmed:false,reserved:false,priceNote:'以下金額由旅客提供，均為依匯率換算的台幣約價；未預約，實際收費與適用資格以飯店回覆為準。',
+      sources:[{label:'Gemy Kids Zone 官方資訊',url:'https://worldhotelslongbeach.com/service/gemy-kids-zone/'},{label:'WorldHotels 聯絡方式',url:'https://worldhotelslongbeach.com/contact-us/'}],
+      zone:{name:'Gemy Kids Zone',hours:'09:00～20:00',priceTWD:190,maxHours:3,features:'溜滑梯、球池、彈跳床、扮家家酒等',includedInRoom:null},
+      craft:{morningHours:'09:00～10:00',morning:'燈籠、斗笠、相框、衣服或提袋彩繪，每項約 NT$177～329',afternoonHours:'14:00～15:00',afternoon:'沙畫約 NT$114、石膏彩繪約 NT$139、拼圖約 NT$177',needsZoneTicket:null,ageAccepted:null},
+      childcare:{ages:'3 歲至未滿 6 歲',hours:'10:00～20:00',prices:'1 小時 NT$253／2 小時 NT$443／3 小時 NT$633／4 小時 NT$822',reservationRequired:null,includesZoneTicket:null},
+      swimming:{minutes:60,priceTWD:253,included:'汽水、薯條與 20 分鐘動物浮具使用',acceptsThreeYearOld:null},
+      evening:{events:'吉祥物跳舞、兒童才藝舞台等',time:null}
+    },
     'island-tour':{booked:null,provider:'KKday',product:'快艇三島一日遊',date:'2026-11-12',meetingTime:'',meetingPoint:'',childJacket:'',returnTime:'約 15:00 回到碼頭（行程規劃）'},
     pickup:{booked:null,provider:'',date:'2026-11-11',time:'',meeting:'',destination:'ROSIE SUNSET HOTEL'},
     'hotel-transfer':{booked:null,provider:'',date:'2026-11-13',time:'',meeting:'ROSIE SUNSET HOTEL',destination:'WorldHotels Long Beach Resort Phu Quoc'},
@@ -30,10 +39,11 @@
     {id:'outbound',group:'飛行',icon:'↗',title:'去程機票',bookingLabel:'是否已訂票',hint:'9G511｜11/11 桃園 17:25 → 富國島 20:20（兩地當地時間）。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
     {id:'return',group:'飛行',icon:'↙',title:'回程機票',bookingLabel:'是否已訂票',hint:'9G510｜11/16 富國島 11:20 → 桃園 16:00（兩地當地時間）。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
     {id:'first-hotel',group:'住宿',icon:'01',title:'ROSIE｜晚到入住與資訊',bookingLabel:'是否已訂房',hint:'已訂兩晚，僅收現金；房費是否已付仍待核實。請提前告知航班 20:20 抵達，並確認應付金額、付款時間與晚到入住方式。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住與晚到方式']]},
-    {id:'resort',group:'住宿',icon:'02',title:'WorldHotels｜11/13–11/16',bookingLabel:'是否已訂房',hint:'已訂三晚，14:00 起可入住；午餐後轉飯店讓孩子午睡。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住時間']]},
+    {id:'resort',group:'住宿',icon:'02',title:'WorldHotels｜11/13–11/16',bookingLabel:'是否已訂房',hint:'已訂三晚，14:00 起可入住；11/13 預計在日落小鎮待到約 14:30，之後取行李再到飯店，入住後優先安排午睡。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住時間']]},
+    {id:'resortKids',group:'親子活動',icon:'☆',title:'WorldHotels｜兒童服務待確認',completionField:'confirmed',bookingLabel:'是否已向飯店核對兒童服務',hint:'Gemy Kids Zone、手作、托育、泳課及晚間表演尚未預約；住房是否免費入場、年齡資格、門票與時間需向飯店確認。台幣費用僅約價。',fields:[]},
     {id:'island-tour',group:'活動',icon:'03',title:'11/12 KKday 快艇三島',bookingLabel:'是否已訂購',hint:'尚未確認訂購；確認集合時間、地點、3 歲半兒童參加條件與合身救生衣。',fields:[['provider','活動平台'],['product','行程名稱'],['date','活動日期'],['meetingTime','集合時間'],['meetingPoint','集合地點'],['childJacket','兒童救生衣尺寸／適用條件']]},
     {id:'pickup',group:'交通',icon:'→',title:'11/11 機場 → ROSIE',bookingLabel:'接機是否已確認',hint:'晚間抵達，確認接機方式、集合點與延誤聯絡方式。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','碰面時間'],['meeting','碰面地點'],['destination','目的地']]},
-    {id:'hotel-transfer',group:'交通',icon:'↔',title:'11/13 ROSIE → WorldHotels',bookingLabel:'飯店間交通是否已安排',hint:'建議午餐後取行李並出發，14:00 起可入住後優先安排午覺。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','移動時間'],['meeting','出發地點'],['destination','目的地']]},
+    {id:'hotel-transfer',group:'交通',icon:'↔',title:'11/13 ROSIE → WorldHotels',bookingLabel:'飯店間交通是否已安排',hint:'日落小鎮散步和午餐原規劃至約 14:30；之後回 ROSIE 取行李再前往 WorldHotels。轉飯店交通尚待安排，午睡依實際入住時間彈性調整。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','移動時間'],['meeting','出發地點'],['destination','目的地']]},
     {id:'dropoff',group:'交通',icon:'←',title:'11/16 WorldHotels → 機場',bookingLabel:'送機是否已確認',hint:'以當地時間 08:20 抵達 PQC 為目標，實際飯店出發時間依交通確認。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]},
     {id:'cash',group:'行前準備',icon:'₫',title:'US$900 現金換匯計畫',completionField:'ready',bookingLabel:'是否已換錢',hint:'桃園機場換 US$300 等值越南盾（旅費 US$100＋ROSIE US$200），另留 US$600 到富國島換；合計 US$900，尚未換匯。',fields:[['currency','幣別'],['plannedUSD','旅費美元預算（不含住宿）'],['airportExchangeUSD','桃園機場換盾（含 ROSIE）'],['airportTravelUSD','機場換盾中的旅費部分'],['phuQuocReserveUSD','帶至富國島待換的美元']]},
     {id:'rosieReserve',group:'行前準備',icon:'₫',title:'ROSIE 住宿現金（含在機場 US$300）',completionField:'ready',bookingLabel:'是否已準備住宿現金',hint:'住宿預備金 US$200 已包含在桃園機場 US$300 的換盾計畫，並非另外再加 US$200；房費參考 NT$5,496，付款仍待確認。',fields:[['reserveUSD','機場換盾中的住宿部分'],['currency','實際付款幣別提醒']]},
@@ -77,10 +87,11 @@
   function withUpdates(trip) {
     if(trip.id!==TRIP)return {...trip,label:trip.label==='今天'&&trip.start!==today()?'待回填':trip.label};
     const out=preparation.outbound,back=preparation.return;
+    const kids=preparation.resortKids;
     const hotel=(id,label,order)=>{
       const item=preparation[id],d=definitions.find(x=>x.id===id);
       return {date:item.checkin,endDate:new Date(Date.parse(item.checkout+'T12:00:00Z')-86400000).toISOString().slice(0,10),
-        order,time:item.checkinTime||'晚上',title:label+'｜'+(item.name||'住宿待安排'),
+        order,time:id==='resort'?'實際抵達時間待確認':item.checkinTime||'晚上',title:label+'｜'+(item.name||'住宿待安排'),
         desc:[item.booked===true?'已訂房':status(d),item.room,item.breakfast,item.payment,id==='first-hotel'?(item.paymentSettled===true?'房費已支付':item.paymentSettled===false?'房費尚未付款':'房費付款狀態待確認'):'',item.refund,item.checkinTime?'入住 '+item.checkinTime:'入住時間待確認',id==='first-hotel'?'晚到入住後休息':''].filter(Boolean).join(' · '),
         place:item.name||'',links:mapLink(item.name||item.address)};
     };
@@ -106,14 +117,26 @@
     ].sort((a,b)=>a.date===b.date?(Number(a.order||50)-Number(b.order||50)):String(a.date).localeCompare(String(b.date)));
     const tasks=pending();
     return {...trip,start:out.date,end:back.date,timeZone:'Asia/Ho_Chi_Minh',
-      summary:'兩大一小，11/11–11/16 富國島 6 天 5 夜。機票及兩間飯店已訂，11/12 跳島與三段交通仍待確認；玩樂、午覺與飯店休息優先。',
+      summary:'兩大一小，11/11–11/16 富國島 6 天 5 夜。機票及兩間飯店已訂，11/12 跳島與三段交通仍待確認；11/13 日落小鎮原規劃至約 14:30 才換飯店，兒童活動未預約，玩樂、午覺與休息優先。',
       stops,
       details:[
-        {title:'旅行節奏與時區',intro:'航班時間依出發及抵達機場當地時間；越南比台灣慢 1 小時。',bullets:['11/12 快艇三島列入規劃，尚未確認訂購與兒童安全裝備。','11/13 午餐後轉 WorldHotels；14:00 起入住，優先讓孩子午睡。','11/14 夜市與 11/15 晚間活動視體力和天氣彈性調整。']},
+        {title:'旅行節奏與時區',intro:'航班時間依出發及抵達機場當地時間；越南比台灣慢 1 小時。',bullets:['11/11 20:20 抵達後直接前往 ROSIE 休息，當晚不排其他活動。','11/12 跳島含行程餐廳午餐、尚未確認訂購；兒童合身救生衣須向業者確認。晚上若有精神才去日落小鎮／VUI-Fest，煙火以當晚表演公告為準。','11/13 日落小鎮原規劃至約 14:30，之後回 ROSIE 取行李再到 WorldHotels；14:00 起可入住不代表當時已抵達，午睡依實際入住時間彈性調整。','11/14 陽東夜市營運及位置先向飯店確認；11/15 以飯店與午睡為主。']},
         {title:'已訂花費（新台幣參考）',intro:'合計約 NT$44,754；未含跳島、接送、餐飲、購物。',bullets:['9G511／9G510 來回機票（2 大 1 小）約 NT$18,000。','ROSIE 2 晚約 NT$5,496；不含早餐、僅收現金。','WorldHotels 3 晚約 NT$21,258；含早餐、不可退款。','住宿金額為換算參考，以越南盾結算及實際匯率為準。']},
+        {id:'trip-kids',title:'WorldHotels｜Gemy Kids Zone 與手作',intro:'可安排在 11/13 入住後、11/14 或 11/15，午睡優先。以下價格皆為旅客提供的台幣換算約價，尚未預約，最終以飯店公告為準。',bullets:[
+          kids.zone.name+'：'+kids.zone.hours+'；'+kids.zone.features+'。表列每位兒童每次約 NT$'+kids.zone.priceTWD+'、最多 '+kids.zone.maxHours+' 小時。住房是否免費入場及個別設施限制待確認。',
+          '上午手作 '+kids.craft.morningHours+'：'+kids.craft.morning+'。',
+          '下午手作 '+kids.craft.afternoonHours+'：'+kids.craft.afternoon+'。與午睡衝突可直接略過。',
+          '手作是否需另付遊戲區門票、3 歲半能參加哪些活動，入住後向飯店確認；未事先購票。'
+        ]},
+        {id:'trip-kids-care',title:'WorldHotels｜托育、泳課與晚間活動',intro:'僅列可選服務，尚未預約；價格為台幣約價，須依現場實際規則與女兒體力決定。',bullets:[
+          '托育：'+kids.childcare.ages+'；'+kids.childcare.hours+'；'+kids.childcare.prices+'。是否須預約、是否含 Gemy 入場票待確認。',
+          '兒童游泳課：'+kids.swimming.minutes+' 分鐘約 NT$'+kids.swimming.priceTWD+'，介紹包含'+kids.swimming.included+'。是否接受 3 歲半兒童待飯店確認。',
+          '晚間活動：飯店介紹有'+kids.evening.events+'，這次提供的活動表未列確切晚間時間，入住時再詢問。',
+          '兒童區門票、手作與托育如有額外收費，均未包含在機票＋住宿的 NT$44,754 參考總額內。'
+        ]},
         {title:'行前仍需確認',intro:'已確認的機票及住宿不再列為未訂。',bullets:tasks.length?tasks.map(d=>d.title+'：'+missing(d).join('、')):['已列出的八項確認卡都已完成。']}
       ],
-      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','換匯 US$900：桃園機場換 US$300 等值越南盾（旅費 US$100＋ROSIE US$200），US$600 帶到富國島視需要再換（未完成）','購買越南網卡／eSIM，確認手機可使用及開通方式','ROSIE 兩晚房費預備 US$200（已含在機場 US$300 中，不另加）；訂房參考 NT$5,496，付款狀態待確認（未完成）']};
+      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','換匯 US$900：桃園機場換 US$300 等值越南盾（旅費 US$100＋ROSIE US$200），US$600 帶到富國島視需要再換（未完成）','購買越南網卡／eSIM，確認手機可使用及開通方式','ROSIE 兩晚房費預備 US$200（已含在機場 US$300 中，不另加）；訂房參考 NT$5,496，付款狀態待確認（未完成）','向 WorldHotels 確認 Gemy Kids Zone 入場是否免費、手作是否另收門票與 3 歲半資格、托育預約與游泳課年齡；所有兒童服務尚未預約']};
   }
   document.addEventListener('click',async event=>{
     if(event.target.closest('[data-show-complete]')){showComplete=!showComplete;document.dispatchEvent(new CustomEvent('travel-prep:updated'));return;}
