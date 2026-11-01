@@ -93,7 +93,7 @@
       return {date:item.checkin,endDate:new Date(Date.parse(item.checkout+'T12:00:00Z')-86400000).toISOString().slice(0,10),
         order,time:id==='resort'?'實際抵達時間待確認':item.checkinTime||'晚上',title:label+'｜'+(item.name||'住宿待安排'),
         desc:[item.booked===true?'已訂房':status(d),item.room,item.breakfast,item.payment,id==='first-hotel'?(item.paymentSettled===true?'房費已支付':item.paymentSettled===false?'房費尚未付款':'房費付款狀態待確認'):'',item.refund,item.checkinTime?'入住 '+item.checkinTime:'入住時間待確認',id==='first-hotel'?'晚到入住後休息':''].filter(Boolean).join(' · '),
-        place:item.name||'',links:mapLink(item.name||item.address)};
+        place:item.name||'',links:mapLink(item.name||item.address),...(id==='resort'?{photo:"https://worldhotelslongbeach.com/wp-content/uploads/2026/08/WorldHotels-Long-Beach-Resort-Phu-Quoc-Overview-8.jpg",photoLabel:"WorldHotels 官網刊登的度假村外觀（入住時間仍待交通確認）",photoSource:"https://worldhotelslongbeach.com/",photoKind:"official",photoCredit:"WorldHotels 官網"}:{})};
     };
     const transfer=(id,title,order)=>{
       const item=preparation[id],d=definitions.find(x=>x.id===id);
