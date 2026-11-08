@@ -7,7 +7,7 @@
   const today=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   // null = booking status not confirmed; false = explicitly not booked.
   const preparation={
-    updatedOn:'2026-11-01',
+    updatedOn:'2026-11-08',
     outbound:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G511',date:'2026-11-11',origin:'桃園機場 TPE（第一航廈）',destination:'富國島機場 PQC',departure:'17:25',arrival:'20:20'},
     return:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G510',date:'2026-11-16',origin:'富國島機場 PQC',destination:'桃園機場 TPE（第一航廈）',departure:'11:20',arrival:'16:00'},
     'first-hotel':{booked:true,paymentSettled:null,name:'ROSIE SUNSET HOTEL',address:'',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'',lateArrivalNoticeConfirmed:null,room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金',costTWD:5496},
@@ -30,9 +30,10 @@
         {label:'兆豐最新匯率',url:'https://www.megabank.com.tw/personal/savings/foreign-service/forex'},
         {label:'富國島 Robinson Pearl 地圖',url:'https://www.google.com/maps/search/?api=1&query=Robinson+Pearl+54+Tran+Hung+Dao+Phu+Quoc'}]},
     rosieReserve:{ready:false,reserveUSD:200,currency:'住宿以越南盾（VND）現金支付',note:'ROSIE 11/11–11/13 兩晚住宿獨立預留 US$200，已包含在桃園機場計畫兌換的 US$300 等值越南盾中（另外 US$100 為旅費），不重複另外準備。旅費 US$700＋住宿 US$200＝總預算 US$900，桃園機場換 US$300 等值越南盾＋富國島視需要換 US$600。訂房參考價 NT$5,496；住宿現金仍未換好，房費是否已支付也待確認。ROSIE 僅收現金，先確認住宿實際應付 VND 金額與付款時間。'},
-    mobileData:{ready:false,option:'越南網卡／eSIM',note:'以速度及島上覆蓋優先：推薦 Viettel 原生 5G eSIM，每日 5GB 高速量，選覆蓋 11/11–11/16 六個日曆日以上；太陽富國航空符合資格旅客可另申請 MobiFone 首 24 小時 5GB 免費 eSIM 作備援。買前確認手機支援 eSIM、實際有效期及開通方式。尚未購買。',
+    mobileData:{ready:true,option:'KKday｜Viettel 原生（非漫遊）eSIM・每日高速 5GB・7 天×2 張',purchaseDate:'2026-11-08',startDate:'2026-11-11',days:7,quantity:2,priceTWD:310,note:'已購買 2 張，合計 NT$310；選擇 11/11 使用、7 天有效期，涵蓋 11/11–11/16。安裝與實際啟用狀態尚未確認，請依 KKday 憑證指示操作；QR Code、訂單號及個人資訊不放公開網站。',
       sources:[{label:'KKday Viettel 5G eSIM・含富國島',url:'https://www.kkday.com/zh-tw/product/249518'},
         {label:'航空公司免費 MobiFone eSIM',url:'https://www.sunphuquocairways.com/tw/tw/ticket-info/additional-services/esim-selection'}]},
+    travelInsurance:{ready:true,provider:'富邦產險・旅平卡',plan:'國外旅遊適用 300 萬×2＋國外兒童×1',premiumTWD:2045,insuredCount:3,activityDate:'2026-11-12',note:'三人已完成投保。成人每位旅平險 300 萬、傷害醫療 30 萬、海外突發疾病醫療 30 萬；兒童傷害醫療與海外突發疾病醫療各 20 萬。11/12 特定活動三人均已加保，特定活動醫療各 30 萬、緊急救援費用各 10 萬。投保選擇方案計算：成人 NT$636×2＋兒童 NT$326＋特定活動 NT$149×3＝NT$2,045；保單生效時間、法定傳染病及活動承保條件均以正式保單／條款為準。'},
     costs:{airfareTWD:18000,firstHotelTWD:5496,resortTWD:21258,totalTWD:44754,note:'機票與住宿參考合計；未含跳島、接送、餐飲及購物。住宿以越南盾及實際匯率結算。'}
   };
   const definitions=[
@@ -47,7 +48,8 @@
     {id:'dropoff',group:'交通',icon:'←',title:'11/16 WorldHotels → 機場',bookingLabel:'送機是否已確認',hint:'以當地時間 08:20 抵達 PQC 為目標，實際飯店出發時間依交通確認。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]},
     {id:'cash',group:'行前準備',icon:'₫',title:'US$900 現金換匯計畫',completionField:'ready',bookingLabel:'是否已換錢',hint:'桃園機場換 US$300 等值越南盾（旅費 US$100＋ROSIE US$200），另留 US$600 到富國島換；合計 US$900，尚未換匯。',fields:[['currency','幣別'],['plannedUSD','旅費美元預算（不含住宿）'],['airportExchangeUSD','桃園機場換盾（含 ROSIE）'],['airportTravelUSD','機場換盾中的旅費部分'],['phuQuocReserveUSD','帶至富國島待換的美元']]},
     {id:'rosieReserve',group:'行前準備',icon:'₫',title:'ROSIE 住宿現金（含在機場 US$300）',completionField:'ready',bookingLabel:'是否已準備住宿現金',hint:'住宿預備金 US$200 已包含在桃園機場 US$300 的換盾計畫，並非另外再加 US$200；房費參考 NT$5,496，付款仍待確認。',fields:[['reserveUSD','機場換盾中的住宿部分'],['currency','實際付款幣別提醒']]},
-    {id:'mobileData',group:'行前準備',icon:'▣',title:'購買越南網卡／eSIM',completionField:'ready',bookingLabel:'是否已買網卡',hint:'尚未購買；依手機支援狀況選 SIM 或 eSIM，核對使用天數及開通方式。',fields:[['option','上網形式']]}
+    {id:'mobileData',group:'行前準備',icon:'▣',title:'Viettel eSIM｜已購買兩張',completionField:'ready',bookingLabel:'是否已買網卡',hint:'KKday 已購買：每日 5GB × 7 天 × 2 張，共 NT$310。安裝與啟用狀態尚待確認。',fields:[['option','上網方案'],['startDate','開始使用日期'],['quantity','張數'],['priceTWD','費用（NT$）']]},
+    {id:'travelInsurance',group:'行前準備',icon:'✚',title:'富邦旅平卡｜三人已投保',completionField:'ready',bookingLabel:'旅平險是否已投保',hint:'兩位大人＋一位兒童均已投保，11/12 特定活動加保三人；總保費依所選方案合計 NT$2,045。',fields:[['provider','保險公司'],['plan','投保方案'],['premiumTWD','保費合計（NT$）']]}
   ];
   let showComplete=false,feedback='',copyFallback='';
   const completionValue=d=>d.id==='rosieReserve'&&preparation['first-hotel'].paymentSettled===true?true:preparation[d.id][d.completionField||'booked'];
@@ -117,7 +119,7 @@
     ].sort((a,b)=>a.date===b.date?(Number(a.order||50)-Number(b.order||50)):String(a.date).localeCompare(String(b.date)));
     const tasks=pending();
     return {...trip,start:out.date,end:back.date,timeZone:'Asia/Ho_Chi_Minh',
-      summary:'兩大一小，11/11–11/16 富國島 6 天 5 夜。機票及兩間飯店已訂，11/12 跳島與三段交通仍待確認；11/13 日落小鎮原規劃至約 14:30 才換飯店，兒童活動未預約，玩樂、午覺與休息優先。',
+      summary:'兩大一小，11/11–11/16 富國島 6 天 5 夜。機票及兩間飯店已訂，兩張 Viettel eSIM 已購買、三人旅平險已投保；11/12 跳島與三段交通仍待確認，兒童活動未預約，玩樂、午覺與休息優先。',
       stops,
       details:[
         {title:'旅行節奏與時區',intro:'航班時間依出發及抵達機場當地時間；越南比台灣慢 1 小時。',bullets:['11/11 20:20 抵達後直接前往 ROSIE 休息，當晚不排其他活動。','11/12 跳島含行程餐廳午餐、尚未確認訂購；兒童合身救生衣須向業者確認。晚上若有精神才去日落小鎮／VUI-Fest，煙火以當晚表演公告為準。','11/13 日落小鎮原規劃至約 14:30，之後回 ROSIE 取行李再到 WorldHotels；14:00 起可入住不代表當時已抵達，午睡依實際入住時間彈性調整。','11/14 陽東夜市營運及位置先向飯店確認；11/15 以飯店與午睡為主。']},
@@ -134,9 +136,14 @@
           '晚間活動：飯店介紹有'+kids.evening.events+'，這次提供的活動表未列確切晚間時間，入住時再詢問。',
           '兒童區門票、手作與托育如有額外收費，均未包含在機票＋住宿的 NT$44,754 參考總額內。'
         ]},
-        {title:'行前仍需確認',intro:'已確認的機票及住宿不再列為未訂。',bullets:tasks.length?tasks.map(d=>d.title+'：'+missing(d).join('、')):['已列出的八項確認卡都已完成。']}
+        {title:'已完成｜eSIM 與全家旅平險',intro:'11/08 更新；只記錄已完成購買／投保的事實。',bullets:[
+          '網路：KKday Viettel 原生（非漫遊）eSIM 已購買 2 張，11/11 起選 7 天，每日高速 5GB，總價 NT$310。是否已安裝／啟用待確認。',
+          '保險：富邦旅平卡已完成 2 位成人與 1 位幼兒投保；成人每人 300 萬旅平險、傷害及海外突發疾病醫療各 30 萬，兒童傷害及海外突發疾病醫療各 20 萬。',
+          '11/12 三人特定活動已加保：每人特定活動醫療 30 萬、緊急救援費用 10 萬。投保選擇方案合計 NT$2,045；生效期間及浮潛適用條件以正式保單為準。'
+        ]},
+        {title:'行前仍需確認',intro:'已確認的機票、住宿、eSIM 與旅平險不再列為未完成購買／投保。',bullets:tasks.length?tasks.map(d=>d.title+'：'+missing(d).join('、')):['已列出的八項確認卡都已完成。']}
       ],
-      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','換匯 US$900：桃園機場換 US$300 等值越南盾（旅費 US$100＋ROSIE US$200），US$600 帶到富國島視需要再換（未完成）','購買越南網卡／eSIM，確認手機可使用及開通方式','ROSIE 兩晚房費預備 US$200（已含在機場 US$300 中，不另加）；訂房參考 NT$5,496，付款狀態待確認（未完成）','向 WorldHotels 確認 Gemy Kids Zone 入場是否免費、手作是否另收門票與 3 歲半資格、托育預約與游泳課年齡；所有兒童服務尚未預約']};
+      checklist:['11/12 快艇三島訂購與兒童合身救生衣確認','11/11 接機與 ROSIE 晚到入住通知','11/13 兩飯店間交通','11/16 08:20 到機場的送機安排','孩子備用衣物與午睡用品','換匯 US$900：桃園機場換 US$300 等值越南盾（旅費 US$100＋ROSIE US$200），US$600 帶到富國島視需要再換（未完成）','Viettel eSIM 已買兩張：11/11 依 KKday 憑證指示安裝／啟用並測試兩支手機網路','ROSIE 兩晚房費預備 US$200（已含在機場 US$300 中，不另加）；訂房參考 NT$5,496，付款狀態待確認（未完成）','向 WorldHotels 確認 Gemy Kids Zone 入場是否免費、手作是否另收門票與 3 歲半資格、托育預約與游泳課年齡；所有兒童服務尚未預約']};
   }
   document.addEventListener('click',async event=>{
     if(event.target.closest('[data-show-complete]')){showComplete=!showComplete;document.dispatchEvent(new CustomEvent('travel-prep:updated'));return;}
