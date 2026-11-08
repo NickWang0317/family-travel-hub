@@ -11,7 +11,7 @@
     outbound:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G511',date:'2026-11-11',origin:'桃園機場 TPE（第一航廈）',destination:'富國島機場 PQC',departure:'17:25',arrival:'20:20',cabin:'Economy Lite',passengers:3,baggage:'每位票面 1PC；航空公司官方台灣航線 Economy Lite 規定托運 1 件 23kg、手提 7kg（出發前再確認）',liveBookingStatusConfirmed:null},
     return:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G510',date:'2026-11-16',origin:'富國島機場 PQC',destination:'桃園機場 TPE（第一航廈）',departure:'11:20',arrival:'16:00',cabin:'Economy Lite',passengers:3,baggage:'每位票面 1PC；航空公司官方台灣航線 Economy Lite 規定托運 1 件 23kg、手提 7kg（出發前再確認）',liveBookingStatusConfirmed:null},
     'first-hotel':{booked:true,paymentSettled:null,name:'ROSIE SUNSET HOTEL',address:'44 Đường MILAN, An Thoi, 92516 Phú Quốc, Vietnam',phone:'+84 829 506 788',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'15:00–23:30（訂房時間）；服務條款另列櫃台最晚 23:00，須向飯店確認',checkoutTime:'05:00–12:00',lateArrivalNoticeConfirmed:null,room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金；免訂金',refund:'訂房確認單顯示可免費取消',costVND:4355656,costTWD:5569,latestBookingConfirmedOn:'2026-11-08',actualCheckinCutoffConfirmed:false,note:'已核對太太轉寄的 Booking.com 正式訂房確認與 PDF：房價 VND 4,355,656（含稅，台幣約價依當時匯率變動）；僅收現金、免訂金，是否已付款仍待核實。飯店曾寄一般歡迎信，但未明確確認 11/11 航班 20:20 抵達後的晚到入住或免費接機安排；飯店名稱含 Free pick-up service 不代表接機已訂。11/08 晚間 Booking.com APP 訂單列表顯示「已確認」，新轉寄確認信與 10/23 變更後內容一致，但住宿條款另外寫櫃台最晚 23:00，與預訂時段 23:30 不一致；必須請住宿方確認延誤時可辦入住。須確認最晚入住與實際接機方式。',sources:[{label:'Booking.com｜ROSIE 住宿介紹',url:'https://www.booking.com/hotel/vn/rosie-sunset.html'},{label:'Google Maps｜ROSIE 路線',url:'https://www.google.com/maps/search/?api=1&query=44+Duong+Milan+An+Thoi+Phu+Quoc'}]},
-    resort:{booked:true,paymentSettled:null,name:'WorldHotels Long Beach Resort Phu Quoc',address:'152 Tran Hung Dao Street, Cua Lap Quarter, Duong To, 922200 Phu Quoc, Vietnam',phone:'+84 297 3981 818',checkin:'2026-11-13',checkout:'2026-11-16',checkinTime:'14:00 起',checkoutTime:'12:00 前',room:'私人花園景豪華雙床房',breakfast:'含早餐',refund:'不可退款',costVND:16848000,costTWD:21543,latestBookingConfirmedOn:'2026-11-08',actualBedConfigurationConfirmed:false,childStayWithoutExtraFeeConfirmed:false,babyCot:{requested:true,requestedOn:'2026-10-23',followUpSent:true,followUpSentOn:'2026-11-09',requestChannel:'Booking.com 住宿訊息',confirmed:null,extraFee:null,note:'旅客 10/23 17:24 已在 Booking.com 為 Deluxe Twin Room with Private Garden View 提出加一張供 3 歲孩童使用的嬰兒床要求，APP 顯示「等待住宿方回覆」。後續住宿確認與 10/31 Gemy Kids Zone 郵件未確認提供嬰兒床或加床，仍須請飯店明確回覆適用年齡、是否提供及收費。'},beds:'訂購 Deluxe Twin；網站顯示雙床，11/08 訂房確認信房型描述卻寫 1 張床與最多 2 位成人，同一訂單有 2 大 1 小；需由飯店確認實際床數、3 歲兒童可否不加價入住',airportShuttle:{booked:null,requestSent:true,followUpSent:true,followUpSentOn:'2026-11-09',requestChannel:'Booking.com 住宿訊息',requestContent:'旅客曾留言要求 2026/11/16 機場接送，但未指定班次或提供完整旅客／行李／航班資料；飯店僅回覆住宿確認及接駁班表，尚未接受送機預約',includedInBooking:true,advanceHours:48,pickupTimes:'07:30／09:30／11:30／13:30／15:30／17:30／19:30／21:30',dropoffTimes:'08:15／10:15／12:15／14:15／16:15／18:15／20:15',recommended:'11/16 可詢問 08:15 飯店出發，約 08:30 抵達機場；尚未訂妥',contactEmail:'gro@worldhotelslongbeach.com',contactPhone:'+84 986 590 002'},note:'Booking.com 訂房與 PDF 均確認總價 VND 16,848,000（含稅），約 NT$21,543 僅換算參考。住宿方可能預先扣款，但尚無實際扣款證明；不可退款。11/08 Booking.com APP 列表顯示已確認，轉寄的更新確認信註明來回機場接送包含在房價內，但必須另外安排，仍未預約；同信客房描述出現 1 床、最多 2 位成人，和訂購的 Twin＋2 大 1 小不一致，須請飯店確認床數、孩童入住費用。11/09 旅客提供 Booking.com 住宿對話錄影：已向飯店留言『I need airport transfer at 16/11/2026』，但飯店相鄰回覆僅為住宿預訂確認；後續提供班表和至少 48 小時前提交姓名、人數／行李、WhatsApp、航班號與預選時段的規則。未見飯店確認 08:15 送機班次，不能標為已預約。11/09 旅客表示已再次透過 Booking.com 發送 08:15 送機與嬰兒床兩則補問訊息，等待飯店回覆，尚未收到服務確認。10/31 飯店表示已回覆原訂房信箱對兒童服務之提問，實際回覆內容仍待核對。'},
+    resort:{booked:true,paymentSettled:null,name:'WorldHotels Long Beach Resort Phu Quoc',address:'152 Tran Hung Dao Street, Cua Lap Quarter, Duong To, 922200 Phu Quoc, Vietnam',phone:'+84 297 3981 818',checkin:'2026-11-13',checkout:'2026-11-16',checkinTime:'14:00 起',checkoutTime:'12:00 前',room:'私人花園景豪華雙床房',breakfast:'含早餐',refund:'不可退款',costVND:16848000,costTWD:21543,latestBookingConfirmedOn:'2026-11-08',actualBedConfigurationConfirmed:false,childStayWithoutExtraFeeConfirmed:false,babyCot:{requested:true,requestedOn:'2026-10-23',followUpSent:true,followUpSentOn:'2026-11-09',requestChannel:'Booking.com 住宿訊息',confirmed:null,extraFee:null,note:'旅客 10/23 17:24 已在 Booking.com 為 Deluxe Twin Room with Private Garden View 提出加一張供 3 歲孩童使用的嬰兒床要求，APP 顯示「等待住宿方回覆」。後續住宿確認與 10/31 Gemy Kids Zone 郵件未確認提供嬰兒床或加床，仍須請飯店明確回覆適用年齡、是否提供及收費。'},beds:'訂購 Deluxe Twin；網站顯示雙床，11/08 訂房確認信房型描述卻寫 1 張床與最多 2 位成人，同一訂單有 2 大 1 小；需由飯店確認實際床數、3 歲兒童可否不加價入住',airportShuttle:{booked:false,willUse:false,decisionOn:'2026-11-09',requestSent:true,followUpSent:true,followUpSentOn:'2026-11-09',requestChannel:'Booking.com 住宿訊息',requestContent:'旅客曾留言要求 2026/11/16 機場接送，但未指定班次或提供完整旅客／行李／航班資料；飯店僅回覆住宿確認及接駁班表，尚未接受送機預約',includedInBooking:true,advanceHours:48,pickupTimes:'07:30／09:30／11:30／13:30／15:30／17:30／19:30／21:30',dropoffTimes:'08:15／10:15／12:15／14:15／16:15／18:15／20:15',recommended:'11/16 家庭決定不搭 08:15 接駁，改自行叫 Grab；仍以 08:20 前抵達機場為目標',contactEmail:'gro@worldhotelslongbeach.com',contactPhone:'+84 986 590 002'},note:'Booking.com 訂房與 PDF 均確認總價 VND 16,848,000（含稅），約 NT$21,543 僅換算參考。住宿方可能預先扣款，但尚無實際扣款證明；不可退款。11/08 Booking.com APP 列表顯示已確認，轉寄的更新確認信註明來回機場接送包含在房價內，但必須另外安排，仍未預約；同信客房描述出現 1 床、最多 2 位成人，和訂購的 Twin＋2 大 1 小不一致，須請飯店確認床數、孩童入住費用。11/09 旅客提供 Booking.com 住宿對話錄影：已向飯店留言『I need airport transfer at 16/11/2026』，但飯店相鄰回覆僅為住宿預訂確認；後續提供班表和至少 48 小時前提交姓名、人數／行李、WhatsApp、航班號與預選時段的規則。未見飯店確認 08:15 送機班次，不能標為已預約。11/09 旅客表示已再次透過 Booking.com 發送 08:15 送機與嬰兒床兩則補問訊息，等待飯店回覆，尚未收到服務確認。10/31 Gemy Kids Zone 回覆與兩份活動表已於 11/09 收到。11/09 家人決定不搭 08:15 飯店接駁，改自行叫 Grab（尚未預約），飯店只剩嬰兒床／加床等待確認。'},
     resortKids:{
       confirmed:false,reserved:false,officialScheduleReceived:true,scheduleReplyDate:'2026-10-31',scheduleForwardedOn:'2026-11-09',priceNote:'WorldHotels 預訂部 10/31 正式回覆並附 Gemy Kids Zone Daily Activities 與 Daily Recreation Activities 兩份 PDF；以下越南盾金額出自飯店價目表，台幣約價只是匯率換算。兒童服務未預約，住客優惠、資格及實際供應仍待飯店確認。',
       sources:[{label:'Gemy Kids Zone 官方資訊',url:'https://worldhotelslongbeach.com/service/gemy-kids-zone/'},{label:'WorldHotels 聯絡方式',url:'https://worldhotelslongbeach.com/contact-us/'}],
@@ -24,7 +24,8 @@
     'island-tour':{booked:false,bookingCheckedOn:'2026-11-09',provider:'KKday',product:'快艇三島一日遊',date:'2026-11-12',meetingTime:'',meetingPoint:'',childJacket:'',returnTime:'約 15:00 回到碼頭（行程規劃）'},
     pickup:{booked:null,provider:'',date:'2026-11-11',time:'',meeting:'',destination:'ROSIE SUNSET HOTEL'},
     'hotel-transfer':{booked:null,provider:'',date:'2026-11-13',time:'',meeting:'ROSIE SUNSET HOTEL',destination:'WorldHotels Long Beach Resort Phu Quoc'},
-    dropoff:{booked:null,provider:'',date:'2026-11-16',time:'',meeting:'WorldHotels Long Beach Resort Phu Quoc',destination:'富國島機場 PQC',arrivalGoal:'08:20 抵達機場（目標）'},
+    dropoff:{booked:null,transportChosen:true,provider:'Grab（當天自行叫車，未預約）',date:'2026-11-16',time:'07:45（建議出發時間，依叫車狀況調整）',meeting:'WorldHotels Long Beach Resort Phu Quoc',destination:'富國島機場 PQC',arrivalGoal:'08:20 抵達機場（目標）',note:'不搭飯店 08:15 免費接駁；自行叫 Grab，7:45 僅為建議出發時間，未預約車輛。'},
+    packingNotes:{phoneWaterproofPouch:{needed:true,packed:null,note:'帶手機防水袋，11/12 跳島或泳池、海邊玩水時使用；出發前放進行李。'}},
     cash:{ready:false,usdCashObtained:true,usdCashAmount:1000,usdCashObtainedOn:'2026-11-08',usdCashExtra:100,currency:'美金（USD）／越南盾（VND）',plannedUSD:700,airportExchangeUSD:300,airportTravelUSD:100,phuQuocReserveUSD:600,note:'已於 11/08 領妥 US$1,000 美元現鈔；原先旅費 US$700＋ROSIE 住宿 US$200 共計 US$900 的換匯計畫仍適用，多出的 US$100 作為額外備用。已領美元不等於已換越南盾，越南盾目前仍未確認備妥。桃園機場將 US$300 等值換成越南盾，內含旅費 US$100 和 ROSIE 住宿預備金 US$200；剩餘 US$600 帶到富國島視實際需要分次換盾。US$200 已算在機場 US$300 中，不能額外加算。換匯尚未完成。出發前向桃園機場兆豐確認櫃台可否直接以美元換越南盾、若須台幣結算的換匯方式及現鈔庫存。ROSIE 訂房 PDF 確認應付 VND 4,355,656、僅收現金及免訂金；是否已付款與付款時點仍需確認，11/11 晚間抵達前先確保越南盾足夠。',
       sources:[{label:'兆豐銀行現鈔幣別',url:'https://www.megabank.com.tw/personal/savings/foreign-service/fx-cash'},
         {label:'兆豐最新匯率',url:'https://www.megabank.com.tw/personal/savings/foreign-service/forex'},
@@ -41,12 +42,12 @@
     {id:'outbound',group:'飛行',icon:'↗',title:'去程機票',bookingLabel:'是否已訂票',hint:'9G511｜11/11 桃園 17:25 → 富國島 20:20（兩地當地時間）。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
     {id:'return',group:'飛行',icon:'↙',title:'回程機票',bookingLabel:'是否已訂票',hint:'9G510｜11/16 富國島 11:20 → 桃園 16:00（兩地當地時間）。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
     {id:'first-hotel',group:'住宿',icon:'01',title:'ROSIE｜晚到入住待確認',bookingLabel:'是否已訂房',hint:'訂房 PDF 已確認地址 44 Đường MILAN、入住 15:00–23:30、現金房價 VND 4,355,656。僅剩晚到通知、接機安排及付款狀態待確認。',fields:[['name','飯店名稱'],['address','訂房確認地址'],['phone','住宿電話'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','正式入住時段']]},
-    {id:'resort',group:'住宿',icon:'02',title:'WorldHotels｜11/13–11/16',bookingLabel:'是否已訂房',hint:'已訂三晚、不可退款、含早餐；訂房 PDF 金額 VND 16,848,000。飯店免費送機接駁已有班表但尚未預約。',fields:[['name','飯店名稱'],['address','飯店地址'],['phone','飯店電話'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住時間']]},
+    {id:'resort',group:'住宿',icon:'02',title:'WorldHotels｜11/13–11/16',bookingLabel:'是否已訂房',hint:'已訂三晚、不可退款、含早餐；11/16 回程不搭飯店 08:15 免費接駁，改自行叫 Grab（尚未叫車）。嬰兒床／加床仍待飯店回覆。',fields:[['name','飯店名稱'],['address','飯店地址'],['phone','飯店電話'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住時間']]},
     {id:'resortKids',group:'親子活動',icon:'☆',title:'WorldHotels｜兒童服務待確認',completionField:'confirmed',bookingLabel:'是否已向飯店核對兒童服務',hint:'Gemy Kids Zone、手作、托育、泳課及晚間表演尚未預約；住房是否免費入場、年齡資格、門票與時間需向飯店確認。台幣費用僅約價。',fields:[]},
     {id:'island-tour',group:'活動',icon:'03',title:'11/12 KKday 快艇三島',bookingLabel:'是否已訂購',hint:'11/09 旅客確認尚未預訂。活動仍為暫定；購買前確認是否接受 3 歲兒童、合身救生衣、集合時間及地點。',fields:[['provider','活動平台'],['product','行程名稱'],['date','活動日期'],['meetingTime','集合時間'],['meetingPoint','集合地點'],['childJacket','兒童救生衣尺寸／適用條件']]},
     {id:'pickup',group:'交通',icon:'→',title:'11/11 機場 → ROSIE',bookingLabel:'接機是否已確認',hint:'晚間抵達，確認接機方式、集合點與延誤聯絡方式。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','碰面時間'],['meeting','碰面地點'],['destination','目的地']]},
     {id:'hotel-transfer',group:'交通',icon:'↔',title:'11/13 ROSIE → WorldHotels',bookingLabel:'飯店間交通是否已安排',hint:'日落小鎮散步和午餐原規劃至約 14:30；之後回 ROSIE 取行李再前往 WorldHotels。轉飯店交通尚待安排，午睡依實際入住時間彈性調整。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','移動時間'],['meeting','出發地點'],['destination','目的地']]},
-    {id:'dropoff',group:'交通',icon:'←',title:'11/16 WorldHotels → 機場',bookingLabel:'送機是否已確認',hint:'已透過 Booking.com 提出 11/16 機場接送需求，尚未取得接送預約確認。需要指定 08:15 班次，至少提前 48 小時提供旅客姓名、3 人及行李數、WhatsApp、航班 9G510，並等待飯店明確回覆。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]},
+    {id:'dropoff',group:'交通',icon:'←',title:'11/16 Grab → 富國島機場',bookingLabel:'當天是否已叫到 Grab',hint:'家人決定 08:15 飯店接駁太晚，改自行叫 Grab；建議約 07:45 出發、08:20 前抵達機場。Grab 尚未預約，不再等待飯店送機確認。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]},
     {id:'cash',group:'行前準備',icon:'₫',title:'US$1,000 已領｜越南盾待換',completionField:'ready',bookingLabel:'越南盾是否已換妥',hint:'已領美元 US$1,000，原規劃支用 US$900（含 ROSIE US$200），額外 US$100 備用；仍須將足夠金額換成越南盾支付 ROSIE。',fields:[['currency','幣別'],['usdCashAmount','已領美元現鈔（USD）'],['plannedUSD','旅費美元預算（不含住宿）'],['airportExchangeUSD','桃園機場預計換盾（含 ROSIE）'],['airportTravelUSD','機場換盾中的旅費部分'],['phuQuocReserveUSD','帶至富國島待換的美元']]},
     {id:'rosieReserve',group:'行前準備',icon:'₫',title:'ROSIE 住宿現金（含在機場 US$300）',completionField:'ready',bookingLabel:'是否已準備住宿現金',hint:'住宿預備金 US$200 已包含在桃園機場 US$300 的換盾計畫，並非另外再加 US$200；訂房 PDF 應付 VND 4,355,656，付款仍待確認。',fields:[['reserveUSD','機場換盾中的住宿部分'],['currency','實際付款幣別提醒']]},
     {id:'mobileData',group:'行前準備',icon:'▣',title:'Viettel eSIM｜已購買兩張',completionField:'ready',bookingLabel:'是否已買網卡',hint:'KKday 已購買：每日 5GB × 7 天 × 2 張，共 NT$310。安裝與啟用狀態尚待確認。',fields:[['option','上網方案'],['startDate','開始使用日期'],['quantity','張數'],['priceTWD','費用（NT$）']]},
@@ -56,7 +57,7 @@
   const completionValue=d=>d.id==='rosieReserve'&&preparation['first-hotel'].paymentSettled===true?true:preparation[d.id][d.completionField||'booked'];
   const missing=d=>[...(completionValue(d)===true?[]:[d.bookingLabel]),...d.fields.filter(([key])=>!preparation[d.id][key]).map(([,label])=>label),...(d.id==='first-hotel'&&preparation['first-hotel'].lateArrivalNoticeConfirmed!==true?['飯店回覆確認 11/11 晚到入住方式']:[])];
   const pending=()=>definitions.filter(d=>missing(d).length);
-  const status=d=>missing(d).length===0?'資料已收好':d.completionField?(completionValue(d)===false?'尚未完成':'待確認是否完成'):preparation[d.id].booked===true?'已訂，待補資訊':preparation[d.id].booked===false?'待安排':'訂購／安排狀態待確認';
+  const status=d=>d.id==='dropoff'&&preparation.dropoff.transportChosen?'已決定自行叫 Grab（未預約）':missing(d).length===0?'資料已收好':d.completionField?(completionValue(d)===false?'尚未完成':'待確認是否完成'):preparation[d.id].booked===true?'已訂，待補資訊':preparation[d.id].booked===false?'待安排':'訂購／安排狀態待確認';
   const shortDate=value=>value?value.slice(5).replace('-','/'):'待確認';
   const remaining=()=>Math.ceil((Date.parse(preparation.outbound.date+'T00:00:00Z')-Date.parse(today()+'T00:00:00Z'))/86400000);
   function promptFor(id) {
@@ -114,17 +115,17 @@
       hotel('first-hotel','入住前兩晚飯店',80),
       transfer('hotel-transfer','取行李後前往 WorldHotels',45),
       hotel('resort','入住後三晚渡假村',55),
-      transfer('dropoff','飯店出發｜前往機場',30),
+      transfer('dropoff','自行叫 Grab｜前往機場',30),
       {date:back.date,order:50,time:back.departure,title:'9G510｜從富國島起飛',kind:'flight',
         desc:flight(definitions[1]),place:'Phu Quoc International Airport'}
     ].sort((a,b)=>a.date===b.date?(Number(a.order||50)-Number(b.order||50)):String(a.date).localeCompare(String(b.date)));
     return {...trip,start:out.date,end:back.date,timeZone:'Asia/Ho_Chi_Minh',
-      summary:'11/11–11/16 富國島 6 天 5 夜。機票、護照、兩間住宿、旅平險均已確認；eSIM 已購買、US$1,000 已領。剩下換越南盾、等 WorldHotels 送機與嬰兒床回覆，以及決定是否購買 11/12 跳島。',
+      summary:'11/11–11/16 富國島 6 天 5 夜。機票、護照、兩間住宿、旅平險已確認；eSIM 已購買、US$1,000 已領。11/16 回程改自行叫 Grab（未預約），飯店僅剩嬰兒床／加床待回覆；仍須換越南盾、決定 11/12 跳島，並帶手機防水袋。',
       stops,
       details:[
         {title:'行程與費用速記',intro:'機票、護照、兩間飯店、旅平險均已確認；eSIM 兩張已購買。越南比台灣慢 1 小時。',bullets:[
           '三人機票 NT$17,847＋ROSIE 2 晚約 NT$5,569＋WorldHotels 3 晚約 NT$21,543，合計約 NT$44,959；住宿台幣金額是換算參考，不等於已付款。',
-          '11/11 晚間抵達後搭車前往 ROSIE；11/13 換飯店當天午睡彈性安排。若航班大幅延誤，再主動通知 ROSIE。'
+          '11/11 晚間抵達後搭車前往 ROSIE；11/13 換飯店當天午睡彈性安排；11/16 回程約 07:45 自行叫 Grab 前往機場（未預約）。若去程航班大幅延誤，再通知 ROSIE。'
         ]},
         {id:'trip-kids',title:'WorldHotels｜兒童活動',intro:'飯店正式活動價目表已收到；僅是可選活動，尚未預約。',bullets:[
           'Gemy Kids Zone：每次 VND '+Number(kids.zone.priceVND).toLocaleString('en-US')+'，最多 3 小時；住客是否有優惠待確認。',
@@ -132,12 +133,13 @@
           '3～未滿 6 歲托育：每小時 VND 200,000 起；兒童游泳課 60 分鐘 VND 200,000。適齡與預約以飯店回覆為準。'
         ]}
       ],
-      checklistIds:['cash-v48','worldhotels-v48','tour-v48','esim-v48'],
+      checklistIds:['cash-v48','worldhotels-cot-v50','tour-v48','esim-v48','waterproof-pouch-v50'],
       checklist:[
         '換越南盾：US$1,000 已領；ROSIE 兩晚須以現金付 VND '+Number(preparation['first-hotel'].costVND).toLocaleString('en-US')+'。',
-        '等 WorldHotels 回覆：11/16 08:15 免費送機、11/13～11/16 嬰兒床／加床。兩則訊息已送出。',
+        '等 WorldHotels 回覆：只剩 11/13～11/16 嬰兒床／加床；11/16 送機改自行叫 Grab，不搭 08:15 飯店接駁。',
         '11/12 跳島尚未購買；決定參加再確認 3 歲兒童資格和救生衣。',
-        '兩張 Viettel eSIM 已購買；出發前依 KKday 憑證安裝並測試。'
+        '兩張 Viettel eSIM 已購買；出發前依 KKday 憑證安裝並測試。',
+        '帶手機防水袋：出發前放入行李，跳島／泳池／海邊玩水時可用。'
       ]};
   }
   document.addEventListener('click',async event=>{
