@@ -7,7 +7,7 @@
   const today=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   // null = booking status not confirmed; false = explicitly not booked.
   const preparation={
-    updatedOn:'2026-11-08',
+    updatedOn:'2026-11-09',
     outbound:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G511',date:'2026-11-11',origin:'桃園機場 TPE（第一航廈）',destination:'富國島機場 PQC',departure:'17:25',arrival:'20:20',cabin:'Economy Lite',passengers:3,baggage:'每位票面 1PC；航空公司官方台灣航線 Economy Lite 規定托運 1 件 23kg、手提 7kg（出發前再確認）',liveBookingStatusConfirmed:null},
     return:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G510',date:'2026-11-16',origin:'富國島機場 PQC',destination:'桃園機場 TPE（第一航廈）',departure:'11:20',arrival:'16:00',cabin:'Economy Lite',passengers:3,baggage:'每位票面 1PC；航空公司官方台灣航線 Economy Lite 規定托運 1 件 23kg、手提 7kg（出發前再確認）',liveBookingStatusConfirmed:null},
     'first-hotel':{booked:true,paymentSettled:null,name:'ROSIE SUNSET HOTEL',address:'44 Đường MILAN, An Thoi, 92516 Phú Quốc, Vietnam',phone:'+84 829 506 788',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'15:00–23:30（訂房時間）；服務條款另列櫃台最晚 23:00，須向飯店確認',checkoutTime:'05:00–12:00',lateArrivalNoticeConfirmed:null,room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金；免訂金',refund:'訂房確認單顯示可免費取消',costVND:4355656,costTWD:5569,latestBookingConfirmedOn:'2026-11-08',actualCheckinCutoffConfirmed:false,note:'已核對太太轉寄的 Booking.com 正式訂房確認與 PDF：房價 VND 4,355,656（含稅，台幣約價依當時匯率變動）；僅收現金、免訂金，是否已付款仍待核實。飯店曾寄一般歡迎信，但未明確確認 11/11 航班 20:20 抵達後的晚到入住或免費接機安排；飯店名稱含 Free pick-up service 不代表接機已訂。11/08 晚間 Booking.com APP 訂單列表顯示「已確認」，新轉寄確認信與 10/23 變更後內容一致，但住宿條款另外寫櫃台最晚 23:00，與預訂時段 23:30 不一致；必須請住宿方確認延誤時可辦入住。須確認最晚入住與實際接機方式。',sources:[{label:'Booking.com｜ROSIE 住宿介紹',url:'https://www.booking.com/hotel/vn/rosie-sunset.html'},{label:'Google Maps｜ROSIE 路線',url:'https://www.google.com/maps/search/?api=1&query=44+Duong+Milan+An+Thoi+Phu+Quoc'}]},
@@ -118,36 +118,27 @@
       {date:back.date,order:50,time:back.departure,title:'9G510｜從富國島起飛',kind:'flight',
         desc:flight(definitions[1]),place:'Phu Quoc International Airport'}
     ].sort((a,b)=>a.date===b.date?(Number(a.order||50)-Number(b.order||50)):String(a.date).localeCompare(String(b.date)));
-    const tasks=pending();
     return {...trip,start:out.date,end:back.date,timeZone:'Asia/Ho_Chi_Minh',
-      summary:'兩大一小，11/11–11/16 富國島 6 天 5 夜。三人電子機票與護照已由旅客核對 PASS、兩間飯店已在 Booking.com 顯示已確認、eSIM 已購買、旅平險已投保、美元現鈔 US$1,000 已領妥；但仍需至航空及 Booking.com 訂位管理頁核對目前有效狀態，越南盾仍未換好，跳島與三段交通待確認。',
+      summary:'11/11–11/16 富國島 6 天 5 夜。機票、護照、兩間住宿、旅平險均已確認；eSIM 已購買、US$1,000 已領。剩下換越南盾、等 WorldHotels 送機與嬰兒床回覆，以及決定是否購買 11/12 跳島。',
       stops,
       details:[
-        {title:'旅行節奏與時區',intro:'航班時間依出發及抵達機場當地時間；越南比台灣慢 1 小時。',bullets:['11/11 20:20 抵達後直接前往 ROSIE 休息，當晚不排其他活動。','11/12 跳島含行程餐廳午餐、尚未確認訂購；兒童合身救生衣須向業者確認。晚上若有精神才去日落小鎮／VUI-Fest，煙火以當晚表演公告為準。','11/13 日落小鎮原規劃至約 14:30，之後回 ROSIE 取行李再到 WorldHotels；14:00 起可入住不代表當時已抵達，午睡依實際入住時間彈性調整。','11/14 陽東夜市營運及位置先向飯店確認；11/15 以飯店與午睡為主。']},
-        {title:'11/08 行前風險查核｜確認文件不等於即時有效',intro:'已搜尋目前連結的兩個 Gmail，並核對太太轉寄的機票、訂房、取消信及 PDF；原始訂房信箱未連結，無法看見未轉寄的新通知。',bullets:['航班 9G511／9G510：三人均有電子機票及原票面 OK；尚未進入航空公司管理訂位頁重新核對最新狀態。官網台灣航線 Economy Lite 每人托運 1 件 23kg、手提 7kg。','航空官網支援起飛前 24 小時至 1 小時線上報到：去程 11/10 17:25 起、回程 11/15 11:20 起（各出發機場當地時間）；仍要留足機場行李託運和證件查驗時間。','11/08 Booking.com APP 的兩筆訂單均顯示已確認，與當晚轉寄確認信、兩份 PDF 的日期／房價一致；仍缺付款證明。RAINBOW Motel 2 已取消，不是本次住宿。','旅客於 11/09 確認三人護照效期與電子機票英文姓名已核對，列為 PASS；富國島直飛且停留不超過 30 天通常適用免簽，入境仍依當地規定。','11/09 旅客明確確認 11/12 三島跳島尚未預訂，並非漏掉憑證；若要參加，仍需先確認業者接受 3 歲兒童、合身救生衣與集合時間。WorldHotels 送機與兒童服務仍需確認。']},
-        {title:'已訂花費（新台幣參考）',intro:'機票票據＋住宿換算約 NT$44,959；未含跳島、接送、餐飲、購物，住宿付款狀態仍須核對。',bullets:['9G511／9G510 三人來回機票票據合計 NT$17,847（成人各 NT$6,240、兒童 NT$5,367），票面每人托運 1PC、重量須核對。','ROSIE 2 晚：VND 4,355,656，訂房 PDF 約 NT$5,569；不含早餐、僅收現金、免訂金、確認單顯示可免費取消。','WorldHotels 3 晚：VND 16,848,000，訂房 PDF 約 NT$21,543；含早餐、不可退款，是否已扣款待確認。','兩筆飯店以越南盾金額為準；台幣只是不同日期匯率換算，不能當作已付款證明。']},
-        {title:'住宿與送機重點｜以訂房確認為準',intro:'太太 11/08 轉寄正式 Booking.com 訂房確認、PDF 與飯店訊息；已取消的 RAINBOW Motel 2 不計入本次行程。',bullets:['ROSIE：11/11 入住 15:00–23:30，但最新訂單服務條款另寫櫃台最晚 23:00；需請住宿方確認可否因航班／入境延誤而晚到。11/13 12:00 前退房。免費接機未安排。','WorldHotels：11/13 14:00 起入住，11/16 12:00 前退房；訂房確認信列明來回機場接駁已含在房價，仍須至少提前 48 小時預約；Deluxe Twin 訂單同時被描述為 1 床及最多 2 成人，須釐清實際床數和 3 歲兒童是否另收費。','WorldHotels 11/16 送機：11/09 已再次傳送 08:15 送機預約訊息，仍未收到飯店確認；訂單含免費接駁，但班次需取得明確回覆。估約 08:30 抵達機場。','WorldHotels 嬰兒床：10/23 已提出要求、11/09 已再次詢問 3 歲孩童適用性、收費與替代加床；目前尚無飯店同意回覆。兒童區 10/31 正式活動表 11/09 已收到：遊戲區 VND 150,000／次，最多玩 3 小時，托育適用 3～未滿 6 歲。']},
-        {id:'trip-kids',title:'WorldHotels｜Gemy Kids Zone 與手作',intro:'10/31 飯店預訂部回覆附正式 Gemy 活動價目表，11/09 已收到；可安排在 11/13–11/15，午睡優先。以下以越南盾正式表價為準，台幣僅約價，活動尚未預約。',bullets:[
-          kids.zone.name+'：'+kids.zone.hours+'；'+kids.zone.features+'。表列每位兒童每次 VND '+Number(kids.zone.priceVND).toLocaleString('en-US')+'（約 NT$'+kids.zone.priceTWD+'），最多 '+kids.zone.maxHours+' 小時。住宿客人是否另有優惠及個別設施限制待確認。',
-          '上午手作 '+kids.craft.morningHours+'：'+kids.craft.morning+'。',
-          '下午手作 '+kids.craft.afternoonHours+'：'+kids.craft.afternoon+'。與午睡衝突可直接略過。',
-          '手作是否需另付遊戲區門票、3 歲半能參加哪些活動，入住後向飯店確認；未事先購票。'
+        {title:'行程與費用速記',intro:'機票、護照、兩間飯店、旅平險均已確認；eSIM 兩張已購買。越南比台灣慢 1 小時。',bullets:[
+          '三人機票 NT$17,847＋ROSIE 2 晚約 NT$5,569＋WorldHotels 3 晚約 NT$21,543，合計約 NT$44,959；住宿台幣金額是換算參考，不等於已付款。',
+          '11/11 晚間抵達後搭車前往 ROSIE；11/13 換飯店當天午睡彈性安排。若航班大幅延誤，再主動通知 ROSIE。'
         ]},
-        {id:'trip-kids-care',title:'WorldHotels｜托育、泳課與晚間活動',intro:'10/31 飯店正式價目表列示托育及兒童泳課，尚未預約；實際年齡適用、住客待遇及現場可提供情況仍要確認。',bullets:[
-          '托育：'+kids.childcare.ages+'；'+kids.childcare.hours+'；'+kids.childcare.prices+'。是否須預約、是否含 Gemy 入場票待確認。',
-          '兒童游泳課：'+kids.swimming.minutes+' 分鐘 VND '+Number(kids.swimming.priceVND).toLocaleString('en-US')+'（約 NT$'+kids.swimming.priceTWD+'），介紹包含'+kids.swimming.included+'。是否接受 3 歲半兒童待飯店確認。',
-          '晚間活動：飯店介紹有'+kids.evening.events+'，這次提供的活動表未列確切晚間時間，入住時再詢問。',
-          '兒童區門票、手作與托育如有額外收費，均未包含在機票＋住宿的 NT$44,959 參考總額內。'
-        ]},
-        {title:'現金進度｜美元已領、越南盾未換',intro:'使用者 11/08 確認已領妥 US$1,000 美元現鈔，這是已完成事項，不等於 ROSIE 住宿所需越南盾已備妥。',bullets:['原先計畫支用 US$900＝旅費 US$700＋ROSIE 住宿預備金 US$200；已領現鈔 US$1,000，另有 US$100 額外備用。','原定桃園機場先換 US$300 等值越南盾（含 ROSIE US$200＋旅費 US$100），其餘 US$600 赴富國島再視需要兌換；計畫未證實已執行。','ROSIE 正式房費 VND 4,355,656、僅收現金，入住前需有足夠越南盾；付款是否已完成待核對。']},
-        {title:'已完成｜eSIM 與全家旅平險',intro:'11/08 更新；只記錄已完成購買／投保的事實。',bullets:[
-          '網路：KKday Viettel 原生（非漫遊）eSIM 已購買 2 張，11/11 起選 7 天，每日高速 5GB，總價 NT$310。是否已安裝／啟用待確認。',
-          '保險：富邦旅平卡已完成 2 位成人與 1 位幼兒投保；成人每人 300 萬旅平險、傷害及海外突發疾病醫療各 30 萬，兒童傷害及海外突發疾病醫療各 20 萬。',
-          '11/12 三人特定活動已加保：每人特定活動醫療 30 萬、緊急救援費用 10 萬。投保選擇方案合計 NT$2,045；生效期間及浮潛適用條件以正式保單為準。'
-        ]},
-        {title:'行前仍需確認',intro:'已確認的機票、住宿、eSIM 與旅平險不再列為未完成購買／投保。',bullets:tasks.length?tasks.map(d=>d.title+'：'+missing(d).join('、')):['已列出的八項確認卡都已完成。']}
+        {id:'trip-kids',title:'WorldHotels｜兒童活動',intro:'飯店正式活動價目表已收到；僅是可選活動，尚未預約。',bullets:[
+          'Gemy Kids Zone：每次 VND '+Number(kids.zone.priceVND).toLocaleString('en-US')+'，最多 3 小時；住客是否有優惠待確認。',
+          '手作：上午 '+kids.craft.morningHours+'、下午 '+kids.craft.afternoonHours+'；遇到午睡可略過。',
+          '3～未滿 6 歲托育：每小時 VND 200,000 起；兒童游泳課 60 分鐘 VND 200,000。適齡與預約以飯店回覆為準。'
+        ]}
       ],
-      checklist:['機票與護照 PASS：三人電子機票均已開票，旅客已確認護照姓名和效期；11/10 出發前一天仍要注意航班異動，去程線上報到 11/10 17:25（台灣時間）起，回程 11/15 11:20（越南時間）起','Booking.com APP 已顯示 ROSIE、WorldHotels 兩筆已確認；還需查兩間飯店實際付款，並向 ROSIE 確認最晚入住 23:00／23:30 的落差、向 WorldHotels 確認床數及兒童費用','三人護照效期與電子機票英文姓名已由旅客確認 PASS','11/12 快艇三島訂購與兒童合身救生衣確認','11/11 ROSIE：歡迎罐頭訊息不需回覆；旅客預計飛機 20:20 抵達、搭車約 22:00–22:30 入住，正常情況時間足夠。若航班嚴重延誤需主動通知住宿（訂單寫最晚 23:30、條款寫 23:00）。','11/13 兩飯店間交通','11/16 WorldHotels 送機：11/09 已傳送 08:15 班次預約補問，尚待飯店明確確認；至少提前 48 小時確認乘客、行李、WhatsApp 及航班 9G510，必要時改計程車','孩子備用衣物與午睡用品','美元 US$1,000 已領妥（原換匯計畫 US$900＋額外 US$100）；越南盾未換妥，尤其 ROSIE 須以 VND 現金支付 VND 4,355,656','Viettel eSIM 已買兩張：11/11 依 KKday 憑證指示安裝／啟用並測試兩支手機網路','ROSIE 房費 VND 4,355,656，僅收現金／免訂金；US$200 已含在機場 US$300 換匯預算內，是否已付款待確認','WorldHotels 嬰兒床：10/23 首次要求，11/09 已再次傳送嬰兒床／替代加床與費用確認訊息；仍需收到飯店明確回覆才可算完成','Gemy Kids Zone 正式價目表已收到：遊戲區 VND 150,000／次、托育 3～未滿 6 歲 VND 200,000／小時；兒童服務是否需預約及住客優惠待確認']};
+      checklistIds:['cash-v48','worldhotels-v48','tour-v48','esim-v48'],
+      checklist:[
+        '換越南盾：US$1,000 已領；ROSIE 兩晚須以現金付 VND '+Number(preparation['first-hotel'].costVND).toLocaleString('en-US')+'。',
+        '等 WorldHotels 回覆：11/16 08:15 免費送機、11/13～11/16 嬰兒床／加床。兩則訊息已送出。',
+        '11/12 跳島尚未購買；決定參加再確認 3 歲兒童資格和救生衣。',
+        '兩張 Viettel eSIM 已購買；出發前依 KKday 憑證安裝並測試。'
+      ]};
   }
   document.addEventListener('click',async event=>{
     if(event.target.closest('[data-show-complete]')){showComplete=!showComplete;document.dispatchEvent(new CustomEvent('travel-prep:updated'));return;}
