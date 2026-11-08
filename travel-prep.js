@@ -10,7 +10,7 @@
     updatedOn:'2026-11-08',
     outbound:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G511',date:'2026-11-11',origin:'桃園機場 TPE（第一航廈）',destination:'富國島機場 PQC',departure:'17:25',arrival:'20:20'},
     return:{booked:true,airline:'太陽富國航空 Sun PhuQuoc Airways',number:'9G510',date:'2026-11-16',origin:'富國島機場 PQC',destination:'桃園機場 TPE（第一航廈）',departure:'11:20',arrival:'16:00'},
-    'first-hotel':{booked:true,paymentSettled:null,name:'ROSIE SUNSET HOTEL',address:'',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'',lateArrivalNoticeConfirmed:null,room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金',costTWD:5496},
+    'first-hotel':{booked:true,paymentSettled:null,name:'ROSIE SUNSET HOTEL',address:'M44 Milan Street, An Thới, Phú Quốc, Vietnam',checkin:'2026-11-11',checkout:'2026-11-13',checkinTime:'公開資料約 14:00–23:30（另有 15:00 起說法；以訂單及飯店回覆為準）',lateArrivalNoticeConfirmed:null,room:'海景豪華三人房',breakfast:'不含早餐',payment:'僅收現金',costTWD:5496,note:'地址 M44／44 Milan Street 由訂房平台交叉比對，請再與實際訂房憑證核對；入住起始時間有 14:00 與 15:00 兩種公開資料。11/11 航班預計 20:20 抵達富國島，晚到通知與現場入住方式尚未得到飯店確認，務必以訂單所列聯絡方式提前告知航班資訊並取得回覆。',sources:[{label:'Hotels.com｜地址與入住政策',url:'https://uk.hotels.com/ho4407256288/rosie-sunset-hotel-phu-quoc/'},{label:'Trip.com｜44 Milan Street 與 24 小時櫃台資訊',url:'https://www.trip.com/hotels/phu-quoc-island-hotel-detail-135843180/rosie-sunset-hotel-firework-view-phu-quoc-free-pick-up-service/'},{label:'Booking.com｜另一版本入住時間',url:'https://www.booking.com/hotel/vn/rosie-sunset.html'}]},
     resort:{booked:true,name:'WorldHotels Long Beach Resort Phu Quoc',address:'152 Tran Hung Dao Street, Cua Lap Quarter, Duong To, Phu Quoc',checkin:'2026-11-13',checkout:'2026-11-16',checkinTime:'14:00 起',room:'私人花園景豪華雙床房',breakfast:'含早餐',refund:'不可退款',costTWD:21258},
     resortKids:{
       confirmed:false,reserved:false,priceNote:'以下金額由旅客提供，均為依匯率換算的台幣約價；未預約，實際收費與適用資格以飯店回覆為準。',
@@ -39,7 +39,7 @@
   const definitions=[
     {id:'outbound',group:'飛行',icon:'↗',title:'去程機票',bookingLabel:'是否已訂票',hint:'9G511｜11/11 桃園 17:25 → 富國島 20:20（兩地當地時間）。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
     {id:'return',group:'飛行',icon:'↙',title:'回程機票',bookingLabel:'是否已訂票',hint:'9G510｜11/16 富國島 11:20 → 桃園 16:00（兩地當地時間）。',fields:[['airline','航空公司'],['number','航班號'],['date','出發日期'],['origin','出發機場'],['destination','抵達機場'],['departure','起飛時間'],['arrival','抵達時間']]},
-    {id:'first-hotel',group:'住宿',icon:'01',title:'ROSIE｜晚到入住與資訊',bookingLabel:'是否已訂房',hint:'已訂兩晚，僅收現金；房費是否已付仍待核實。請提前告知航班 20:20 抵達，並確認應付金額、付款時間與晚到入住方式。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住與晚到方式']]},
+    {id:'first-hotel',group:'住宿',icon:'01',title:'ROSIE｜晚到入住與資訊',bookingLabel:'是否已訂房',hint:'已訂兩晚；Milan 街地址、公開入住時段已查到但仍需與訂單核對。尚未確認飯店已收到 11/11 晚到通知；僅收現金，房費是否已付也待核實。',fields:[['name','飯店名稱'],['address','飯店地址（公開資料）'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','公開入住時段（未經飯店確認）']]},
     {id:'resort',group:'住宿',icon:'02',title:'WorldHotels｜11/13–11/16',bookingLabel:'是否已訂房',hint:'已訂三晚，14:00 起可入住；11/13 預計在日落小鎮待到約 14:30，之後取行李再到飯店，入住後優先安排午睡。',fields:[['name','飯店名稱'],['address','飯店地址'],['checkin','入住日期'],['checkout','退房日期'],['checkinTime','可入住時間']]},
     {id:'resortKids',group:'親子活動',icon:'☆',title:'WorldHotels｜兒童服務待確認',completionField:'confirmed',bookingLabel:'是否已向飯店核對兒童服務',hint:'Gemy Kids Zone、手作、托育、泳課及晚間表演尚未預約；住房是否免費入場、年齡資格、門票與時間需向飯店確認。台幣費用僅約價。',fields:[]},
     {id:'island-tour',group:'活動',icon:'03',title:'11/12 KKday 快艇三島',bookingLabel:'是否已訂購',hint:'尚未確認訂購；確認集合時間、地點、3 歲半兒童參加條件與合身救生衣。',fields:[['provider','活動平台'],['product','行程名稱'],['date','活動日期'],['meetingTime','集合時間'],['meetingPoint','集合地點'],['childJacket','兒童救生衣尺寸／適用條件']]},
@@ -53,7 +53,7 @@
   ];
   let showComplete=false,feedback='',copyFallback='';
   const completionValue=d=>d.id==='rosieReserve'&&preparation['first-hotel'].paymentSettled===true?true:preparation[d.id][d.completionField||'booked'];
-  const missing=d=>[...(completionValue(d)===true?[]:[d.bookingLabel]),...d.fields.filter(([key])=>!preparation[d.id][key]).map(([,label])=>label)];
+  const missing=d=>[...(completionValue(d)===true?[]:[d.bookingLabel]),...d.fields.filter(([key])=>!preparation[d.id][key]).map(([,label])=>label),...(d.id==='first-hotel'&&preparation['first-hotel'].lateArrivalNoticeConfirmed!==true?['飯店回覆確認 11/11 晚到入住方式']:[])];
   const pending=()=>definitions.filter(d=>missing(d).length);
   const status=d=>missing(d).length===0?'資料已收好':d.completionField?(completionValue(d)===false?'尚未完成':'待確認是否完成'):preparation[d.id].booked===true?'已訂，待補資訊':preparation[d.id].booked===false?'待安排':'訂購／安排狀態待確認';
   const shortDate=value=>value?value.slice(5).replace('-','/'):'待確認';
