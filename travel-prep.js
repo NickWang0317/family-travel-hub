@@ -31,7 +31,7 @@
         {label:'兆豐最新匯率',url:'https://www.megabank.com.tw/personal/savings/foreign-service/forex'},
         {label:'富國島 Robinson Pearl 地圖',url:'https://www.google.com/maps/search/?api=1&query=Robinson+Pearl+54+Tran+Hung+Dao+Phu+Quoc'}]},
     rosieReserve:{ready:false,reserveUSD:200,currency:'住宿以越南盾（VND）現金支付',note:'ROSIE 11/11–11/13 兩晚住宿獨立預留 US$200，已包含在桃園機場計畫兌換的 US$300 等值越南盾中（另外 US$100 為旅費），不重複另外準備。旅費 US$700＋住宿 US$200＝總預算 US$900，桃園機場換 US$300 等值越南盾＋富國島視需要換 US$600。訂房正式金額 VND 4,355,656（PDF 顯示約 NT$5,569），住宿現金仍未換好，房費是否已支付也待確認。ROSIE 僅收現金，須於入住前準備足夠越南盾並確認付款時點。'},
-    mobileData:{ready:true,option:'KKday｜Viettel 原生（非漫遊）eSIM・每日高速 5GB・7 天×2 張',purchaseDate:'2026-11-08',startDate:'2026-11-11',days:7,quantity:2,priceTWD:310,note:'已購買 2 張，合計 NT$310；選擇 11/11 使用、7 天有效期，涵蓋 11/11–11/16。安裝與實際啟用狀態尚未確認，請依 KKday 憑證指示操作；QR Code、訂單號及個人資訊不放公開網站。',
+    mobileData:{ready:true,enabledReported:true,enabledOn:'2026-11-11',enabledQuantity:null,connectionVerified:null,option:'KKday｜Viettel 原生（非漫遊）eSIM・每日高速 5GB・7 天×2 張',purchaseDate:'2026-11-08',startDate:'2026-11-11',days:7,quantity:2,priceTWD:310,note:'已購買 2 張，合計 NT$310；選擇 11/11 使用、7 天有效期，涵蓋 11/11–11/16。11/11 旅客已確認 eSIM 已開啟，完成啟用提醒；未逐一核對兩張的連線狀態及使用張數。QR Code、訂單號及個人資訊不放公開網站。',
       sources:[{label:'KKday Viettel 5G eSIM・含富國島',url:'https://www.kkday.com/zh-tw/product/249518'},
         {label:'航空公司免費 MobiFone eSIM',url:'https://www.sunphuquocairways.com/tw/tw/ticket-info/additional-services/esim-selection'}]},
     travelInsurance:{ready:true,provider:'富邦產險・旅平卡',plan:'國外旅遊適用 300 萬×2＋國外兒童×1',premiumTWD:2045,insuredCount:3,activityDate:'2026-11-12',note:'三人已完成投保。成人每位旅平險 300 萬、傷害醫療 30 萬、海外突發疾病醫療 30 萬；兒童傷害醫療與海外突發疾病醫療各 20 萬。11/12 特定活動三人均已加保，特定活動醫療各 30 萬、緊急救援費用各 10 萬。投保選擇方案計算：成人 NT$636×2＋兒童 NT$326＋特定活動 NT$149×3＝NT$2,045；保單生效時間、法定傳染病及活動承保條件均以正式保單／條款為準。'},
@@ -50,7 +50,7 @@
     {id:'dropoff',group:'交通',icon:'←',title:'11/16 Grab → 富國島機場',bookingLabel:'當天是否已叫到 Grab',hint:'家人決定 08:15 飯店接駁太晚，改自行叫 Grab；建議約 07:45 出發、08:20 前抵達機場。Grab 尚未預約，不再等待飯店送機確認。',fields:[['provider','接送方式／業者'],['date','接送日期'],['time','出發時間'],['meeting','上車地點'],['destination','目的地']]},
     {id:'cash',group:'行前準備',icon:'₫',title:'US$1,000 已領｜越南盾待換',completionField:'ready',bookingLabel:'越南盾是否已換妥',hint:'已領美元 US$1,000，原規劃支用 US$900（含 ROSIE US$200），額外 US$100 備用；仍須將足夠金額換成越南盾支付 ROSIE。',fields:[['currency','幣別'],['usdCashAmount','已領美元現鈔（USD）'],['plannedUSD','旅費美元預算（不含住宿）'],['airportExchangeUSD','桃園機場預計換盾（含 ROSIE）'],['airportTravelUSD','機場換盾中的旅費部分'],['phuQuocReserveUSD','帶至富國島待換的美元']]},
     {id:'rosieReserve',group:'行前準備',icon:'₫',title:'ROSIE 住宿現金（含在機場 US$300）',completionField:'ready',bookingLabel:'是否已準備住宿現金',hint:'住宿預備金 US$200 已包含在桃園機場 US$300 的換盾計畫，並非另外再加 US$200；訂房 PDF 應付 VND 4,355,656，付款仍待確認。',fields:[['reserveUSD','機場換盾中的住宿部分'],['currency','實際付款幣別提醒']]},
-    {id:'mobileData',group:'行前準備',icon:'▣',title:'Viettel eSIM｜已購買兩張',completionField:'ready',bookingLabel:'是否已買網卡',hint:'KKday 已購買：每日 5GB × 7 天 × 2 張，共 NT$310。安裝與啟用狀態尚待確認。',fields:[['option','上網方案'],['startDate','開始使用日期'],['quantity','張數'],['priceTWD','費用（NT$）']]},
+    {id:'mobileData',group:'行前準備',icon:'▣',title:'Viettel eSIM｜已購買，已開啟',completionField:'ready',bookingLabel:'是否已買網卡',hint:'兩張 KKday Viettel eSIM 已購買，每日 5GB × 7 天，共 NT$310；11/11 旅客確認已開啟。未逐一確認兩張連線狀態。',fields:[['option','上網方案'],['startDate','開始使用日期'],['quantity','張數'],['priceTWD','費用（NT$）']]},
     {id:'travelInsurance',group:'行前準備',icon:'✚',title:'富邦旅平卡｜三人已投保',completionField:'ready',bookingLabel:'旅平險是否已投保',hint:'兩位大人＋一位兒童均已投保，11/12 特定活動加保三人；總保費依所選方案合計 NT$2,045。',fields:[['provider','保險公司'],['plan','投保方案'],['premiumTWD','保費合計（NT$）']]}
   ];
   let showComplete=false,feedback='',copyFallback='';
@@ -120,10 +120,10 @@
         desc:flight(definitions[1]),place:'Phu Quoc International Airport'}
     ].sort((a,b)=>a.date===b.date?(Number(a.order||50)-Number(b.order||50)):String(a.date).localeCompare(String(b.date)));
     return {...trip,start:out.date,end:back.date,timeZone:'Asia/Ho_Chi_Minh',
-      summary:'11/11–11/16 富國島 6 天 5 夜。機票、護照、兩間住宿、旅平險已確認；eSIM 已購買、US$1,000 已領。11/16 回程改自行叫 Grab（未預約），飯店僅剩嬰兒床／加床待回覆；仍須換越南盾、決定 11/12 跳島，並帶手機防水袋。',
+      summary:'11/11–11/16 富國島 6 天 5 夜。機票、護照、兩間住宿、旅平險已確認；eSIM 已開啟、US$1,000 已領。11/16 回程改自行叫 Grab（未預約），飯店僅剩嬰兒床／加床待回覆；仍須換越南盾、決定 11/12 跳島，並帶手機防水袋。',
       stops,
       details:[
-        {title:'行程與費用速記',intro:'機票、護照、兩間飯店、旅平險均已確認；eSIM 兩張已購買。越南比台灣慢 1 小時。',bullets:[
+        {title:'行程與費用速記',intro:'機票、護照、兩間飯店、旅平險均已確認；eSIM 已開啟（兩張均已購買）。越南比台灣慢 1 小時。',bullets:[
           '三人機票 NT$17,847＋ROSIE 2 晚約 NT$5,569＋WorldHotels 3 晚約 NT$21,543，合計約 NT$44,959；住宿台幣金額是換算參考，不等於已付款。',
           '11/11 晚間抵達後搭車前往 ROSIE；11/13 換飯店當天午睡彈性安排；11/16 回程約 07:45 自行叫 Grab 前往機場（未預約）。若去程航班大幅延誤，再通知 ROSIE。'
         ]},
@@ -133,12 +133,11 @@
           '3～未滿 6 歲托育：每小時 VND 200,000 起；兒童游泳課 60 分鐘 VND 200,000。適齡與預約以飯店回覆為準。'
         ]}
       ],
-      checklistIds:['cash-v48','worldhotels-cot-v50','tour-v48','esim-v48','waterproof-pouch-v50'],
+      checklistIds:['cash-v48','worldhotels-cot-v50','tour-v48','waterproof-pouch-v50'],
       checklist:[
         '換越南盾：US$1,000 已領；ROSIE 兩晚須以現金付 VND '+Number(preparation['first-hotel'].costVND).toLocaleString('en-US')+'。',
         '等 WorldHotels 回覆：只剩 11/13～11/16 嬰兒床／加床；11/16 送機改自行叫 Grab，不搭 08:15 飯店接駁。',
         '11/12 跳島尚未購買；決定參加再確認 3 歲兒童資格和救生衣。',
-        '兩張 Viettel eSIM 已購買；出發前依 KKday 憑證安裝並測試。',
         '帶手機防水袋：出發前放入行李，跳島／泳池／海邊玩水時可用。'
       ]};
   }
